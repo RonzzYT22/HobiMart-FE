@@ -155,8 +155,10 @@ function BundleCard({
 }
 
 export default function DealsPage() {
-  const { navigate } = useAppStore();
+  const { navigate, products, fetchProducts } = useAppStore();
   const { hours, minutes, seconds } = useCountdown(4 * 3600 + 32 * 60 + 18);
+
+  useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
   /* Product groupings for each section */
   const flashSaleIds = ['p1', 'p6', 'p11', 'p4'];
