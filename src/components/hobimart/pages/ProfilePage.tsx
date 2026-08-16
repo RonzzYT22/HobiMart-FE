@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { User, Mail, Phone, MapPin, Shield, LogOut, Edit3, Check, X } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Shield, LogOut, Edit3, Check, X, Layers } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 
 export default function ProfilePage() {
