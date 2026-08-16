@@ -174,7 +174,7 @@ export default function CollectorProfilePage() {
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-7">
             {/* Avatar */}
             <div className="flex-shrink-0 self-start">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#FF8F5E] flex items-center justify-center shadow-lg shadow-orange-500/20">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#1F2937] flex items-center justify-center shadow-lg shadow-orange-500/20">
                 <span className="text-2xl sm:text-3xl font-bold text-white">
                   KC
                 </span>
@@ -334,7 +334,7 @@ export default function CollectorProfilePage() {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#FF6B35] flex items-center justify-center flex-shrink-0">
                         <span className="text-xs font-bold text-gray-600">
                           {review.reviewer.slice(0, 2).toUpperCase()}
                         </span>

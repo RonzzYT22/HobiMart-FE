@@ -113,7 +113,7 @@ export default function MessagesPage() {
         {/* Header */}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-            <span className="text-[#FF6B35]">💬</span> Messages
+            Messages
           </h1>
           <p className="text-sm text-[#64748B] mt-1">
             Chat with sellers and traders
@@ -169,7 +169,7 @@ export default function MessagesPage() {
                       >
                         {/* Avatar */}
                         <div
-                          className={`w-10 h-10 rounded-full bg-gradient-to-br ${color} flex items-center justify-center flex-shrink-0 relative`}
+                          className={`w-10 h-10 rounded-full bg-[#FF6B35] ${color} flex items-center justify-center flex-shrink-0 relative`}
                         >
                           <span className="text-xs font-bold text-white">
                             {getInitials(msg.user)}
@@ -235,7 +235,7 @@ export default function MessagesPage() {
                     </button>
 
                     <div
-                      className={`w-9 h-9 rounded-full bg-gradient-to-br ${
+                      className={`w-9 h-9 rounded-full bg-[#FF6B35] ${
                         userColorMap[selectedMessage.user] ||
                         'from-gray-300 to-gray-400'
                       } flex items-center justify-center flex-shrink-0`}

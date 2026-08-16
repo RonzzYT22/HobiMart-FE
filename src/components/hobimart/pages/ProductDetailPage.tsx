@@ -152,7 +152,7 @@ export default function ProductDetailPage() {
                 </span>
               )}
               {product.stock <= 5 && product.stock > 0 && (
-                <span className="px-3 py-1.5 bg-amber-50 text-amber-600 rounded-lg text-sm font-semibold">🔥 Only {product.stock} left</span>
+                <span className="px-3 py-1.5 bg-amber-50 text-amber-600 rounded-lg text-sm font-semibold">Only {product.stock} left</span>
               )}
             </div>
 
@@ -172,7 +172,7 @@ export default function ProductDetailPage() {
               onClick={() => navigate('shop')}
               className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors group w-fit"
             >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B35] to-orange-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-[#FF6B35] flex items-center justify-center">
                 <Store className="w-5 h-5 text-white" />
               </div>
               <div className="text-left">
@@ -377,7 +377,7 @@ export default function ProductDetailPage() {
                     <div key={review.id} className="bg-white rounded-2xl border border-[#E5E7EB] p-5">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#FF6B35] to-orange-300 flex items-center justify-center">
+                          <div className="w-9 h-9 rounded-full bg-[#FF6B35] flex items-center justify-center">
                             <span className="text-white text-sm font-bold">{review.user[0]}</span>
                           </div>
                           <div>

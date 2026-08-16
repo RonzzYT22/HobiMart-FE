@@ -183,7 +183,7 @@ export default function NotificationsPage() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2.5">
               <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-                <span className="text-[#FF6B35]">🔔</span> Notifications
+                Notifications
               </h1>
             </div>
           </div>
@@ -251,7 +251,7 @@ export default function NotificationsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="flex items-center gap-2.5">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-              <span className="text-[#FF6B35]">🔔</span> Notifications
+              Notifications
             </h1>
             {hasUnread && (
               <span className="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#FF6B35] text-white text-xs font-bold">

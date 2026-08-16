@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Search, Heart, ShoppingBag, Bell, User, Menu, X, ChevronDown } from 'lucide-react';
+import {  Search, Heart, ShoppingBag, Bell, User, Menu, X, ChevronDown , Package, Tag, ArrowLeftRight, MessageCircle, Users } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { products, notifications as notificationsData } from '@/lib/data';
 
@@ -231,7 +231,7 @@ export default function Navbar() {
                       n.type === 'trade' ? 'bg-purple-100 text-purple-600' :
                       'bg-gray-100 text-gray-600'
                     }`}>
-                      <span className="text-xs">{n.type === 'order' ? '📦' : n.type === 'price' ? '🏷️' : n.type === 'wishlist' ? '♡' : n.type === 'trade' ? '🔄' : n.type === 'message' ? '💬' : '👥'}</span>
+                      <span className="text-xs">{n.type === 'order' ? Package : n.type === 'price' ? Tag : n.type === 'wishlist' ? Heart : n.type === 'trade' ? ArrowLeftRight : n.type === 'message' ? MessageCircle : Users}</span>
                     </div>
                     <div className="min-w-0">
                       <p className="text-sm font-medium text-[#1F2937]">{n.title}</p>
@@ -256,7 +256,7 @@ function ProductImage({ name, image, className = '' }: { name: string; image: st
       {!err ? (
         <img src={image} alt={name} className="w-full h-full object-cover" onError={() => setErr(true)} />
       ) : (
-        <div className="w-full h-full flex items-center justify-center"><span className="text-lg opacity-30">📦</span></div>
+        <div className="w-full h-full flex items-center justify-center"><Package className="w-6 h-6 opacity-30" /></div>
       )}
     </div>
   );

@@ -106,7 +106,7 @@ export default function CommunityPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-              <span className="text-[#FF6B35]">💬</span> HobiMart Community
+              HobiMart Community
             </h1>
             <p className="text-sm text-[#64748B] mt-1">
               Connect, share, and learn from fellow hobbyists
@@ -151,7 +151,7 @@ export default function CommunityPage() {
                     <div className="flex items-start gap-3.5">
                       {/* Avatar */}
                       <div
-                        className={`w-10 h-10 rounded-full bg-gradient-to-br ${
+                        className={`w-10 h-10 rounded-full bg-[#FF6B35] ${
                           userColorMap[post.user] || 'from-gray-300 to-gray-400'
                         } flex items-center justify-center flex-shrink-0`}
                       >

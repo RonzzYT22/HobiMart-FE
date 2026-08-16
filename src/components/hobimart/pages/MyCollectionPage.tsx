@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import {
+import { 
   ChevronRight,
   Layers,
   Search,
@@ -9,7 +9,7 @@ import {
   X,
   Calendar,
   Sparkles,
-} from 'lucide-react';
+    Heart, Bot, Gem } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { products, categories, formatPrice, getConditionColor } from '@/lib/data';
 import {
@@ -18,8 +18,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
+  BreadcrumbPage } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -29,27 +28,24 @@ const collectionCategories = [
   {
     name: 'Trading Cards',
     count: 48,
-    icon: '🃏',
+    icon: Heart,
     color: 'from-orange-400 to-red-400',
     bgColor: 'bg-orange-50',
-    textColor: 'text-orange-600',
-  },
+    textColor: 'text-orange-600' },
   {
     name: 'Gundam & Gunpla',
     count: 12,
-    icon: '🤖',
+    icon: Bot,
     color: 'from-blue-400 to-indigo-500',
     bgColor: 'bg-blue-50',
-    textColor: 'text-blue-600',
-  },
+    textColor: 'text-blue-600' },
   {
     name: 'Figures',
     count: 24,
-    icon: '🧸',
+    icon: Gem,
     color: 'from-purple-400 to-pink-400',
     bgColor: 'bg-purple-50',
-    textColor: 'text-purple-600',
-  },
+    textColor: 'text-purple-600' },
 ];
 
 /* ── Mock collection items ── */
@@ -169,7 +165,7 @@ export default function MyCollectionPage() {
               </div>
               {/* Decorative gradient bar */}
               <div
-                className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${cat.color} transition-all ${
+                className={`absolute bottom-0 left-0 right-0 h-1 bg-[#FF6B35] ${cat.color} transition-all ${
                   selectedCategory === cat.name ? 'opacity-100' : 'opacity-0'
                 }`}
               />
@@ -226,7 +222,7 @@ export default function MyCollectionPage() {
                 {/* Image */}
                 <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                   {imgErrors.has(item.id) ? (
-                    <span className="text-4xl sm:text-5xl flex items-center justify-center w-full h-full">📦</span>
+                    <Package className="w-12 h-12 opacity-30 mx-auto" />
                   ) : (
                     <img
                       src={products.find(p => p.id === item.productId)?.image}

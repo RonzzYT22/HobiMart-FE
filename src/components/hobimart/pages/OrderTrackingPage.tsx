@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronRight, Package, CheckCircle2, Circle, Clock, ArrowLeft, MapPin, Truck, CreditCard, Check, Loader2 } from 'lucide-react';
+import {  ChevronRight, Package, CheckCircle2, Circle, Clock, ArrowLeft, MapPin, Truck, CreditCard, Check, Loader2  } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { formatPrice } from '@/lib/data';
 
@@ -21,36 +21,31 @@ const timelineSteps: TimelineStep[] = [
     description: 'Your order has been placed successfully and is being processed.',
     timestamp: 'Jun 5, 2025 14:30',
     status: 'completed',
-    icon: Package,
-  },
+    icon: Package },
   {
     title: 'Payment Confirmed',
     description: 'We have received your payment and confirmed the transaction.',
     timestamp: 'Jun 5, 2025 14:35',
     status: 'completed',
-    icon: CreditCard,
-  },
+    icon: CreditCard },
   {
     title: 'Processing',
     description: 'Your items are being carefully packed and prepared for shipment.',
     timestamp: 'Est. Jun 6, 2025',
     status: 'current',
-    icon: Clock,
-  },
+    icon: Clock },
   {
     title: 'Shipped',
     description: 'Your package has been handed over to the courier for delivery.',
     timestamp: '',
     status: 'upcoming',
-    icon: Truck,
-  },
+    icon: Truck },
   {
     title: 'Delivered',
     description: 'Your order has been delivered to your address.',
     timestamp: '',
     status: 'upcoming',
-    icon: CheckCircle2,
-  },
+    icon: CheckCircle2 },
 ];
 
 export default function OrderTrackingPage() {
@@ -199,7 +194,7 @@ export default function OrderTrackingPage() {
                   <div key={item.product.id} className="flex items-center gap-4 py-3.5 first:pt-0 last:pb-0">
                     <div className="w-14 h-14 rounded-xl bg-gray-100 shrink-0 overflow-hidden">
                       {imgErrors.has(item.product.id) ? (
-                        <span className="text-xl flex items-center justify-center w-full h-full">📦</span>
+                        <Package className="w-6 h-6 opacity-30 mx-auto" />
                       ) : (
                         <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" onError={() => handleImgError(item.product.id)} />
                       )}

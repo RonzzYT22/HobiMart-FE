@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
+import { 
   ArrowLeftRight,
   Star,
   Shield,
   MessageSquare,
   Send,
   Truck,
-} from 'lucide-react';
+ Package } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { products, formatPrice, getConditionColor } from '@/lib/data';
 import {
@@ -17,8 +17,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
+  BreadcrumbPage } from '@/components/ui/breadcrumb';
 
 const traderRatings = [
   { label: 'Communication', rating: 4.8, reviews: 42 },
@@ -32,8 +31,7 @@ const giveProduct = products.find((p) => p.id === 'p10')!;
 function TradeProductCard({
   product,
   label,
-  labelColor,
-}: {
+  labelColor }: {
   product: (typeof products)[0];
   label: string;
   labelColor: string;
@@ -50,7 +48,7 @@ function TradeProductCard({
 
       <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
         {imgError ? (
-          <span className="text-5xl sm:text-6xl flex items-center justify-center w-full h-full">📦</span>
+          <Package className="w-16 h-16 opacity-30 mx-auto" />
         ) : (
           <img src={product.image} alt={product.name} className="w-full h-full object-cover" onError={() => setImgError(true)} />
         )}
@@ -175,7 +173,7 @@ export default function TradeOfferPage() {
           <TradeProductCard
             product={giveProduct}
             label="You Give"
-            labelColor="bg-gradient-to-r from-gray-700 to-gray-900"
+            labelColor="bg-[#FF6B35]"
           />
 
           <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 mt-[180px] z-20">
@@ -187,7 +185,7 @@ export default function TradeOfferPage() {
           <TradeProductCard
             product={receiveProduct}
             label="You Receive"
-            labelColor="bg-gradient-to-r from-[#FF6B35] to-[#FF8F65]"
+            labelColor="bg-[#1F2937]"
           />
         </div>
 
@@ -318,7 +316,7 @@ export default function TradeOfferPage() {
 
           <div className="mt-5 pt-4 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center text-white text-sm font-bold">
+              <div className="w-10 h-10 rounded-full bg-[#FF6B35] flex items-center justify-center text-white text-sm font-bold">
                 {receiveProduct.seller.name.charAt(0)}
               </div>
               <div>

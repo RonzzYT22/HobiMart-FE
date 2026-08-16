@@ -35,7 +35,7 @@ export default function ProductCard({ product, variant = 'standard', rank }: { p
       onClick={() => navigate('product', { id: product.id })}
       className={`group bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/5 hover:-translate-y-1 ${variant === 'rare' ? 'ring-1 ring-amber-300' : ''} ${isSoldOut ? 'opacity-70' : ''}`}
     >
-      <div className="relative aspect-square bg-gradient-to-br ${fallbackColors[product.category] || 'from-gray-100 to-gray-50'} overflow-hidden">
+      <div className="relative aspect-square bg-[#FF6B35] ${fallbackColors[product.category] || 'from-gray-100 to-gray-50'} overflow-hidden">
         {!imgError ? (
           <img
             src={product.image}
@@ -46,7 +46,7 @@ export default function ProductCard({ product, variant = 'standard', rank }: { p
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl opacity-30">📦</span>
+            <Package className="w-10 h-10 opacity-30" />
           </div>
         )}
 

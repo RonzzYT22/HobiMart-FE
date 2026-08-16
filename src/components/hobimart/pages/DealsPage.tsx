@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import {
+import { 
   Flame,
   Zap,
   Clock,
@@ -15,7 +15,7 @@ import {
   Crown,
   Package,
   TrendingDown,
-} from 'lucide-react';
+ Heart, Bot, Gem, Diamond } from 'lucide-react';
 import { formatPrice } from '@/lib/data';
 import ProductCard from '../ProductCard';
 import { useAppStore } from '@/lib/store';
@@ -25,8 +25,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
+  BreadcrumbPage } from '@/components/ui/breadcrumb';
 
 /* ── Countdown Timer Hook ── */
 function useCountdown(initialSeconds: number) {
@@ -46,8 +45,7 @@ function useCountdown(initialSeconds: number) {
   return {
     hours: String(hours).padStart(2, '0'),
     minutes: String(minutes).padStart(2, '0'),
-    seconds: String(secs).padStart(2, '0'),
-  };
+    seconds: String(secs).padStart(2, '0') };
 }
 
 /* ── Section component ── */
@@ -57,8 +55,7 @@ function DealSection({
   iconColor,
   bgColor,
   productIds,
-  viewAllLabel,
-}: {
+  viewAllLabel }: {
   title: string;
   icon: React.ReactNode;
   iconColor: string;
@@ -105,8 +102,7 @@ function BundleCard({
   items,
   bundlePrice,
   originalTotal,
-  image,
-}: {
+  image }: {
   title: string;
   items: string[];
   bundlePrice: number;
@@ -116,7 +112,7 @@ function BundleCard({
   const savings = Math.round(((originalTotal - bundlePrice) / originalTotal) * 100);
   return (
     <div className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/5 hover:-translate-y-1 group">
-      <div className="relative aspect-[4/3] bg-gradient-to-br from-amber-400 to-orange-500 overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[#FF6B35] overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <span className="text-5xl drop-shadow-lg">{image}</span>
@@ -173,29 +169,25 @@ export default function DealsPage() {
       items: ['Charizard EX', 'Blue-Eyes White Dragon', 'Pikachu Illustration'],
       bundlePrice: 2200000,
       originalTotal: 2680000,
-      image: '🃏',
-    },
+      image: Heart },
     {
       title: 'Gundam Builder Kit',
       items: ['Gundam RG Nu', 'Gundam HG Aerial'],
       bundlePrice: 850000,
       originalTotal: 1135000,
-      image: '🤖',
-    },
+      image: Bot },
     {
       title: 'Anime Figure Duo',
       items: ['Iron Man Mark 46', 'Spider-Man Figure'],
       bundlePrice: 2250000,
       originalTotal: 2550000,
-      image: '🧸',
-    },
+      image: Gem },
     {
       title: 'Pro Collector Bundle',
       items: ['Charizard VMAX Rainbow', 'Naruto Sage Mode'],
       bundlePrice: 2400000,
       originalTotal: 3150000,
-      image: '💎',
-    },
+      image: Diamond },
   ];
 
   return (
@@ -229,7 +221,7 @@ export default function DealsPage() {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-              🔥 HobiMart Deals
+              HobiMart Deals
             </h1>
             <p className="text-sm text-[#64748B] mt-1">
               Grab the best offers on hobby collectibles
@@ -239,7 +231,7 @@ export default function DealsPage() {
 
         {/* ── Promotional Banner ── */}
         <div className="relative mb-8 overflow-hidden rounded-2xl">
-          <div className="bg-gradient-to-r from-[#FF6B35] via-[#FF8F5E] to-[#FF6B35] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+          <div className="bg-[#1F2937] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
             {/* Decorative circles */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
             <div className="absolute bottom-0 left-1/3 w-48 h-48 bg-white/5 rounded-full translate-y-1/2" />
@@ -329,7 +321,7 @@ export default function DealsPage() {
 
           {/* ── Weekly Deals ── */}
           <DealSection
-            title="🏷️ Weekly Deals"
+            title="Weekly Deals"
             icon={<Tag className="w-4 h-4 text-amber-500" />}
             iconColor="bg-amber-100"
             bgColor="bg-amber-100"
@@ -393,7 +385,7 @@ export default function DealsPage() {
           />
 
           {/* ── Bottom CTA ── */}
-          <div className="bg-gradient-to-r from-[#1F2937] to-[#374151] rounded-2xl p-6 sm:p-8 text-center">
+          <div className="bg-[#1F2937] rounded-2xl p-6 sm:p-8 text-center">
             <Sparkles className="w-8 h-8 text-[#FF6B35] mx-auto mb-3" />
             <h3 className="text-xl sm:text-2xl font-bold text-white">
               Don&apos;t Miss Out!

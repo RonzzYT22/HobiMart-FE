@@ -1,7 +1,7 @@
 'client';
 
 import { useEffect } from 'react';
-import { ArrowRight, Shield, CheckCircle, Star, Package, ArrowLeftRight, Users, ChevronRight, Clock } from 'lucide-react';
+import { ArrowRight, Shield, CheckCircle, Star, Package, ArrowLeftRight, Users, ChevronRight, Clock, Heart, Gem, Wrench, Bot, ShoppingCart, Flame, Diamond } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import ProductCard from '../ProductCard';
 
@@ -21,11 +21,11 @@ export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-[#1F2937] via-[#374151] to-[#1F2937] overflow-hidden">
+      <section className="relative bg-[#1F2937] overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 text-8xl">🃏</div>
-          <div className="absolute top-20 right-20 text-9xl">🤖</div>
-          <div className="absolute bottom-10 left-1/3 text-7xl">🧸</div>
+          <div className="absolute top-10 left-10 text-8xl opacity-10"><Heart className="w-32 h-32 text-orange-300" /></div>
+          <div className="absolute top-20 right-20 text-9xl opacity-10"><Bot className="w-40 h-40 text-blue-300" /></div>
+          <div className="absolute bottom-10 left-1/3 text-7xl opacity-10"><Gem className="w-28 h-28 text-purple-300" /></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="max-w-2xl">
@@ -35,7 +35,7 @@ export default function HomePage() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white leading-tight">
               Your Hobby<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] to-[#F59E0B]">Starts Here.</span>
+              <span className="text-transparent bg-clip-text bg-[#1F2937]">Starts Here.</span>
             </h1>
             <p className="mt-5 text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
               Discover trading cards, Gundam, figures, and collectibles made for every kind of hobbyist.
@@ -60,10 +60,10 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {categories.map(cat => {
-            const icons: Record<string, string> = { 'Trading Cards': '🃏', 'Gundam & Gunpla': '🤖', 'Figures': '🧸', 'Collectibles': '💎', 'Accessories': '🛠️' };
+            const icons: Record<string, React.ReactNode> = { 'Trading Cards': <Heart className="w-6 h-6" />, 'Gundam & Gunpla': <Bot className="w-6 h-6" />, 'Figures': <Gem className="w-6 h-6" />, 'Collectibles': <Diamond className="w-6 h-6" />, 'Accessories': <Wrench className="w-6 h-6" /> };
             return (
               <button key={cat.name} onClick={() => navigate('shop', { category: cat.name })} className="group bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className={`h-32 sm:h-40 bg-gradient-to-br ${cat.color} flex items-center justify-center`}>
+                <div className={`h-32 sm:h-40 bg-[#FF6B35] flex items-center justify-center`}>
                   <span className="text-5xl sm:text-6xl drop-shadow-lg group-hover:scale-110 transition-transform duration-300">{icons[cat.name]}</span>
                 </div>
                 <div className="p-4">
@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">🔥</span>
+              <Flame className="w-6 h-6 text-orange-500" />
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">Flash Deals</h2>
                 <div className="flex items-center gap-2 mt-1"><Clock className="w-3.5 h-3.5 text-red-500" /><span className="text-xs text-red-500 font-semibold animate-countdown">Ends in 04:32:18</span></div>
@@ -98,7 +98,7 @@ export default function HomePage() {
 
       {/* Promo Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-gradient-to-r from-[#FF6B35] to-[#E55A2B] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-[#1F2937] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-orange-200 text-sm font-semibold uppercase tracking-wider">Weekend Hobby Sale</p>
             <h3 className="text-2xl sm:text-3xl font-bold text-white mt-1">Up to 30% OFF</h3>
@@ -111,7 +111,7 @@ export default function HomePage() {
       {/* Trending */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="flex items-center gap-3 mb-8">
-          <span className="text-2xl">🔥</span>
+          <Flame className="w-6 h-6 text-orange-500" />
           <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">Trending Now</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -136,7 +136,7 @@ export default function HomePage() {
       {/* Rare Finds */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="flex items-center gap-3 mb-8">
-          <span className="text-2xl">💎</span>
+          <Diamond className="w-6 h-6 text-purple-500" />
           <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">Rare Finds</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -180,7 +180,7 @@ export default function HomePage() {
         <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937] text-center mb-10">More Than Just a Hobby Store</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <button onClick={() => navigate('shop')} className="group md:col-span-2 bg-white rounded-2xl border border-[#E5E7EB] p-8 text-left hover:shadow-lg hover:border-orange-200 transition-all">
-            <span className="text-4xl">🛒</span>
+            <ShoppingCart className="w-10 h-10 text-gray-400" />
             <h3 className="text-xl font-bold text-[#1F2937] mt-4">SHOP</h3>
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">Find your next collectible from verified sellers across Indonesia. Thousands of products across every hobby category.</p>
           </button>
@@ -203,7 +203,7 @@ export default function HomePage() {
 
       {/* Trade-In Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-gradient-to-r from-[#1F2937] to-[#374151] rounded-2xl p-8 sm:p-10 text-center">
+        <div className="bg-[#1F2937] rounded-2xl p-8 sm:p-10 text-center">
           <ArrowLeftRight className="w-10 h-10 text-[#FF6B35] mx-auto mb-4" />
           <h2 className="text-2xl sm:text-3xl font-bold text-white">Have Something to Trade?</h2>
           <p className="text-gray-300 mt-3 max-w-md mx-auto">Turn your collection into your next favorite collectible.</p>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Minus, Plus, Trash2, ShoppingBag, ChevronRight, ArrowLeft, Truck, ShieldCheck, Tag, CreditCard } from 'lucide-react';
+import {  Minus, Plus, Trash2, ShoppingBag, ChevronRight, ArrowLeft, Truck, ShieldCheck, Tag, CreditCard , Package } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { formatPrice } from '@/lib/data';
 
@@ -104,7 +104,7 @@ export default function CartPage() {
                       >
                         <div className="w-16 h-16 rounded-xl bg-gray-100 shrink-0 overflow-hidden">
                           {imgErrors.has(item.product.id) ? (
-                            <span className="text-2xl flex items-center justify-center w-full h-full">📦</span>
+                            <Package className="w-8 h-8 opacity-30 mx-auto" />
                           ) : (
                             <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" onError={() => handleImgError(item.product.id)} />
                           )}
@@ -158,7 +158,7 @@ export default function CartPage() {
                           className="w-20 h-20 rounded-xl bg-gray-100 shrink-0 overflow-hidden"
                         >
                           {imgErrors.has(item.product.id) ? (
-                            <span className="text-3xl flex items-center justify-center w-full h-full">📦</span>
+                            <Package className="w-10 h-10 opacity-30 mx-auto" />
                           ) : (
                             <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" onError={() => handleImgError(item.product.id)} />
                           )}

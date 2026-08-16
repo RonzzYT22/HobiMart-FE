@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
+import { 
   ChevronRight,
   MapPin,
   Truck,
@@ -13,7 +13,7 @@ import {
   Building2,
   Wallet,
   Landmark,
-} from 'lucide-react';
+    Package, Bot, Gem, Diamond, Wrench, Heart } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { formatPrice } from '@/lib/data';
 import { Input } from '@/components/ui/input';
@@ -24,15 +24,13 @@ const gradientColors: Record<string, string> = {
   'Gundam & Gunpla': 'from-blue-400 to-indigo-500',
   'Figures': 'from-purple-400 to-pink-400',
   'Collectibles': 'from-amber-400 to-yellow-400',
-  'Accessories': 'from-green-400 to-emerald-500',
-};
+  'Accessories': 'from-green-400 to-emerald-500' };
 const categoryIcons: Record<string, string> = {
-  'Trading Cards': '🃏',
-  'Gundam & Gunpla': '🤖',
-  'Figures': '🧸',
-  'Collectibles': '💎',
-  'Accessories': '🛠️',
-};
+  'Trading Cards': Heart,
+  'Gundam & Gunpla': Bot,
+  'Figures': Gem,
+  'Collectibles': Diamond,
+  'Accessories': Wrench };
 
 const steps = [
   { label: 'Shipping Address', icon: MapPin },
@@ -78,8 +76,7 @@ export default function CheckoutPage() {
     address2: '',
     city: '',
     province: '',
-    postalCode: '',
-  });
+    postalCode: '' });
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const shippingCost = deliveryOptions.find(d => d.id === delivery)?.price ?? 20000;
@@ -94,12 +91,10 @@ export default function CheckoutPage() {
       const result = await createOrder({
         items: cart.map(item => ({
           product_id: parseInt(item.product.id) || 1,
-          quantity: item.quantity,
-        })),
+          quantity: item.quantity })),
         shipping_address: form,
         delivery,
-        payment_method: payment,
-      });
+        payment_method: payment });
       navigate('order-tracking', { orderNumber: result.order.orderNumber });
     } catch (e) {
       // fallback ke halaman tracking
@@ -432,12 +427,12 @@ export default function CheckoutPage() {
                 {cart.map(item => (
                   <div key={item.product.id} className="flex gap-3">
                     <div
-                      className={`w-14 h-14 rounded-xl bg-gradient-to-br ${
+                      className={`w-14 h-14 rounded-xl bg-[#FF6B35] ${
                         gradientColors[item.product.category] || 'from-gray-300 to-gray-400'
                       } flex items-center justify-center shrink-0`}
                     >
                       <span className="text-xl drop-shadow-lg">
-                        {categoryIcons[item.product.category] || '📦'}
+                        {categoryIcons[item.product.category] || Package}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
