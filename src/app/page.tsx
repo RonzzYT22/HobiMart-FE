@@ -25,6 +25,8 @@ import LoginPage from '@/components/hobimart/pages/LoginPage';
 import RegisterPage from '@/components/hobimart/pages/RegisterPage';
 import ProfilePage from '@/components/hobimart/pages/ProfilePage';
 
+import AdminDashboardPage from '@/components/hobimart/pages/AdminDashboardPage';
+
 // halaman yang butuh login
 const authPages = ['checkout', 'my-collection', 'trade-in', 'trade-offer', 'wishlist', 'notifications', 'messages', 'profile', 'order-tracking'];
 
@@ -69,6 +71,7 @@ export default function Home() {
       case 'login': return <LoginPage />;
       case 'register': return <RegisterPage />;
       case 'profile': return <ProfilePage />;
+      case 'admin-dashboard': return <AdminDashboardPage />;
       default: return <HomePage />;
     }
   };

@@ -7,7 +7,7 @@ export type Page =
   | 'cart' | 'checkout' | 'order-tracking' | 'wishlist'
   | 'trade-in' | 'trade-offer' | 'collector-profile' | 'my-collection'
   | 'community' | 'notifications' | 'messages' | 'reviews'
-  | 'login' | 'register' | 'profile';
+  | 'login' | 'register' | 'profile' | 'admin-dashboard';
 
 interface AuthState {
   token: string | null;
