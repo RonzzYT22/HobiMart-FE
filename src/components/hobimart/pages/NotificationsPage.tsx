@@ -74,10 +74,11 @@ export default function NotificationsPage() {
 
   const markSingleRead = (id: string) => {
     markNotificationRead(parseInt(id));
+  };
 
   const { today, yesterday, earlier } = useMemo(
     () => groupNotifications(notifications),
-    [notificationsList],
+    [notifications],
   );
 
   const hasUnread = unreadCount > 0;

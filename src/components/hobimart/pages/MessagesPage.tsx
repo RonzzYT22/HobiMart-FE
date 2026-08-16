@@ -160,21 +160,14 @@ export default function MessagesPage() {
     setMessageInput('');
   };
 
-  const selectedMessage = initialMessages.find(
-    (m) => m.id === selectedConversation,
+  const selectedMessage = conversations.find(
+    (m: any) => m.id === selectedConversation,
   );
-  const chatMessages = selectedConversation
-    ? mockChatMessages[selectedConversation] || []
-    : [];
+  const chatMessages = messages || [];
 
   const handleSend = () => {
     if (!messageInput.trim()) return;
-    setMessageInput('');
-  };
-
-  const handleSelectConversation = (id: string) => {
-    setSelectedConversation(id);
-    setShowChat(true);
+    handleSendMessage();
   };
 
   return (
