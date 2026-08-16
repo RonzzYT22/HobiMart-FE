@@ -4,15 +4,14 @@
  */
 import type { Product, Seller, Notification, Message, CommunityPost } from './data';
 
-// di dev mode, panggil backend langsung; di production, lewat proxy
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080';
-const API = `${BACKEND}/api`;
+// di dev mode, panggil backend via Next.js rewrite (same origin, no CORS)
+const API = '/api';
 
 // ========== Auth ==========
 
 // ambil CSRF cookie dulu sebelum login/register
 async function getCsrf() {
-  await fetch(`${BACKEND}/sanctum/csrf-cookie`, { credentials: 'include' });
+  await fetch('/sanctum/csrf-cookie', { credentials: 'include' });
   // baca XSRF-TOKEN cookie untuk dikirim sebagai header
   const token = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='));
   if (token) {
