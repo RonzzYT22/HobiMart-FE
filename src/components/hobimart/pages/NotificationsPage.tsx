@@ -28,14 +28,14 @@ import {
 /* ── Emoji & color mapping per notification type ── */
 const typeConfig: Record<
   Notification['type'],
-  { emoji: string; bg: string; icon: React.ElementType }
+  { bg: string; icon: React.ElementType }
 > = {
-  order: { emoji: '📦', bg: 'bg-orange-100', icon: Package },
-  price: { emoji: '🏷️', bg: 'bg-emerald-100', icon: Tag },
-  wishlist: { emoji: '♡', bg: 'bg-red-100', icon: Heart },
-  trade: { emoji: '🔄', bg: 'bg-teal-100', icon: RefreshCw },
-  message: { emoji: '💬', bg: 'bg-blue-100', icon: MessageCircle },
-  community: { emoji: '👥', bg: 'bg-purple-100', icon: Users },
+  order: { bg: 'bg-orange-100', icon: Package },
+    price: { bg: 'bg-emerald-100', icon: Tag },
+    wishlist: { bg: 'bg-red-100', icon: Heart },
+    trade: { bg: 'bg-teal-100', icon: RefreshCw },
+    message: { bg: 'bg-blue-100', icon: MessageCircle },
+    community: { bg: 'bg-purple-100', icon: Users },
 };
 
 /* ── Helper: group notifications by time period ── */
