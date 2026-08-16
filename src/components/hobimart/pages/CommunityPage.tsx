@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Plus,
   MessageCircle,
@@ -12,7 +12,7 @@ import {
   TrendingUp,
   FileText,
 } from 'lucide-react';
-import { communityPosts } from '@/lib/data';
+import { useAppStore } from '@/lib/store';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -55,11 +55,14 @@ function getInitials(name: string): string {
 }
 
 export default function CommunityPage() {
+  const { posts, fetchPosts, navigate } = useAppStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
+  useEffect(() => { fetchPosts(); }, [fetchPosts]);
+
   const filteredPosts = useMemo(() => {
-    return communityPosts.filter((post) => {
+    return posts.filter((post: any) => {
       const matchesSearch =
         searchQuery === '' ||
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

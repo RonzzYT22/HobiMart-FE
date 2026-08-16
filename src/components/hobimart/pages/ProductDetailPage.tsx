@@ -6,7 +6,7 @@ import {
   ChevronRight, CheckCircle2, Store, Home, ChevronLeft, Package, Eye,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, reviews, formatPrice, getConditionColor, getBadgeColor, sellers } from '@/lib/data';
+import { reviews, formatPrice, getConditionColor, getBadgeColor } from '@/lib/data';
 import ProductCard from '@/components/hobimart/ProductCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';

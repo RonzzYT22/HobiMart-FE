@@ -130,20 +130,35 @@ function getInitials(name: string): string {
 }
 
 export default function MessagesPage() {
-  const { navigate } = useAppStore();
-  const [selectedConversation, setSelectedConversation] = useState<string>(
-    initialMessages[0].id,
-  );
+  const { navigate, conversations, messages, fetchConversations, fetchMessages, sendMessage } = useAppStore();
+  const [selectedConversation, setSelectedConversation] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [messageInput, setMessageInput] = useState('');
   const [showChat, setShowChat] = useState(false);
 
+  useEffect(() => { fetchConversations(); }, [fetchConversations]);
+
+  useEffect(() => {
+    if (selectedConversation) fetchMessages(selectedConversation);
+  }, [selectedConversation, fetchMessages]);
+
   const filteredMessages = useMemo(() => {
-    if (!searchQuery) return initialMessages;
-    return initialMessages.filter((m) =>
-      m.user.toLowerCase().includes(searchQuery.toLowerCase()),
+    if (!searchQuery) return conversations;
+    return conversations.filter((m: any) =>
+      (m.other?.name || '').toLowerCase().includes(searchQuery.toLowerCase()),
     );
-  }, [searchQuery]);
+  }, [searchQuery, conversations]);
+
+  const handleSelectConversation = (convId: number) => {
+    setSelectedConversation(convId);
+    setShowChat(true);
+  };
+
+  const handleSendMessage = () => {
+    if (!messageInput.trim() || !selectedConversation) return;
+    sendMessage(selectedConversation, messageInput.trim());
+    setMessageInput('');
+  };
 
   const selectedMessage = initialMessages.find(
     (m) => m.id === selectedConversation,

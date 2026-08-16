@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Repeat,
   Search,
@@ -53,7 +53,7 @@ const sortOptions = [
 ];
 
 export default function TradeInPage() {
-  const { navigate } = useAppStore();
+  const { navigate, products, fetchProducts } = useAppStore();
   const [sortBy, setSortBy] = useState('relevance');
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
   const [conditionFilter, setConditionFilter] = useState('All Conditions');
@@ -61,8 +61,10 @@ export default function TradeInPage() {
   const [locationFilter, setLocationFilter] = useState('All Locations');
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+
   const filteredProducts = useMemo(() => {
-    let result = [...tradeProducts];
+    let result = [...products.filter((p: any) => p.tradeAvailable)];
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();

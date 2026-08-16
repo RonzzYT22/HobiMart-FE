@@ -66,26 +66,17 @@ function groupNotifications(items: Notification[]) {
 }
 
 export default function NotificationsPage() {
-  const { navigate } = useAppStore();
-  const [notificationsList, setNotificationsList] = useState(initialNotifications);
+  const { navigate, notifications, unreadCount, fetchNotifications, markAllNotificationsRead, markNotificationRead } = useAppStore();
 
-  const unreadCount = useMemo(
-    () => notificationsList.filter((n) => !n.read).length,
-    [notificationsList],
-  );
+  useEffect(() => { fetchNotifications(); }, [fetchNotifications]);
 
-  const markAllRead = () => {
-    setNotificationsList((prev) => prev.map((n) => ({ ...n, read: true })));
-  };
+  const markAllRead = () => { markAllNotificationsRead(); };
 
   const markSingleRead = (id: string) => {
-    setNotificationsList((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
-    );
-  };
+    markNotificationRead(parseInt(id));
 
   const { today, yesterday, earlier } = useMemo(
-    () => groupNotifications(notificationsList),
+    () => groupNotifications(notifications),
     [notificationsList],
   );
 
