@@ -1,16 +1,22 @@
 'client';
 
+import { useEffect } from 'react';
 import { ArrowRight, Shield, CheckCircle, Star, Package, ArrowLeftRight, Users, ChevronRight, Clock } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, categories } from '@/lib/data';
 import ProductCard from '../ProductCard';
 
 export default function HomePage() {
-  const { navigate } = useAppStore();
-  const flashDeals = products.filter(p => p.discount && p.discount >= 10);
-  const trending = products.slice(0, 4);
-  const newArrivals = products.filter(p => p.badges.includes('NEW'));
-  const rareFinds = products.filter(p => p.badges.includes('RARE') || p.badges.includes('LIMITED'));
+  const { navigate, featuredProducts, flashDeals, categories, fetchFeatured, fetchFlashDeals, fetchCategories } = useAppStore();
+  const flashProducts = flashDeals.slice(0, 8);
+  const trending = featuredProducts.slice(0, 4);
+  const newArrivals = featuredProducts.slice(4, 8);
+  const rareFinds = featuredProducts.slice(2, 6);
+
+  useEffect(() => {
+    fetchFeatured();
+    fetchFlashDeals();
+    fetchCategories();
+  }, [fetchFeatured, fetchFlashDeals, fetchCategories]);
 
   return (
     <div className="animate-fade-in">
@@ -85,7 +91,7 @@ export default function HomePage() {
             <button onClick={() => navigate('deals')} className="text-sm text-[#FF6B35] font-semibold hover:underline flex items-center gap-1">View All <ArrowRight className="w-4 h-4" /></button>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {flashDeals.slice(0, 4).map(p => <ProductCard key={p.id} product={p} variant="sale" />)}
+            {flashProducts.slice(0, 4).map(p => <ProductCard key={p.id} product={p} variant="sale" />)}
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ChevronRight,
   MapPin,
@@ -55,9 +55,15 @@ const paymentOptions = [
 ];
 
 export default function CheckoutPage() {
-  const { cart, navigate } = useAppStore();
+  const { cart, navigate, deliveryOptions, paymentMethods, fetchDeliveryOptions, fetchPaymentMethods, createOrder } = useAppStore();
   const [delivery, setDelivery] = useState('regular');
   const [payment, setPayment] = useState('qris');
+
+  useEffect(() => {
+    fetchDeliveryOptions();
+    fetchPaymentMethods();
+  }, [fetchDeliveryOptions, fetchPaymentMethods]);
+
   const [form, setForm] = useState({
     fullName: '',
     phone: '',
@@ -76,8 +82,22 @@ export default function CheckoutPage() {
     setForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handlePlaceOrder = () => {
-    navigate('order-tracking');
+  const handlePlaceOrder = async () => {
+    try {
+      const result = await createOrder({
+        items: cart.map(item => ({
+          product_id: parseInt(item.product.id) || 1,
+          quantity: item.quantity,
+        })),
+        shipping_address: form,
+        delivery,
+        payment_method: payment,
+      });
+      navigate('order-tracking', { orderNumber: result.order.orderNumber });
+    } catch (e) {
+      // fallback ke halaman tracking
+      navigate('order-tracking');
+    }
   };
 
   return (

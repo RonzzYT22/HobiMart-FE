@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   SlidersHorizontal,
   ChevronRight,
@@ -11,7 +11,7 @@ import {
   ChevronUp,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, categories, formatPrice } from '@/lib/data';
+import { formatPrice } from '@/lib/data';
 import ProductCard from '../ProductCard';
 import {
   FilterSidebar,
@@ -56,8 +56,14 @@ const sortOptions = [
 ];
 
 export default function ShopPage() {
-  const { pageParams, navigate } = useAppStore();
+  const { pageParams, navigate, products, categories, brands, fetchProducts, fetchCategories, fetchBrands, loading } = useAppStore();
   const categoryFilter = pageParams.category || '';
+
+  useEffect(() => {
+    fetchCategories();
+    fetchBrands();
+    fetchProducts();
+  }, [fetchProducts, fetchCategories, fetchBrands]);
 
   const [filters, setFilters] = useState<FilterState>(() => {
     const defaults = defaultFilters(MAX_PRICE);

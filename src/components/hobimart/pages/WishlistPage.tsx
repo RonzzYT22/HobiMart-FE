@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Heart,
   ChevronRight,
@@ -12,7 +12,7 @@ import {
   ShoppingBag,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, formatPrice, getConditionColor } from '@/lib/data';
+import { formatPrice, getConditionColor } from '@/lib/data';
 import ProductCard from '../ProductCard';
 import {
   Breadcrumb,
@@ -42,12 +42,14 @@ const sortOptions = [
 ];
 
 export default function WishlistPage() {
-  const { wishlist, navigate, toggleWishlist } = useAppStore();
+  const { wishlist, navigate, toggleWishlist, wishlistItems, fetchWishlist } = useAppStore();
   const [sortBy, setSortBy] = useState('newest');
   const [gridCols, setGridCols] = useState<3 | 4>(4);
 
+  useEffect(() => { fetchWishlist(); }, [fetchWishlist]);
+
   const wishlistProducts = useMemo(() => {
-    const items = products.filter((p) => wishlist.includes(p.id));
+    const items = wishlistItems.length > 0 ? wishlistItems : [];
     switch (sortBy) {
       case 'price-asc':
         return [...items].sort((a, b) => a.price - b.price);

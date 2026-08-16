@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Star, Heart, Share2, ShoppingCart, Minus, Plus, Truck, Shield, RotateCcw,
   ChevronRight, CheckCircle2, Store, Home, ChevronLeft, Package, Eye,
@@ -20,14 +20,20 @@ const CONDITION_BARS = [
 ];
 
 export default function ProductDetailPage() {
-  const { pageParams, navigate, addToCart, toggleWishlist, wishlist, cart } = useAppStore();
+  const { pageParams, navigate, addToCart, toggleWishlist, wishlist, cart, products, selectedProduct, fetchProduct, loading } = useAppStore();
   const [activeThumb, setActiveThumb] = useState(0);
   const [qty, setQty] = useState(1);
 
+  useEffect(() => {
+    const sku = pageParams.id;
+    if (sku) fetchProduct(sku);
+  }, [pageParams.id, fetchProduct]);
+
   const product = useMemo(() => {
     const id = pageParams.id;
-    return products.find(p => p.id === id) || products[0];
-  }, [pageParams.id]);
+    const found = selectedProduct || products.find(p => p.id === id || p.sku === id);
+    return found || products[0] || {};
+  }, [pageParams.id, selectedProduct, products]);
 
   const isWished = wishlist.includes(product.id);
 

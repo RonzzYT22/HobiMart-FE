@@ -11,7 +11,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, formatPrice } from '@/lib/data';
+import { formatPrice } from '@/lib/data';
 import ProductCard from '../ProductCard';
 import {
   FilterSidebar,
@@ -56,16 +56,19 @@ const sortOptions = [
 ];
 
 export default function SearchPage() {
-  const { pageParams, navigate, searchQuery, setSearchQuery } = useAppStore();
+  const { pageParams, navigate, searchQuery, setSearchQuery, products, fetchProducts, loading } = useAppStore();
   const query = pageParams.q || searchQuery || '';
   const [localQuery, setLocalQuery] = useState(query);
-  const [filters, setFilters] = useState<FilterState>(() => defaultFilters(MAX_PRICE));
-  const [sortBy, setSortBy] = useState('relevance');
-  const [gridCols, setGridCols] = useState<3 | 4>(4);
 
   useEffect(() => {
     setLocalQuery(query);
-  }, [query]);
+    if (query) fetchProducts({ q: query });
+    else fetchProducts();
+  }, [query, fetchProducts]);
+
+  const [filters, setFilters] = useState<FilterState>(() => defaultFilters(MAX_PRICE));
+  const [sortBy, setSortBy] = useState('relevance');
+  const [gridCols, setGridCols] = useState<3 | 4>(4);
 
   const filteredProducts = useMemo(() => {
     const q = query.toLowerCase().trim();
