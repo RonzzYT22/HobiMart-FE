@@ -13,12 +13,22 @@ const API = `${BACKEND}/api`;
 // ambil CSRF cookie dulu sebelum login/register
 async function getCsrf() {
   await fetch(`${BACKEND}/sanctum/csrf-cookie`, { credentials: 'include' });
+  // baca XSRF-TOKEN cookie untuk dikirim sebagai header
+  const token = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='));
+  if (token) {
+    (window as any).__csrfToken = decodeURIComponent(token.split('=')[1]);
+  }
+}
+
+function csrfHeaders(): Record<string, string> {
+  const token = (window as any).__csrfToken;
+  return token ? { 'X-XSRF-TOKEN': token } : {};
 }
 
 export async function apiRegister(data: { name: string; email?: string; phone?: string; password: string }) {
   await getCsrf();
   const res = await fetch(`${API}/auth/register`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
+      method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
     });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -27,7 +37,7 @@ export async function apiRegister(data: { name: string; email?: string; phone?: 
 export async function apiLogin(data: { login: string; password: string }) {
   await getCsrf();
   const res = await fetch(`${API}/auth/login`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
+        method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
     });
   if (!res.ok) throw await res.json();
   return res.json();
