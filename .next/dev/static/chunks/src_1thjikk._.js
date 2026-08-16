@@ -810,13 +810,21 @@ async function apiGetCities(provinceId) {
     const res = await fetch(`${API}/geo/provinces/${provinceId}/cities`);
     return res.json();
 }
+// ========== Helpers ==========
+const isBrowser = ("TURBOPACK compile-time value", "object") !== 'undefined';
 function getToken() {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
     return localStorage.getItem('token');
 }
 function setToken(token) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
     localStorage.setItem('token', token);
 }
 function removeToken() {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
     localStorage.removeItem('token');
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -1691,16 +1699,18 @@ const useAppStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
         fetchCategories: async ()=>{
             try {
                 const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiGetCategories"]();
+                const data = Array.isArray(res) ? res : res.data || res.categories || [];
                 set({
-                    categories: res || []
+                    categories: data
                 });
             } catch  {}
         },
         fetchBrands: async ()=>{
             try {
                 const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiGetBrands"]();
+                const data = Array.isArray(res) ? res : res.data || res.brands || [];
                 set({
-                    brands: res || []
+                    brands: data
                 });
             } catch  {}
         },
@@ -1713,8 +1723,9 @@ const useAppStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
         fetchPopularSearches: async ()=>{
             try {
                 const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiGetPopularSearches"]();
+                const data = Array.isArray(res) ? res : res.data || res.terms || [];
                 set({
-                    popularSearches: res || []
+                    popularSearches: data
                 });
             } catch  {}
         },

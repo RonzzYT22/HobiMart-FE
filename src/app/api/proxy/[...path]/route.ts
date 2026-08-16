@@ -48,12 +48,23 @@ async function handleProxy(
 
     if (contentType.includes('application/json')) {
       const data = await response.json();
-      const wrapped = wrapResponse(data);
-      return NextResponse.json(wrapped, {
+      // Skip wrapping if encryption is disabled (dummy mode)
+      const shouldEncrypt = process.env.NODE_ENV === 'production' && !!process.env.ENCRYPTION_KEY;
+      if (shouldEncrypt) {
+        const wrapped = wrapResponse(data);
+        return NextResponse.json(wrapped, {
+          status: response.status,
+          headers: {
+            'X-Proxy-Status': 'ok',
+            'X-Encrypted': 'true',
+          },
+        });
+      }
+      return NextResponse.json(data, {
         status: response.status,
         headers: {
           'X-Proxy-Status': 'ok',
-          'X-Encrypted': String(process.env.NODE_ENV === 'production' && !!process.env.ENCRYPTION_KEY),
+          'X-Encrypted': 'false',
         },
       });
     }
