@@ -100,7 +100,7 @@ export default function NotificationsPage() {
         <div
           className={`w-10 h-10 rounded-full ${config.bg} flex items-center justify-center flex-shrink-0 text-lg`}
         >
-          {config.emoji}
+          {(() => { const Icon = config.icon; return <Icon className="w-5 h-5" />; })()}
         </div>
 
         {/* Content */}

@@ -117,7 +117,7 @@ export default function MyCollectionPage() {
           <div>
             <div className="flex items-center gap-2.5">
               <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-                <span className="text-[#FF6B35]">✦</span> My Collection
+                <Sparkles className="w-6 h-6 text-[#FF6B35] inline" /> My Collection
               </h1>
               <span className="inline-flex items-center justify-center min-w-7 h-7 rounded-full bg-[#FF6B35] text-white text-xs font-bold px-2">
                 84 Items

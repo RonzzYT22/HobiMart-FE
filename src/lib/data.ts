@@ -127,11 +127,11 @@ export const communityPosts: CommunityPost[] = [
 ];
 
 export const categories = [
-  { name: 'Trading Cards', icon: '🃏', count: 1240, color: 'from-orange-500 to-red-500' },
-  { name: 'Gundam & Gunpla', icon: '🤖', count: 856, color: 'from-blue-500 to-indigo-500' },
-  { name: 'Figures', icon: '🧸', count: 632, color: 'from-purple-500 to-pink-500' },
-  { name: 'Collectibles', icon: '💎', count: 428, color: 'from-amber-500 to-yellow-500' },
-  { name: 'Accessories', icon: '🛠️', count: 312, color: 'from-green-500 to-emerald-500' },
+  { name: 'Trading Cards', icon: 'Heart', count: 1240, color: 'from-orange-500 to-red-500' },
+  { name: 'Gundam & Gunpla', icon: 'Bot', count: 856, color: 'from-blue-500 to-indigo-500' },
+  { name: 'Figures', icon: 'Gem', count: 632, color: 'from-purple-500 to-pink-500' },
+  { name: 'Collectibles', icon: 'Diamond', count: 428, color: 'from-amber-500 to-yellow-500' },
+  { name: 'Accessories', icon: 'Wrench', count: 312, color: 'from-green-500 to-emerald-500' },
 ];
 
 export function formatPrice(price: number): string {

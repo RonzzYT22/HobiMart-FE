@@ -80,7 +80,7 @@ export default function ProductDetailPage() {
             <div className="aspect-square rounded-2xl bg-gray-100 overflow-hidden shadow-lg">
               <div className="w-full h-full flex items-center justify-center relative">
                 {imgError ? (
-                  <span className="text-6xl sm:text-8xl">📦</span>
+                  <Package className="w-20 h-20 opacity-30 mx-auto" />
                 ) : (
                   <img
                     src={product.image}

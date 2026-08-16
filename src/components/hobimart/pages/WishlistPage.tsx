@@ -145,7 +145,7 @@ export default function WishlistPage() {
           <div>
             <div className="flex items-center gap-2.5">
               <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-                <span className="text-red-500">♡</span> My Wishlist
+                <Heart className="w-6 h-6 text-red-500 inline" /> My Wishlist
               </h1>
               <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF6B35] text-white text-xs font-bold">
                 {wishlistProducts.length}

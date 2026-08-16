@@ -185,7 +185,7 @@ export default function HomePage() {
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">Find your next collectible from verified sellers across Indonesia. Thousands of products across every hobby category.</p>
           </button>
           <button onClick={() => navigate('trade-in')} className="group bg-white rounded-2xl border border-[#E5E7EB] p-8 text-left hover:shadow-lg hover:border-orange-200 transition-all">
-            <span className="text-4xl">🔄</span>
+            <ArrowLeftRight className="w-10 h-10 text-orange-500" />
             <h3 className="text-xl font-bold text-[#1F2937] mt-4">TRADE</h3>
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">Trade your collection with other collectors safely.</p>
           </button>
