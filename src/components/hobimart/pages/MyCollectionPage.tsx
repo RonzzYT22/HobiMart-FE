@@ -9,9 +9,9 @@ import {
   X,
   Calendar,
   Sparkles,
-    Heart, Bot, Gem } from 'lucide-react';
+    Heart, Bot, Gem, Diamond, Wrench } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, categories, formatPrice, getConditionColor } from '@/lib/data';
+import { formatPrice, getConditionColor } from '@/lib/data';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -23,60 +23,35 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 
-/* ── Category breakdown data ── */
-const collectionCategories = [
-  {
-    name: 'Trading Cards',
-    count: 48,
-    icon: Heart,
-    color: 'from-orange-400 to-red-400',
-    bgColor: 'bg-orange-50',
-    textColor: 'text-orange-600' },
-  {
-    name: 'Gundam & Gunpla',
-    count: 12,
-    icon: Bot,
-    color: 'from-blue-400 to-indigo-500',
-    bgColor: 'bg-blue-50',
-    textColor: 'text-blue-600' },
-  {
-    name: 'Figures',
-    count: 24,
-    icon: Gem,
-    color: 'from-purple-400 to-pink-400',
-    bgColor: 'bg-purple-50',
-    textColor: 'text-purple-600' },
-];
-
-/* ── Mock collection items ── */
-const collectionItems = [
-  { id: 'ci1', name: 'Charizard EX', category: 'Trading Cards', condition: 'Near Mint' as const, dateAdded: 'Dec 28, 2024', productId: 'p1' },
-  { id: 'ci2', name: 'Gundam MGEX Unicorn', category: 'Gundam & Gunpla', condition: 'Mint' as const, dateAdded: 'Dec 15, 2024', productId: 'p2' },
-  { id: 'ci3', name: 'Iron Man Mark 46', category: 'Figures', condition: 'Mint' as const, dateAdded: 'Dec 10, 2024', productId: 'p5' },
-  { id: 'ci4', name: 'Blue-Eyes White Dragon', category: 'Trading Cards', condition: 'Near Mint' as const, dateAdded: 'Nov 30, 2024', productId: 'p6' },
-  { id: 'ci5', name: 'Pikachu Illustration Rare', category: 'Trading Cards', condition: 'Excellent' as const, dateAdded: 'Nov 18, 2024', productId: 'p4' },
-  { id: 'ci6', name: 'Gundam RG Nu Gundam', category: 'Gundam & Gunpla', condition: 'Near Mint' as const, dateAdded: 'Nov 5, 2024', productId: 'p3' },
-  { id: 'ci7', name: 'Spider-Man Figure', category: 'Figures', condition: 'Excellent' as const, dateAdded: 'Oct 22, 2024', productId: 'p8' },
-  { id: 'ci8', name: 'Charizard VMAX Rainbow', category: 'Trading Cards', condition: 'Mint' as const, dateAdded: 'Oct 10, 2024', productId: 'p11' },
-  { id: 'ci9', name: 'Naruto Sage Mode Figure', category: 'Figures', condition: 'Near Mint' as const, dateAdded: 'Sep 28, 2024', productId: 'p10' },
-  { id: 'ci10', name: 'One Piece Luffy Card', category: 'Trading Cards', condition: 'Good' as const, dateAdded: 'Sep 15, 2024', productId: 'p7' },
-  { id: 'ci11', name: 'Gundam HG Aerial', category: 'Gundam & Gunpla', condition: 'Mint' as const, dateAdded: 'Sep 1, 2024', productId: 'p9' },
-  { id: 'ci12', name: 'Gundam PG Strike Freedom', category: 'Gundam & Gunpla', condition: 'Mint' as const, dateAdded: 'Aug 20, 2024', productId: 'p12' },
-];
-
 export default function MyCollectionPage() {
   const { navigate, products, fetchProducts } = useAppStore();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
+    const [selectedCategory, setSelectedCategory] = useState<string>('All');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
 
-  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+    useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
-  const handleImgError = (id: string) => setImgErrors(prev => new Set(prev).add(id));
+    const handleImgError = (id: string) => setImgErrors(prev => new Set(prev).add(id));
 
-  const filteredItems = useMemo(() => {
-    return products.filter((item: any) => {
-      const matchesCategory =
+    // hitung statistik dari data produk realtime
+    const totalItems = products.length;
+    const collectionCategories = useMemo(() => {
+      const cats = ['Trading Cards', 'Gundam & Gunpla', 'Figures', 'Collectibles', 'Accessories'];
+      const icons: Record<string, React.ComponentType<any>> = { 'Trading Cards': Heart, 'Gundam & Gunpla': Bot, 'Figures': Gem, 'Collectibles': Diamond, 'Accessories': Wrench };
+      const colors: Record<string, string> = { 'Trading Cards': 'bg-orange-50', 'Gundam & Gunpla': 'bg-blue-50', 'Figures': 'bg-purple-50', 'Collectibles': 'bg-amber-50', 'Accessories': 'bg-green-50' };
+      const textColors: Record<string, string> = { 'Trading Cards': 'text-orange-600', 'Gundam & Gunpla': 'text-blue-600', 'Figures': 'text-purple-600', 'Collectibles': 'text-amber-600', 'Accessories': 'text-green-600' };
+      return cats.map(cat => ({
+        name: cat,
+        count: products.filter((p: any) => p.category === cat).length,
+        icon: icons[cat] || Heart,
+        bgColor: colors[cat] || 'bg-gray-50',
+        textColor: textColors[cat] || 'text-gray-600',
+      }));
+    }, [products]);
+
+    const filteredItems = useMemo(() => {
+      return products.filter((item: any) => {
+        const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
       const matchesSearch =
         searchQuery === '' ||
@@ -120,7 +95,7 @@ export default function MyCollectionPage() {
                 <Sparkles className="w-6 h-6 text-[#FF6B35] inline" /> My Collection
               </h1>
               <span className="inline-flex items-center justify-center min-w-7 h-7 rounded-full bg-[#FF6B35] text-white text-xs font-bold px-2">
-                84 Items
+                {totalItems} Items
               </span>
             </div>
             <p className="text-sm text-[#64748B] mt-1">
