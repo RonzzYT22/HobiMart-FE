@@ -16,7 +16,7 @@ import {
   Package,
   TrendingDown,
 } from 'lucide-react';
-import { products, formatPrice } from '@/lib/data';
+import { formatPrice } from '@/lib/data';
 import ProductCard from '../ProductCard';
 import { useAppStore } from '@/lib/store';
 import {
@@ -66,9 +66,10 @@ function DealSection({
   productIds: string[];
   viewAllLabel?: string;
 }) {
+  const { products } = useAppStore();
   const sectionProducts = useMemo(
-    () => products.filter((p) => productIds.includes(p.id)),
-    [productIds],
+    () => products.filter((p: any) => productIds.includes(p.id)),
+    [productIds, products],
   );
 
   if (sectionProducts.length === 0) return null;

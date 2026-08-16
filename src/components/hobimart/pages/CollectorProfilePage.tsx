@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Star,
   UserCheck,
@@ -13,7 +13,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, formatPrice } from '@/lib/data';
+import { formatPrice } from '@/lib/data';
 import ProductCard from '@/components/hobimart/ProductCard';
 import {
   Tabs,
@@ -128,9 +128,6 @@ const statusStyles: Record<string, string> = {
   Cancelled: 'bg-red-50 text-red-600 border-red-200',
 };
 
-/* ── Collector's listed products (subset of all products) ── */
-const collectorProducts = products.slice(0, 6);
-
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex items-center gap-0.5">
@@ -149,8 +146,12 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function CollectorProfilePage() {
-  const { navigate } = useAppStore();
+  const { navigate, products, fetchProducts } = useAppStore();
   const [following, setFollowing] = useState(false);
+
+  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+
+  const collectorProducts = products.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">

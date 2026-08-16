@@ -69,15 +69,17 @@ const collectionItems = [
 ];
 
 export default function MyCollectionPage() {
-  const { navigate } = useAppStore();
+  const { navigate, products, fetchProducts } = useAppStore();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
 
+  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+
   const handleImgError = (id: string) => setImgErrors(prev => new Set(prev).add(id));
 
   const filteredItems = useMemo(() => {
-    return collectionItems.filter((item) => {
+    return products.filter((item: any) => {
       const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
       const matchesSearch =
