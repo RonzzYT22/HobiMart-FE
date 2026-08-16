@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import {  Search, Heart, ShoppingBag, Bell, User, Menu, X, ChevronDown , Package, Tag, ArrowLeftRight, MessageCircle, Users } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, notifications as notificationsData } from '@/lib/data';
+import { products } from '@/lib/data';
 
 const navLinks = [
   { label: 'Home', page: 'home' as const },
@@ -16,17 +16,17 @@ const navLinks = [
 const popularSearches = ['Charizard', 'Gundam MG', 'One Piece Card', 'Marvel Figure'];
 
 export default function Navbar() {
-  const { page, navigate, cart, wishlist, cartOpen, setCartOpen, setSearchQuery, searchQuery, setNotifOpen, notifOpen } = useAppStore();
-  const notifications = notificationsData;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchFocused, setSearchFocused] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
-  const unreadNotifs = notifications.filter(n => !n.read).length;
+  const { page, navigate, cart, wishlist, cartOpen, setCartOpen, setSearchQuery, searchQuery, setNotifOpen, notifOpen, notifications, unreadCount, fetchNotifications } = useAppStore();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [searchFocused, setSearchFocused] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const searchRef = useRef<HTMLDivElement>(null);
+    const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
+    const unreadNotifs = unreadCount;
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10);
+    useEffect(() => {
+      fetchNotifications();
+      const handler = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
