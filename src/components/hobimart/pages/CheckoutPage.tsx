@@ -432,7 +432,7 @@ export default function CheckoutPage() {
                       } flex items-center justify-center shrink-0`}
                     >
                       <span className="text-xl drop-shadow-lg">
-                        {categoryIcons[item.product.category] || Package}
+                        {(() => { const Icon = categoryIcons[item.product.category] || Package; return <Icon className="w-5 h-5 text-white" />; })()}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">

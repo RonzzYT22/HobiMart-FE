@@ -152,7 +152,7 @@ export default function NotificationsPage() {
   };
 
   /* ── Empty State (all read) ── */
-  if (!hasUnread && notificationsList.length > 0) {
+  if (!hasUnread && notifications.length > 0) {
     return (
       <div className="min-h-screen bg-[#F8FAFC]">
         {/* Breadcrumb */}
