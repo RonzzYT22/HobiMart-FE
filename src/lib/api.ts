@@ -35,8 +35,14 @@ export async function apiRegister(data: { name: string; email?: string; phone?: 
 
 export async function apiLogin(data: { login: string; password: string }) {
   await getCsrf();
+  // tentukan apakah login pakai email atau phone
+  const isEmail = data.login.includes('@');
+  const body: Record<string, string> = { password: data.password };
+  if (isEmail) body.email = data.login;
+  else body.phone = data.login;
+
   const res = await fetch(`${API}/auth/login`, {
-        method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
+        method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(body), credentials: 'include',
     });
   if (!res.ok) throw await res.json();
   return res.json();
