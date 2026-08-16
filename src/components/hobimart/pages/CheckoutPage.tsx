@@ -41,13 +41,13 @@ const steps = [
   { label: 'Review', icon: ClipboardCheck },
 ];
 
-const deliveryOptions = [
+const localDeliveryOptions = [
   { id: 'regular', label: 'Regular', price: 20000, days: '3-5 days', icon: Truck, desc: 'Standard delivery via JNE / J&T' },
   { id: 'express', label: 'Express', price: 45000, days: '1-2 days', icon: Truck, desc: 'Fast delivery via JNE YES / SiCepat BEST' },
   { id: 'sameday', label: 'Same Day', price: 80000, days: 'Today', icon: Truck, desc: 'Same day delivery via GoSend / GrabExpress' },
 ];
 
-const paymentOptions = [
+const localPaymentOptions = [
   { id: 'qris', label: 'QRIS', desc: 'Scan & pay with any app', icon: QrCode, badge: null },
   { id: 'bank', label: 'Bank Transfer', desc: 'BCA / BRI / Mandiri', icon: Landmark, badge: null },
   { id: 'ewallet', label: 'E-Wallet', desc: 'GoPay / OVO / Dana', icon: Wallet, badge: null },
@@ -55,7 +55,7 @@ const paymentOptions = [
 ];
 
 export default function CheckoutPage() {
-  const { cart, navigate, deliveryOptions, paymentMethods, fetchDeliveryOptions, fetchPaymentMethods, createOrder } = useAppStore();
+  const { cart, navigate, deliveryOptions: apiDelivery, paymentMethods: apiPayment, fetchDeliveryOptions, fetchPaymentMethods, createOrder } = useAppStore();
   const [delivery, setDelivery] = useState('regular');
   const [payment, setPayment] = useState('qris');
 
@@ -63,6 +63,13 @@ export default function CheckoutPage() {
     fetchDeliveryOptions();
     fetchPaymentMethods();
   }, [fetchDeliveryOptions, fetchPaymentMethods]);
+
+  // gabung data api dengan data lokal (prioritas: api untuk harga, lokal untuk icon)
+  const deliveryOptions = localDeliveryOptions.map(d => {
+    const api = apiDelivery.find((a: any) => a.id === d.id);
+    return api ? { ...d, price: api.price ?? d.price, days: api.days ?? d.days } : d;
+  });
+  const paymentOptions = localPaymentOptions;
 
   const [form, setForm] = useState({
     fullName: '',
