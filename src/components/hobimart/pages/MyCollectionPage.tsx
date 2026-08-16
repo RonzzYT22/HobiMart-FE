@@ -43,7 +43,7 @@ export default function MyCollectionPage() {
         bgColor: colors[cat] || 'bg-gray-50',
         textColor: textColors[cat] || 'text-gray-600',
       }));
-    }, [products]);
+    }, [collectionProducts]);
 
     const filteredItems = useMemo(() => {
       return collectionProducts.filter((item: any) => {
