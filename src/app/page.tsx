@@ -1,5 +1,6 @@
 'use client';
 
+import { Shield } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import Navbar from '@/components/hobimart/Navbar';
 import Footer from '@/components/hobimart/Footer';
@@ -20,11 +21,33 @@ import CommunityPage from '@/components/hobimart/pages/CommunityPage';
 import NotificationsPage from '@/components/hobimart/pages/NotificationsPage';
 import MessagesPage from '@/components/hobimart/pages/MessagesPage';
 import DealsPage from '@/components/hobimart/pages/DealsPage';
+import LoginPage from '@/components/hobimart/pages/LoginPage';
+import RegisterPage from '@/components/hobimart/pages/RegisterPage';
+import ProfilePage from '@/components/hobimart/pages/ProfilePage';
+
+// halaman yang butuh login
+const authPages = ['checkout', 'my-collection', 'trade-in', 'trade-offer', 'wishlist', 'notifications', 'messages', 'profile', 'order-tracking'];
 
 export default function Home() {
-  const { page } = useAppStore();
+  const { page, auth, navigate } = useAppStore();
 
   const renderPage = () => {
+    // auth guard: redirect ke login kalau belum login
+    if (authPages.includes(page) && !auth.isAuthenticated) {
+      return (
+        <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center px-4">
+          <div className="text-center">
+            <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h2 className="text-xl font-bold text-[#1F2937] mb-2">Login Required</h2>
+            <p className="text-gray-400 mb-6">You need to sign in to access this page</p>
+            <button onClick={() => navigate('login')} className="bg-[#FF6B35] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#E55A2B] transition-colors">
+              Sign In
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     switch (page) {
       case 'home': return <HomePage />;
       case 'shop':
@@ -43,6 +66,9 @@ export default function Home() {
       case 'notifications': return <NotificationsPage />;
       case 'messages': return <MessagesPage />;
       case 'deals': return <DealsPage />;
+      case 'login': return <LoginPage />;
+      case 'register': return <RegisterPage />;
+      case 'profile': return <ProfilePage />;
       default: return <HomePage />;
     }
   };

@@ -16,7 +16,7 @@ const navLinks = [
 const popularSearches = ['Charizard', 'Gundam MG', 'One Piece Card', 'Marvel Figure'];
 
 export default function Navbar() {
-  const { page, navigate, cart, wishlist, cartOpen, setCartOpen, setSearchQuery, searchQuery, setNotifOpen, notifOpen, notifications, unreadCount, fetchNotifications } = useAppStore();
+  const { page, navigate, cart, auth, wishlist, cartOpen, setCartOpen, setSearchQuery, searchQuery, setNotifOpen, notifOpen, notifications, unreadCount, fetchNotifications } = useAppStore();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [searchFocused, setSearchFocused] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -139,11 +139,12 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={() => navigate('notifications')}
-              className="p-2.5 rounded-xl text-gray-500 hover:text-[#FF6B35] hover:bg-orange-50 transition-colors hidden sm:block"
-            >
-              <User className="w-5 h-5" />
-            </button>
+                          onClick={() => navigate(auth.isAuthenticated ? 'profile' : 'login')}
+                          className="p-2.5 rounded-xl text-gray-500 hover:text-[#FF6B35] hover:bg-orange-50 transition-colors hidden sm:block relative"
+                        >
+                          <User className="w-5 h-5" />
+                          {auth.isAuthenticated && <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />}
+                        </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

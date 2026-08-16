@@ -6,7 +6,8 @@ export type Page =
   | 'home' | 'shop' | 'search' | 'deals' | 'category' | 'product'
   | 'cart' | 'checkout' | 'order-tracking' | 'wishlist'
   | 'trade-in' | 'trade-offer' | 'collector-profile' | 'my-collection'
-  | 'community' | 'notifications' | 'messages' | 'reviews';
+  | 'community' | 'notifications' | 'messages' | 'reviews'
+  | 'login' | 'register' | 'profile';
 
 interface AuthState {
   token: string | null;
