@@ -4,7 +4,9 @@
  */
 import type { Product, Seller, Notification, Message, CommunityPost } from './data';
 
-const API = '/api/proxy';
+// di dev mode, panggil backend langsung; di production, lewat proxy
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080';
+const API = `${BACKEND}/api`;
 
 // ========== Auth ==========
 export async function apiRegister(data: { name: string; email?: string; phone?: string; password: string }) {
