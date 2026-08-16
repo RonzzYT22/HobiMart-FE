@@ -18,8 +18,8 @@ async function getCsrf() {
 export async function apiRegister(data: { name: string; email?: string; phone?: string; password: string }) {
   await getCsrf();
   const res = await fetch(`${API}/auth/register`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data),
-  });
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
+    });
   if (!res.ok) throw await res.json();
   return res.json();
 }
@@ -27,8 +27,8 @@ export async function apiRegister(data: { name: string; email?: string; phone?: 
 export async function apiLogin(data: { login: string; password: string }) {
   await getCsrf();
   const res = await fetch(`${API}/auth/login`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data),
-  });
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',
+    });
   if (!res.ok) throw await res.json();
   return res.json();
 }
