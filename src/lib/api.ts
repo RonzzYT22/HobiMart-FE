@@ -24,7 +24,7 @@ function csrfHeaders(): Record<string, string> {
   return token ? { 'X-XSRF-TOKEN': token } : {};
 }
 
-export async function apiRegister(data: { name: string; email?: string; phone?: string; password: string }) {
+export async function apiRegister(data: { name: string; email?: string; phone?: string; password: string; password_confirmation: string }) {
   await getCsrf();
   const res = await fetch(`${API}/auth/register`, {
       method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), credentials: 'include',

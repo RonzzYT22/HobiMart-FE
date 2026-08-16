@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      await register({ name, email: email || undefined, phone: phone || undefined, password });
+      await register({ name, email: email || undefined, phone: phone || undefined, password, password_confirmation: confirmPw });
       navigate('home');
     } catch (err: any) {
       setError(err?.error?.message || err?.message || 'Register gagal');
