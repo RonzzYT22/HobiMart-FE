@@ -128,8 +128,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {newArrivals.length > 0 ? newArrivals.slice(0, 4).map(p => <ProductCard key={p.id} product={p} />) :
-                          featuredProducts.slice(4, 8).map(p => <ProductCard key={p.id} product={p} />)}
-            }
+              featuredProducts.slice(4, 8).map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         </div>
       </section>
@@ -151,7 +150,7 @@ export default function HomePage() {
           <h2 className="text-xl sm:text-2xl font-bold text-[#1F2937] mb-2">Picked For Your Hobby</h2>
           <p className="text-sm text-gray-500 mb-8">Because you viewed Trading Cards</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {products.filter(p => p.category === 'Trading Cards').slice(0, 4).map(p => <ProductCard key={p.id} product={p} />)}
+            {featuredProducts.filter(p => p.category === 'Trading Cards').slice(0, 4).map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         </div>
       </section>
