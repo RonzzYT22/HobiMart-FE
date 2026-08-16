@@ -15,8 +15,6 @@ import {
   ShieldCheck,
   Clock,
 } from 'lucide-react';
-import { messages as initialMessages } from '@/lib/data';
-import type { Message } from '@/lib/data';
 import { useAppStore } from '@/lib/store';
 import {
   Breadcrumb,
@@ -33,91 +31,6 @@ const userColorMap: Record<string, string> = {
   GundamHub: 'from-blue-400 to-indigo-500',
   CardStation: 'from-orange-400 to-red-400',
   HobiVault: 'from-emerald-400 to-teal-500',
-};
-
-/* ── Mock chat messages per conversation ── */
-const mockChatMessages: Record<
-  string,
-  { id: string; text: string; sender: 'me' | 'them'; time: string }[]
-> = {
-  m1: [
-    {
-      id: 'cm1',
-      text: 'Halo! Is the PG Strike Freedom still available?',
-      sender: 'me',
-      time: '10:30 AM',
-    },
-    {
-      id: 'cm2',
-      text: 'Hi there! Yes, we have 2 units left in stock.',
-      sender: 'them',
-      time: '10:32 AM',
-    },
-    {
-      id: 'cm3',
-      text: 'Can I get a better price if I buy both?',
-      sender: 'me',
-      time: '10:35 AM',
-    },
-    {
-      id: 'cm4',
-      text: 'Sure! We can offer a 5% bundle discount for both units.',
-      sender: 'them',
-      time: '10:38 AM',
-    },
-    {
-      id: 'cm5',
-      text: 'That sounds great! Let me think about it.',
-      sender: 'me',
-      time: '10:40 AM',
-    },
-    {
-      id: 'cm6',
-      text: 'Sure! The PG Strike Freedom is still available. Would you like to proceed?',
-      sender: 'them',
-      time: '11:15 AM',
-    },
-  ],
-  m2: [
-    {
-      id: 'cm7',
-      text: 'Hi, I saw you have a Charizard EX listed.',
-      sender: 'them',
-      time: 'Yesterday',
-    },
-    {
-      id: 'cm8',
-      text: 'Yes, it\'s in Near Mint condition. Are you interested?',
-      sender: 'me',
-      time: 'Yesterday',
-    },
-    {
-      id: 'cm9',
-      text: 'We can do a trade for the Charizard. What do you have in mind?',
-      sender: 'them',
-      time: 'Yesterday',
-    },
-  ],
-  m3: [
-    {
-      id: 'cm10',
-      text: 'Order confirmed! We\'ll ship within 24 hours.',
-      sender: 'them',
-      time: '2 days ago',
-    },
-    {
-      id: 'cm11',
-      text: 'Your order has been shipped! Tracking number: JNE-123456789',
-      sender: 'them',
-      time: '2 days ago',
-    },
-    {
-      id: 'cm12',
-      text: 'Thank you for the update!',
-      sender: 'me',
-      time: '2 days ago',
-    },
-  ],
 };
 
 function getInitials(name: string): string {

@@ -128,7 +128,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {newArrivals.length > 0 ? newArrivals.slice(0, 4).map(p => <ProductCard key={p.id} product={p} />) :
-              products.slice(4, 8).map(p => <ProductCard key={p.id} product={p} />)
+                          featuredProducts.slice(4, 8).map(p => <ProductCard key={p.id} product={p} />)}
             }
           </div>
         </div>

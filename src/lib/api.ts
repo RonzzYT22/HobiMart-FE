@@ -402,14 +402,19 @@ export async function apiGetCities(provinceId: number) {
 }
 
 // ========== Helpers ==========
+const isBrowser = typeof window !== 'undefined';
+
 export function getToken(): string | null {
+  if (!isBrowser) return null;
   return localStorage.getItem('token');
 }
 
 export function setToken(token: string) {
+  if (!isBrowser) return;
   localStorage.setItem('token', token);
 }
 
 export function removeToken() {
+  if (!isBrowser) return;
   localStorage.removeItem('token');
 }

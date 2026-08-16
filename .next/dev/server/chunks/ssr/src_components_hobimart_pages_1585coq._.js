@@ -977,14 +977,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trending-up.js [app-ssr] (ecmascript) <export default as TrendingUp>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/clock.js [app-ssr] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/data.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$hobimart$2f$ProductCard$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/hobimart/ProductCard.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/tabs.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/table.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/badge.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-ssr] (ecmascript)");
 'use client';
-;
 ;
 ;
 ;
@@ -1085,7 +1083,6 @@ const statusStyles = {
     'In Progress': 'bg-amber-50 text-amber-700 border-amber-200',
     Cancelled: 'bg-red-50 text-red-600 border-red-200'
 };
-/* ── Collector's listed products (subset of all products) ── */ const collectorProducts = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["products"].slice(0, 6);
 function StarRating({ rating }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex items-center gap-0.5",
@@ -1095,18 +1092,24 @@ function StarRating({ rating }) {
                 className: `w-4 h-4 ${i < Math.round(rating) ? 'fill-amber-400 text-amber-400' : 'fill-gray-200 text-gray-200'}`
             }, i, false, {
                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                lineNumber: 138,
+                lineNumber: 135,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-        lineNumber: 136,
+        lineNumber: 133,
         columnNumber: 5
     }, this);
 }
 function CollectorProfilePage() {
-    const { navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    const { navigate, products, fetchProducts } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
     const [following, setFollowing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchProducts();
+    }, [
+        fetchProducts
+    ]);
+    const collectorProducts = products.slice(0, 6);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-[#F8FAFC]",
         children: [
@@ -1122,24 +1125,24 @@ function CollectorProfilePage() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 164,
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, this),
                             "Back"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                        lineNumber: 160,
+                        lineNumber: 161,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                    lineNumber: 159,
+                    lineNumber: 160,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                lineNumber: 158,
+                lineNumber: 159,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1159,17 +1162,17 @@ function CollectorProfilePage() {
                                             children: "KC"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 177,
+                                            lineNumber: 178,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                        lineNumber: 176,
+                                        lineNumber: 177,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 176,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1188,7 +1191,7 @@ function CollectorProfilePage() {
                                                                     children: "KevinCollector"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 188,
+                                                                    lineNumber: 189,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1198,20 +1201,20 @@ function CollectorProfilePage() {
                                                                             className: "w-3 h-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 192,
+                                                                            lineNumber: 193,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         "Verified Collector"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 191,
+                                                                    lineNumber: 192,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 187,
+                                                            lineNumber: 188,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1221,7 +1224,7 @@ function CollectorProfilePage() {
                                                                     rating: 4.9
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 199,
+                                                                    lineNumber: 200,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1229,7 +1232,7 @@ function CollectorProfilePage() {
                                                                     children: "4.9"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 200,
+                                                                    lineNumber: 201,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1237,19 +1240,19 @@ function CollectorProfilePage() {
                                                                     children: "(84 reviews)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 203,
+                                                                    lineNumber: 204,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 199,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 187,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1261,7 +1264,7 @@ function CollectorProfilePage() {
                                                             children: following ? 'Following' : 'Follow'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 211,
+                                                            lineNumber: 212,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1272,26 +1275,26 @@ function CollectorProfilePage() {
                                                                     className: "w-4 h-4 mr-1.5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 225,
+                                                                    lineNumber: 226,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 "Message"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 221,
+                                                            lineNumber: 222,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 210,
+                                                    lineNumber: 211,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 186,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1306,12 +1309,12 @@ function CollectorProfilePage() {
                                                                 className: "w-4.5 h-4.5 text-[#FF6B35]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 235,
+                                                                lineNumber: 236,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 234,
+                                                            lineNumber: 235,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1321,7 +1324,7 @@ function CollectorProfilePage() {
                                                                     children: "127"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 238,
+                                                                    lineNumber: 239,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1329,26 +1332,26 @@ function CollectorProfilePage() {
                                                                     children: "Trades"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 239,
+                                                                    lineNumber: 240,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 237,
+                                                            lineNumber: 238,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 233,
+                                                    lineNumber: 234,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "w-px h-9 bg-[#E5E7EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 243,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1360,12 +1363,12 @@ function CollectorProfilePage() {
                                                                 className: "w-4.5 h-4.5 text-green-600"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 245,
+                                                                lineNumber: 246,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 245,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1375,7 +1378,7 @@ function CollectorProfilePage() {
                                                                     children: "54"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 248,
+                                                                    lineNumber: 249,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1383,26 +1386,26 @@ function CollectorProfilePage() {
                                                                     children: "Sales"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 249,
+                                                                    lineNumber: 250,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 247,
+                                                            lineNumber: 248,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 243,
+                                                    lineNumber: 244,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "w-px h-9 bg-[#E5E7EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 252,
+                                                    lineNumber: 253,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1414,12 +1417,12 @@ function CollectorProfilePage() {
                                                                 className: "w-4.5 h-4.5 text-purple-600"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 255,
+                                                                lineNumber: 256,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 254,
+                                                            lineNumber: 255,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1429,7 +1432,7 @@ function CollectorProfilePage() {
                                                                     children: "84"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 258,
+                                                                    lineNumber: 259,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1437,42 +1440,42 @@ function CollectorProfilePage() {
                                                                     children: "Collection"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 259,
+                                                                    lineNumber: 260,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 257,
+                                                            lineNumber: 258,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 253,
+                                                    lineNumber: 254,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 185,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                            lineNumber: 173,
+                            lineNumber: 174,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                        lineNumber: 172,
+                        lineNumber: 173,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tabs"], {
@@ -1488,7 +1491,7 @@ function CollectorProfilePage() {
                                         children: "Products"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                        lineNumber: 270,
+                                        lineNumber: 271,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1497,7 +1500,7 @@ function CollectorProfilePage() {
                                         children: "Collection"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                        lineNumber: 276,
+                                        lineNumber: 277,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1506,7 +1509,7 @@ function CollectorProfilePage() {
                                         children: "Reviews"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                        lineNumber: 282,
+                                        lineNumber: 283,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1515,13 +1518,13 @@ function CollectorProfilePage() {
                                         children: "Trade History"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                        lineNumber: 288,
+                                        lineNumber: 289,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 269,
+                                lineNumber: 270,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1533,17 +1536,17 @@ function CollectorProfilePage() {
                                             product: product
                                         }, product.id, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 300,
+                                            lineNumber: 301,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 298,
+                                    lineNumber: 299,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 297,
+                                lineNumber: 298,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1558,12 +1561,12 @@ function CollectorProfilePage() {
                                                 className: "w-8 h-8 text-purple-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                lineNumber: 309,
+                                                lineNumber: 310,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 308,
+                                            lineNumber: 309,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1571,7 +1574,7 @@ function CollectorProfilePage() {
                                             children: "84 Items in Collection"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 312,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1579,7 +1582,7 @@ function CollectorProfilePage() {
                                             children: "View Kevin's full collection in their profile"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 314,
+                                            lineNumber: 315,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1588,18 +1591,18 @@ function CollectorProfilePage() {
                                             children: "View All Items"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 317,
+                                            lineNumber: 318,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 308,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 306,
+                                lineNumber: 307,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1622,12 +1625,12 @@ function CollectorProfilePage() {
                                                                     children: review.reviewer.slice(0, 2).toUpperCase()
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 337,
+                                                                    lineNumber: 338,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 336,
+                                                                lineNumber: 337,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1637,7 +1640,7 @@ function CollectorProfilePage() {
                                                                         children: review.reviewer
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 342,
+                                                                        lineNumber: 343,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1647,7 +1650,7 @@ function CollectorProfilePage() {
                                                                                 rating: review.rating
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                                lineNumber: 346,
+                                                                                lineNumber: 347,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1655,30 +1658,30 @@ function CollectorProfilePage() {
                                                                                 children: review.date
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                                lineNumber: 347,
+                                                                                lineNumber: 348,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 345,
+                                                                        lineNumber: 346,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 341,
+                                                                lineNumber: 342,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                        lineNumber: 335,
+                                                        lineNumber: 336,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 334,
+                                                    lineNumber: 335,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1686,7 +1689,7 @@ function CollectorProfilePage() {
                                                     children: review.text
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 354,
+                                                    lineNumber: 355,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1700,28 +1703,28 @@ function CollectorProfilePage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                        lineNumber: 358,
+                                                        lineNumber: 359,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 357,
+                                                    lineNumber: 358,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, review.id, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 330,
+                                            lineNumber: 331,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 328,
+                                    lineNumber: 329,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 327,
+                                lineNumber: 328,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1743,7 +1746,7 @@ function CollectorProfilePage() {
                                                                     children: "Date"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 378,
+                                                                    lineNumber: 379,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1751,7 +1754,7 @@ function CollectorProfilePage() {
                                                                     children: "Item Given"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 381,
+                                                                    lineNumber: 382,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1759,7 +1762,7 @@ function CollectorProfilePage() {
                                                                     children: "Item Received"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 384,
+                                                                    lineNumber: 385,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1767,18 +1770,18 @@ function CollectorProfilePage() {
                                                                     children: "Status"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 387,
+                                                                    lineNumber: 388,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 377,
+                                                            lineNumber: 378,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                        lineNumber: 376,
+                                                        lineNumber: 377,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableBody"], {
@@ -1794,19 +1797,19 @@ function CollectorProfilePage() {
                                                                                     className: "w-3.5 h-3.5 text-gray-300"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                                    lineNumber: 400,
+                                                                                    lineNumber: 401,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 trade.date
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 399,
+                                                                            lineNumber: 400,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 398,
+                                                                        lineNumber: 399,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1816,12 +1819,12 @@ function CollectorProfilePage() {
                                                                             children: trade.given
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 405,
+                                                                            lineNumber: 406,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 404,
+                                                                        lineNumber: 405,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1831,12 +1834,12 @@ function CollectorProfilePage() {
                                                                             children: trade.received
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 410,
+                                                                            lineNumber: 411,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 409,
+                                                                        lineNumber: 410,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1848,41 +1851,41 @@ function CollectorProfilePage() {
                                                                                     className: "w-3 h-3 mr-1"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                                    lineNumber: 419,
+                                                                                    lineNumber: 420,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 trade.status
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 415,
+                                                                            lineNumber: 416,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                        lineNumber: 414,
+                                                                        lineNumber: 415,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, trade.id, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                lineNumber: 394,
+                                                                lineNumber: 395,
                                                                 columnNumber: 23
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                        lineNumber: 392,
+                                                        lineNumber: 393,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                lineNumber: 375,
+                                                lineNumber: 376,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 374,
+                                            lineNumber: 375,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1900,14 +1903,14 @@ function CollectorProfilePage() {
                                                                             className: "w-3 h-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 436,
+                                                                            lineNumber: 437,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         trade.date
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 435,
+                                                                    lineNumber: 436,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1915,13 +1918,13 @@ function CollectorProfilePage() {
                                                                     children: trade.status
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 439,
+                                                                    lineNumber: 440,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 434,
+                                                            lineNumber: 435,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1935,7 +1938,7 @@ function CollectorProfilePage() {
                                                                             children: "Given"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 447,
+                                                                            lineNumber: 448,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1943,20 +1946,20 @@ function CollectorProfilePage() {
                                                                             children: trade.given
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 450,
+                                                                            lineNumber: 451,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 446,
+                                                                    lineNumber: 447,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$repeat$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Repeat$3e$__["Repeat"], {
                                                                     className: "w-4 h-4 text-gray-300 flex-shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 454,
+                                                                    lineNumber: 455,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1967,7 +1970,7 @@ function CollectorProfilePage() {
                                                                             children: "Received"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 456,
+                                                                            lineNumber: 457,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1975,59 +1978,59 @@ function CollectorProfilePage() {
                                                                             children: trade.received
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                            lineNumber: 459,
+                                                                            lineNumber: 460,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                                    lineNumber: 455,
+                                                                    lineNumber: 456,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                            lineNumber: 445,
+                                                            lineNumber: 446,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, trade.id, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                                    lineNumber: 433,
+                                                    lineNumber: 434,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                            lineNumber: 431,
+                                            lineNumber: 432,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                    lineNumber: 372,
+                                    lineNumber: 373,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                                lineNumber: 371,
+                                lineNumber: 372,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                        lineNumber: 268,
+                        lineNumber: 269,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-                lineNumber: 170,
+                lineNumber: 171,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/CollectorProfilePage.tsx",
-        lineNumber: 156,
+        lineNumber: 157,
         columnNumber: 5
     }, this);
 }
@@ -2050,7 +2053,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trending-up.js [app-ssr] (ecmascript) <export default as TrendingUp>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-text.js [app-ssr] (ecmascript) <export default as FileText>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/data.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/breadcrumb.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/input.tsx [app-ssr] (ecmascript)");
@@ -2104,10 +2107,16 @@ function getInitials(name) {
     return name.replace(/([A-Z])/g, ' $1').trim().split(' ').slice(0, 2).map((w)=>w[0]).join('').toUpperCase();
 }
 function CommunityPage() {
+    const { posts, fetchPosts, navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [activeTag, setActiveTag] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchPosts();
+    }, [
+        fetchPosts
+    ]);
     const filteredPosts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["communityPosts"].filter((post)=>{
+        return posts.filter((post)=>{
             const matchesSearch = searchQuery === '' || post.title.toLowerCase().includes(searchQuery.toLowerCase()) || post.preview.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesTag = activeTag === null || post.tags.includes(activeTag);
             return matchesSearch && matchesTag;
@@ -2134,19 +2143,19 @@ function CommunityPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                        lineNumber: 83,
+                                        lineNumber: 86,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 85,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 93,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -2155,33 +2164,33 @@ function CommunityPage() {
                                         children: "Community"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 95,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 94,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                            lineNumber: 81,
+                            lineNumber: 84,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                        lineNumber: 80,
+                        lineNumber: 83,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                    lineNumber: 79,
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                lineNumber: 78,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2200,14 +2209,14 @@ function CommunityPage() {
                                                 children: "💬"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                lineNumber: 106,
+                                                lineNumber: 109,
                                                 columnNumber: 15
                                             }, this),
                                             " HobiMart Community"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 108,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2215,13 +2224,13 @@ function CommunityPage() {
                                         children: "Connect, share, and learn from fellow hobbyists"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 111,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 104,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2231,20 +2240,20 @@ function CommunityPage() {
                                         className: "w-4 h-4 mr-1.5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 116,
                                         columnNumber: 13
                                     }, this),
                                     "New Discussion"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 112,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                        lineNumber: 103,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2254,7 +2263,7 @@ function CommunityPage() {
                                 className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 120,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2264,7 +2273,7 @@ function CommunityPage() {
                                 className: "pl-9 pr-9 h-10 rounded-xl border-[#E5E7EB] bg-white text-sm focus-visible:ring-[#FF6B35]/20 focus-visible:border-[#FF6B35]"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 121,
+                                lineNumber: 124,
                                 columnNumber: 11
                             }, this),
                             searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2274,18 +2283,18 @@ function CommunityPage() {
                                     className: "w-4 h-4"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 135,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 128,
+                                lineNumber: 131,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                        lineNumber: 119,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2307,12 +2316,12 @@ function CommunityPage() {
                                                             children: getInitials(post.user)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 158,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                        lineNumber: 150,
+                                                        lineNumber: 153,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2326,7 +2335,7 @@ function CommunityPage() {
                                                                         children: post.user
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 163,
+                                                                        lineNumber: 166,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2334,7 +2343,7 @@ function CommunityPage() {
                                                                         children: "·"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 166,
+                                                                        lineNumber: 169,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2342,13 +2351,13 @@ function CommunityPage() {
                                                                         children: post.time
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 167,
+                                                                        lineNumber: 170,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                lineNumber: 162,
+                                                                lineNumber: 165,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2356,7 +2365,7 @@ function CommunityPage() {
                                                                 children: post.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                lineNumber: 172,
+                                                                lineNumber: 175,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2364,7 +2373,7 @@ function CommunityPage() {
                                                                 children: post.preview
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                lineNumber: 176,
+                                                                lineNumber: 179,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2378,12 +2387,12 @@ function CommunityPage() {
                                                                         children: tag
                                                                     }, tag, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 183,
+                                                                        lineNumber: 186,
                                                                         columnNumber: 29
                                                                     }, this))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                lineNumber: 181,
+                                                                lineNumber: 184,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2396,7 +2405,7 @@ function CommunityPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                                lineNumber: 199,
+                                                                                lineNumber: 202,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2404,13 +2413,13 @@ function CommunityPage() {
                                                                                 children: post.replies
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                                lineNumber: 200,
+                                                                                lineNumber: 203,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 198,
+                                                                        lineNumber: 201,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2420,7 +2429,7 @@ function CommunityPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                                lineNumber: 205,
+                                                                                lineNumber: 208,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2428,41 +2437,41 @@ function CommunityPage() {
                                                                                 children: post.likes
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                                lineNumber: 206,
+                                                                                lineNumber: 209,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                        lineNumber: 204,
+                                                                        lineNumber: 207,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                lineNumber: 197,
+                                                                lineNumber: 200,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                        lineNumber: 161,
+                                                        lineNumber: 164,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                lineNumber: 148,
+                                                lineNumber: 151,
                                                 columnNumber: 21
                                             }, this)
                                         }, post.id, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 147,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 142,
+                                    lineNumber: 145,
                                     columnNumber: 15
                                 }, this) : /* ── Empty State ── */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "bg-white rounded-2xl border border-[#E5E7EB] py-16 text-center",
@@ -2473,12 +2482,12 @@ function CommunityPage() {
                                                 className: "w-10 h-10 text-gray-300"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                lineNumber: 220,
+                                                lineNumber: 223,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 222,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2486,7 +2495,7 @@ function CommunityPage() {
                                             children: "No discussions found"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 225,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2494,7 +2503,7 @@ function CommunityPage() {
                                             children: hasActiveFilters ? 'Try adjusting your search or filter to find what you\'re looking for' : 'Be the first to start a discussion in the community'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 228,
                                             columnNumber: 17
                                         }, this),
                                         hasActiveFilters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2509,14 +2518,14 @@ function CommunityPage() {
                                                     className: "w-3.5 h-3.5 mr-1.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 242,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear Filters"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 234,
                                             columnNumber: 19
                                         }, this),
                                         !hasActiveFilters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2526,25 +2535,25 @@ function CommunityPage() {
                                                     className: "w-4 h-4 mr-1.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 248,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Start a Discussion"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 244,
+                                            lineNumber: 247,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 218,
+                                    lineNumber: 221,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 140,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -2562,7 +2571,7 @@ function CommunityPage() {
                                                             className: "w-4 h-4 text-[#FF6B35]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 259,
+                                                            lineNumber: 262,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2570,13 +2579,13 @@ function CommunityPage() {
                                                             children: "Popular Tags"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 260,
+                                                            lineNumber: 263,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 258,
+                                                    lineNumber: 261,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2589,7 +2598,7 @@ function CommunityPage() {
                                                                     children: tag.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 277,
+                                                                    lineNumber: 280,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2597,24 +2606,24 @@ function CommunityPage() {
                                                                     children: tag.count
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 278,
+                                                                    lineNumber: 281,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, tag.name, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 266,
+                                                            lineNumber: 269,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 264,
+                                                    lineNumber: 267,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 260,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2627,7 +2636,7 @@ function CommunityPage() {
                                                             className: "w-4 h-4 text-[#FF6B35]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 295,
+                                                            lineNumber: 298,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2635,13 +2644,13 @@ function CommunityPage() {
                                                             children: "Community Stats"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 296,
+                                                            lineNumber: 299,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 294,
+                                                    lineNumber: 297,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2657,14 +2666,14 @@ function CommunityPage() {
                                                                             className: "w-3.5 h-3.5 text-gray-400"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                            lineNumber: 303,
+                                                                            lineNumber: 306,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         "Members"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 302,
+                                                                    lineNumber: 305,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2672,13 +2681,13 @@ function CommunityPage() {
                                                                     children: "12,847"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 306,
+                                                                    lineNumber: 309,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 301,
+                                                            lineNumber: 304,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2691,14 +2700,14 @@ function CommunityPage() {
                                                                             className: "w-3.5 h-3.5 text-gray-400"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                            lineNumber: 312,
+                                                                            lineNumber: 315,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         "Discussions"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 311,
+                                                                    lineNumber: 314,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2706,13 +2715,13 @@ function CommunityPage() {
                                                                     children: "3,291"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 315,
+                                                                    lineNumber: 318,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 310,
+                                                            lineNumber: 313,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2725,14 +2734,14 @@ function CommunityPage() {
                                                                             className: "w-3.5 h-3.5 text-gray-400"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                            lineNumber: 321,
+                                                                            lineNumber: 324,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         "Replies Today"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 320,
+                                                                    lineNumber: 323,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2740,54 +2749,54 @@ function CommunityPage() {
                                                                     children: "+89"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                                    lineNumber: 324,
+                                                                    lineNumber: 327,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                            lineNumber: 319,
+                                                            lineNumber: 322,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                                    lineNumber: 300,
+                                                    lineNumber: 303,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                            lineNumber: 293,
+                                            lineNumber: 296,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                    lineNumber: 255,
+                                    lineNumber: 258,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                                lineNumber: 254,
+                                lineNumber: 257,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                        lineNumber: 138,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-                lineNumber: 101,
+                lineNumber: 104,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/CommunityPage.tsx",
-        lineNumber: 76,
+        lineNumber: 79,
         columnNumber: 5
     }, this);
 }
@@ -2842,8 +2851,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
     };
 }
 /* ── Section component ── */ function DealSection({ title, icon, iconColor, bgColor, productIds, viewAllLabel }) {
-    const sectionProducts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["products"].filter((p)=>productIds.includes(p.id)), [
-        productIds
+    const { products: products1 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    const sectionProducts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>products1.filter((p)=>productIds.includes(p.id)), [
+        productIds,
+        products1
     ]);
     if (sectionProducts.length === 0) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2859,7 +2870,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 children: icon
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 80,
+                                lineNumber: 81,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2867,13 +2878,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 children: title
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 83,
+                                lineNumber: 84,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 79,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this),
                     viewAllLabel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2884,19 +2895,19 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 className: "w-3.5 h-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 88,
+                                lineNumber: 89,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 86,
+                        lineNumber: 87,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 78,
+                lineNumber: 79,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2906,18 +2917,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                         variant: "sale"
                     }, product.id, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 94,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 92,
+                lineNumber: 93,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-        lineNumber: 77,
+        lineNumber: 78,
         columnNumber: 5
     }, this);
 }
@@ -2939,7 +2950,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                     children: image
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2947,18 +2958,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                     children: title
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 123,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                            lineNumber: 120,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 119,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2971,14 +2982,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 128,
                                         columnNumber: 13
                                     }, this),
                                     "BUNDLE"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 126,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2988,7 +2999,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     "Save ",
@@ -2997,19 +3008,19 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 130,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 125,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 118,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3020,7 +3031,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 137,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3031,7 +3042,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 140,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3042,7 +3053,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatPrice"])(bundlePrice)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 144,
+                                lineNumber: 145,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3050,13 +3061,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatPrice"])(originalTotal)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 145,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 143,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3066,26 +3077,26 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
                                 className: "w-3.5 h-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 148,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this),
                             "Add Bundle to Cart"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 147,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 136,
+                lineNumber: 137,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 5
     }, this);
 }
@@ -3171,19 +3182,19 @@ function DealsPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 207,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 206,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 214,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -3192,33 +3203,33 @@ function DealsPage() {
                                         children: "Deals"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 216,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 215,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                            lineNumber: 204,
+                            lineNumber: 205,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 203,
+                        lineNumber: 204,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                    lineNumber: 202,
+                    lineNumber: 203,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 201,
+                lineNumber: 202,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3233,7 +3244,7 @@ function DealsPage() {
                                     children: "🔥 HobiMart Deals"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 228,
+                                    lineNumber: 229,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3241,18 +3252,18 @@ function DealsPage() {
                                     children: "Grab the best offers on hobby collectibles"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                            lineNumber: 227,
+                            lineNumber: 228,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 226,
+                        lineNumber: 227,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3264,21 +3275,21 @@ function DealsPage() {
                                     className: "absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 241,
+                                    lineNumber: 242,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute bottom-0 left-1/3 w-48 h-48 bg-white/5 rounded-full translate-y-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 242,
+                                    lineNumber: 243,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute top-1/2 right-1/4 w-32 h-32 bg-white/8 rounded-full"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 244,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3292,7 +3303,7 @@ function DealsPage() {
                                                     children: "Limited Time"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 247,
+                                                    lineNumber: 248,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3300,13 +3311,13 @@ function DealsPage() {
                                                     children: "Extra 10% Off"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 250,
+                                                    lineNumber: 251,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                            lineNumber: 246,
+                                            lineNumber: 247,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3314,7 +3325,7 @@ function DealsPage() {
                                             children: "Summer Hobby Festival!"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 255,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3326,20 +3337,20 @@ function DealsPage() {
                                                     children: "HOBI10"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 258,
+                                                    lineNumber: 259,
                                                     columnNumber: 26
                                                 }, this),
                                                 " for extra 10% off on all deals. Valid until June 30, 2025."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 258,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 246,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3353,7 +3364,7 @@ function DealsPage() {
                                                     children: "150+"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 266,
+                                                    lineNumber: 267,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3361,13 +3372,13 @@ function DealsPage() {
                                                     children: "Products on Sale"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 268,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                            lineNumber: 265,
+                                            lineNumber: 266,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3378,7 +3389,7 @@ function DealsPage() {
                                                     children: "70%"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 270,
+                                                    lineNumber: 271,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3386,30 +3397,30 @@ function DealsPage() {
                                                     children: "Max Discount"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 272,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                            lineNumber: 269,
+                                            lineNumber: 270,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 264,
+                                    lineNumber: 265,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                            lineNumber: 239,
+                            lineNumber: 240,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 238,
+                        lineNumber: 239,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3429,12 +3440,12 @@ function DealsPage() {
                                                             className: "w-4 h-4 text-red-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                            lineNumber: 284,
+                                                            lineNumber: 285,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 283,
+                                                        lineNumber: 284,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3442,13 +3453,13 @@ function DealsPage() {
                                                         children: "⚡ Flash Sale"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 286,
+                                                        lineNumber: 287,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 283,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3459,19 +3470,19 @@ function DealsPage() {
                                                         className: "w-3.5 h-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 293,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 290,
+                                                lineNumber: 291,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 281,
+                                        lineNumber: 282,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3481,7 +3492,7 @@ function DealsPage() {
                                                 className: "w-4 h-4 text-red-500 flex-shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 299,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3489,7 +3500,7 @@ function DealsPage() {
                                                 children: "Ends in:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 299,
+                                                lineNumber: 300,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3515,7 +3526,7 @@ function DealsPage() {
                                                                 children: unit.value
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                                lineNumber: 307,
+                                                                lineNumber: 308,
                                                                 columnNumber: 21
                                                             }, this),
                                                             unit.label !== 'S' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3523,45 +3534,45 @@ function DealsPage() {
                                                                 children: ":"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                                lineNumber: 311,
+                                                                lineNumber: 312,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, unit.label, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 306,
+                                                        lineNumber: 307,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 300,
+                                                lineNumber: 301,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 298,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4",
-                                        children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["products"].filter((p)=>flashSaleIds.includes(p.id)).map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$hobimart$2f$ProductCard$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                        children: products.filter((p)=>flashSaleIds.includes(p.id)).map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$hobimart$2f$ProductCard$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                 product: product,
                                                 variant: "sale"
                                             }, product.id, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 322,
+                                                lineNumber: 323,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 318,
+                                        lineNumber: 319,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 280,
+                                lineNumber: 281,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DealSection, {
@@ -3570,7 +3581,7 @@ function DealsPage() {
                                     className: "w-4 h-4 text-amber-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 330,
+                                    lineNumber: 331,
                                     columnNumber: 19
                                 }, this),
                                 iconColor: "bg-amber-100",
@@ -3579,7 +3590,7 @@ function DealsPage() {
                                 viewAllLabel: "View All Deals"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 328,
+                                lineNumber: 329,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DealSection, {
@@ -3588,7 +3599,7 @@ function DealsPage() {
                                     className: "w-4 h-4 text-green-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 340,
+                                    lineNumber: 341,
                                     columnNumber: 19
                                 }, this),
                                 iconColor: "bg-green-100",
@@ -3597,7 +3608,7 @@ function DealsPage() {
                                 viewAllLabel: "View Clearance"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 338,
+                                lineNumber: 339,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3614,12 +3625,12 @@ function DealsPage() {
                                                             className: "w-4 h-4 text-purple-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                            lineNumber: 352,
+                                                            lineNumber: 353,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 351,
+                                                        lineNumber: 352,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3627,13 +3638,13 @@ function DealsPage() {
                                                         children: "🎁 Bundle Deals"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 354,
+                                                        lineNumber: 355,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 350,
+                                                lineNumber: 351,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3644,19 +3655,19 @@ function DealsPage() {
                                                         className: "w-3.5 h-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                        lineNumber: 360,
+                                                        lineNumber: 361,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 358,
+                                                lineNumber: 359,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 349,
+                                        lineNumber: 350,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3664,7 +3675,7 @@ function DealsPage() {
                                         children: "Save more when you buy together — curated bundles at special prices"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 364,
+                                        lineNumber: 365,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3677,18 +3688,18 @@ function DealsPage() {
                                                 image: bundle.image
                                             }, idx, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 370,
+                                                lineNumber: 371,
                                                 columnNumber: 17
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 368,
+                                        lineNumber: 369,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 348,
+                                lineNumber: 349,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DealSection, {
@@ -3697,7 +3708,7 @@ function DealsPage() {
                                     className: "w-4 h-4 text-amber-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                    lineNumber: 385,
+                                    lineNumber: 386,
                                     columnNumber: 19
                                 }, this),
                                 iconColor: "bg-amber-100",
@@ -3706,7 +3717,7 @@ function DealsPage() {
                                 viewAllLabel: "View All Limited"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 383,
+                                lineNumber: 384,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3716,7 +3727,7 @@ function DealsPage() {
                                         className: "w-8 h-8 text-[#FF6B35] mx-auto mb-3"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 394,
+                                        lineNumber: 395,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3724,7 +3735,7 @@ function DealsPage() {
                                         children: "Don't Miss Out!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 395,
+                                        lineNumber: 396,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3732,7 +3743,7 @@ function DealsPage() {
                                         children: "New deals are added every week. Follow our store and enable notifications to be the first to grab limited offers."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 398,
+                                        lineNumber: 399,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3742,38 +3753,38 @@ function DealsPage() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                                lineNumber: 403,
+                                                lineNumber: 404,
                                                 columnNumber: 15
                                             }, this),
                                             "Follow HobiMart"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                        lineNumber: 402,
+                                        lineNumber: 403,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                                lineNumber: 393,
+                                lineNumber: 394,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                        lineNumber: 278,
+                        lineNumber: 279,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-                lineNumber: 224,
+                lineNumber: 225,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/DealsPage.tsx",
-        lineNumber: 199,
+        lineNumber: 200,
         columnNumber: 5
     }, this);
 }
@@ -4936,12 +4947,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/phone.js [app-ssr] (ecmascript) <export default as Phone>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShieldCheck$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shield-check.js [app-ssr] (ecmascript) <export default as ShieldCheck>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/clock.js [app-ssr] (ecmascript) <export default as Clock>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/data.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/breadcrumb.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/input.tsx [app-ssr] (ecmascript)");
 'use client';
-;
 ;
 ;
 ;
@@ -5037,26 +5046,43 @@ function getInitials(name) {
     return name.split(/\s+/).slice(0, 2).map((w)=>w[0]).join('').toUpperCase();
 }
 function MessagesPage() {
-    const { navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
-    const [selectedConversation, setSelectedConversation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["messages"][0].id);
+    const { navigate, conversations, messages, fetchConversations, fetchMessages, sendMessage } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    const [selectedConversation, setSelectedConversation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [messageInput, setMessageInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [showChat, setShowChat] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const filteredMessages = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        if (!searchQuery) return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["messages"];
-        return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["messages"].filter((m)=>m.user.toLowerCase().includes(searchQuery.toLowerCase()));
+    useEffect(()=>{
+        fetchConversations();
     }, [
-        searchQuery
+        fetchConversations
     ]);
-    const selectedMessage = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["messages"].find((m)=>m.id === selectedConversation);
-    const chatMessages = selectedConversation ? mockChatMessages[selectedConversation] || [] : [];
-    const handleSend = ()=>{
-        if (!messageInput.trim()) return;
+    useEffect(()=>{
+        if (selectedConversation) fetchMessages(selectedConversation);
+    }, [
+        selectedConversation,
+        fetchMessages
+    ]);
+    const filteredMessages = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
+        if (!searchQuery) return conversations;
+        return conversations.filter((m)=>(m.other?.name || '').toLowerCase().includes(searchQuery.toLowerCase()));
+    }, [
+        searchQuery,
+        conversations
+    ]);
+    const handleSelectConversation = (convId)=>{
+        setSelectedConversation(convId);
+        setShowChat(true);
+    };
+    const handleSendMessage = ()=>{
+        if (!messageInput.trim() || !selectedConversation) return;
+        sendMessage(selectedConversation, messageInput.trim());
         setMessageInput('');
     };
-    const handleSelectConversation = (id)=>{
-        setSelectedConversation(id);
-        setShowChat(true);
+    const selectedMessage = conversations.find((m)=>m.id === selectedConversation);
+    const chatMessages = messages || [];
+    const handleSend = ()=>{
+        if (!messageInput.trim()) return;
+        handleSendMessage();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-[#F8FAFC]",
@@ -5075,19 +5101,19 @@ function MessagesPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 181,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 180,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                    lineNumber: 180,
+                                    lineNumber: 188,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -5096,33 +5122,33 @@ function MessagesPage() {
                                         children: "Messages"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                        lineNumber: 182,
+                                        lineNumber: 190,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 189,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                            lineNumber: 171,
+                            lineNumber: 179,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                        lineNumber: 170,
+                        lineNumber: 178,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                    lineNumber: 169,
+                    lineNumber: 177,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                lineNumber: 168,
+                lineNumber: 176,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5139,14 +5165,14 @@ function MessagesPage() {
                                         children: "💬"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 203,
                                         columnNumber: 13
                                     }, this),
                                     " Messages"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                lineNumber: 194,
+                                lineNumber: 202,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5154,13 +5180,13 @@ function MessagesPage() {
                                 children: "Chat with sellers and traders"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                lineNumber: 197,
+                                lineNumber: 205,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                        lineNumber: 193,
+                        lineNumber: 201,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5180,7 +5206,7 @@ function MessagesPage() {
                                                         className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 214,
+                                                        lineNumber: 222,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -5190,7 +5216,7 @@ function MessagesPage() {
                                                         className: "pl-9 pr-9 h-9 rounded-xl border-[#E5E7EB] bg-[#F8FAFC] text-xs focus-visible:ring-[#FF6B35]/20 focus-visible:border-[#FF6B35]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 215,
+                                                        lineNumber: 223,
                                                         columnNumber: 19
                                                     }, this),
                                                     searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5200,23 +5226,23 @@ function MessagesPage() {
                                                             className: "w-3.5 h-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 226,
+                                                            lineNumber: 234,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 222,
+                                                        lineNumber: 230,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                lineNumber: 213,
+                                                lineNumber: 221,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 220,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5235,12 +5261,12 @@ function MessagesPage() {
                                                                 children: getInitials(msg.user)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 253,
+                                                                lineNumber: 261,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 250,
+                                                            lineNumber: 258,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5254,7 +5280,7 @@ function MessagesPage() {
                                                                             children: msg.user
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                            lineNumber: 261,
+                                                                            lineNumber: 269,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5262,13 +5288,13 @@ function MessagesPage() {
                                                                             children: msg.time
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                            lineNumber: 270,
+                                                                            lineNumber: 278,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 260,
+                                                                    lineNumber: 268,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5276,13 +5302,13 @@ function MessagesPage() {
                                                                     children: msg.lastMessage
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 274,
+                                                                    lineNumber: 282,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 259,
+                                                            lineNumber: 267,
                                                             columnNumber: 25
                                                         }, this),
                                                         msg.unread > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5290,13 +5316,13 @@ function MessagesPage() {
                                                             children: msg.unread
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 281,
+                                                            lineNumber: 289,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, msg.id, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 240,
+                                                    lineNumber: 248,
                                                     columnNumber: 23
                                                 }, this);
                                             }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5306,23 +5332,23 @@ function MessagesPage() {
                                                     children: "No conversations found"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 290,
+                                                    lineNumber: 298,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                lineNumber: 289,
+                                                lineNumber: 297,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                            lineNumber: 233,
+                                            lineNumber: 241,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 214,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5339,12 +5365,12 @@ function MessagesPage() {
                                                             className: "w-5 h-5 text-gray-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 313,
+                                                            lineNumber: 321,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 309,
+                                                        lineNumber: 317,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5354,12 +5380,12 @@ function MessagesPage() {
                                                             children: getInitials(selectedMessage.user)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 322,
+                                                            lineNumber: 330,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 316,
+                                                        lineNumber: 324,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5373,20 +5399,20 @@ function MessagesPage() {
                                                                         children: selectedMessage.user
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 329,
+                                                                        lineNumber: 337,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShieldCheck$3e$__["ShieldCheck"], {
                                                                         className: "w-3.5 h-3.5 text-blue-500 flex-shrink-0"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 332,
+                                                                        lineNumber: 340,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 328,
+                                                                lineNumber: 336,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5394,13 +5420,13 @@ function MessagesPage() {
                                                                 children: "Active now"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 334,
+                                                                lineNumber: 342,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 327,
+                                                        lineNumber: 335,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5412,12 +5438,12 @@ function MessagesPage() {
                                                                     className: "w-4 h-4 text-gray-400"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 341,
+                                                                    lineNumber: 349,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 340,
+                                                                lineNumber: 348,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5426,24 +5452,24 @@ function MessagesPage() {
                                                                     className: "w-4 h-4 text-gray-400"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 344,
+                                                                    lineNumber: 352,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 343,
+                                                                lineNumber: 351,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 339,
+                                                        lineNumber: 347,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                lineNumber: 307,
+                                                lineNumber: 315,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5456,7 +5482,7 @@ function MessagesPage() {
                                                                 className: "flex-1 h-px bg-gray-200"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 353,
+                                                                lineNumber: 361,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5464,20 +5490,20 @@ function MessagesPage() {
                                                                 children: "Today"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 354,
+                                                                lineNumber: 362,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex-1 h-px bg-gray-200"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 357,
+                                                                lineNumber: 365,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 352,
+                                                        lineNumber: 360,
                                                         columnNumber: 21
                                                     }, this),
                                                     chatMessages.map((chat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5490,7 +5516,7 @@ function MessagesPage() {
                                                                         children: chat.text
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 374,
+                                                                        lineNumber: 382,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5500,7 +5526,7 @@ function MessagesPage() {
                                                                                 className: "w-3 h-3"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                                lineNumber: 384,
+                                                                                lineNumber: 392,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5508,30 +5534,30 @@ function MessagesPage() {
                                                                                 children: chat.time
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                                lineNumber: 385,
+                                                                                lineNumber: 393,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 377,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 367,
+                                                                lineNumber: 375,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, chat.id, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 361,
+                                                            lineNumber: 369,
                                                             columnNumber: 23
                                                         }, this))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                lineNumber: 350,
+                                                lineNumber: 358,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5548,12 +5574,12 @@ function MessagesPage() {
                                                                         className: "w-4 h-4 text-gray-400"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 397,
+                                                                        lineNumber: 405,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 396,
+                                                                    lineNumber: 404,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5562,18 +5588,18 @@ function MessagesPage() {
                                                                         className: "w-4 h-4 text-gray-400"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 400,
+                                                                        lineNumber: 408,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 399,
+                                                                    lineNumber: 407,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 395,
+                                                            lineNumber: 403,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5587,7 +5613,7 @@ function MessagesPage() {
                                                                     className: "w-full h-10 rounded-xl border-[#E5E7EB] bg-[#F8FAFC] text-sm pr-10 focus-visible:ring-[#FF6B35]/20 focus-visible:border-[#FF6B35]"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 405,
+                                                                    lineNumber: 413,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5596,18 +5622,18 @@ function MessagesPage() {
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                        lineNumber: 413,
+                                                                        lineNumber: 421,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                    lineNumber: 412,
+                                                                    lineNumber: 420,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 404,
+                                                            lineNumber: 412,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5618,29 +5644,29 @@ function MessagesPage() {
                                                                 className: "w-4 h-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                                lineNumber: 426,
+                                                                lineNumber: 434,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                            lineNumber: 417,
+                                                            lineNumber: 425,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 394,
+                                                    lineNumber: 402,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                lineNumber: 393,
+                                                lineNumber: 401,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                        lineNumber: 305,
+                                        lineNumber: 313,
                                         columnNumber: 17
                                     }, this) : /* Empty chat state */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex-1 flex items-center justify-center bg-[#FAFBFC]",
@@ -5653,12 +5679,12 @@ function MessagesPage() {
                                                         className: "w-8 h-8 text-gray-300"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                        lineNumber: 436,
+                                                        lineNumber: 444,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 435,
+                                                    lineNumber: 443,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -5666,7 +5692,7 @@ function MessagesPage() {
                                                     children: "Select a conversation"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 438,
+                                                    lineNumber: 446,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5674,46 +5700,46 @@ function MessagesPage() {
                                                     children: "Choose a conversation to start chatting"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                                    lineNumber: 441,
+                                                    lineNumber: 449,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                            lineNumber: 434,
+                                            lineNumber: 442,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                        lineNumber: 433,
+                                        lineNumber: 441,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                                    lineNumber: 299,
+                                    lineNumber: 307,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                            lineNumber: 204,
+                            lineNumber: 212,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                        lineNumber: 203,
+                        lineNumber: 211,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-                lineNumber: 191,
+                lineNumber: 199,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/MessagesPage.tsx",
-        lineNumber: 166,
+        lineNumber: 174,
         columnNumber: 5
     }, this);
 }
@@ -5871,13 +5897,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$i
     }
 ];
 function MyCollectionPage() {
-    const { navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    const { navigate, products, fetchProducts } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
     const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('All');
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [imgErrors, setImgErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(new Set());
+    useEffect(()=>{
+        fetchProducts();
+    }, [
+        fetchProducts
+    ]);
     const handleImgError = (id)=>setImgErrors((prev)=>new Set(prev).add(id));
     const filteredItems = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        return collectionItems.filter((item)=>{
+        return products.filter((item)=>{
             const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
             const matchesSearch = searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
@@ -5903,19 +5934,19 @@ function MyCollectionPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 100,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 97,
+                                    lineNumber: 99,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 107,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -5924,33 +5955,33 @@ function MyCollectionPage() {
                                         children: "My Collection"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 109,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 106,
+                                    lineNumber: 108,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                            lineNumber: 96,
+                            lineNumber: 98,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 95,
+                        lineNumber: 97,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                    lineNumber: 94,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                lineNumber: 93,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5971,14 +6002,14 @@ function MyCollectionPage() {
                                                     children: "✦"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                    lineNumber: 122,
+                                                    lineNumber: 124,
                                                     columnNumber: 17
                                                 }, this),
                                                 " My Collection"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 123,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5986,13 +6017,13 @@ function MyCollectionPage() {
                                             children: "84 Items"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 126,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 120,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6000,18 +6031,18 @@ function MyCollectionPage() {
                                     children: "Your personal hobby collection showcase"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                            lineNumber: 119,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 118,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6030,12 +6061,12 @@ function MyCollectionPage() {
                                                     children: cat.icon
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 156,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 151,
+                                                lineNumber: 153,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6045,7 +6076,7 @@ function MyCollectionPage() {
                                                         children: cat.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 159,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6057,43 +6088,43 @@ function MyCollectionPage() {
                                                                 children: "items"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                                lineNumber: 162,
+                                                                lineNumber: 164,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                        lineNumber: 160,
+                                                        lineNumber: 162,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 156,
+                                                lineNumber: 158,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 150,
+                                        lineNumber: 152,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: `absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${cat.color} transition-all ${selectedCategory === cat.name ? 'opacity-100' : 'opacity-0'}`
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 171,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, cat.name, true, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 137,
+                                lineNumber: 139,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 135,
+                        lineNumber: 137,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6106,7 +6137,7 @@ function MyCollectionPage() {
                                         className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 181,
+                                        lineNumber: 183,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -6116,7 +6147,7 @@ function MyCollectionPage() {
                                         className: "pl-9 pr-9 h-10 rounded-xl border-[#E5E7EB] bg-white text-sm focus-visible:ring-[#FF6B35]/20 focus-visible:border-[#FF6B35]"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 182,
+                                        lineNumber: 184,
                                         columnNumber: 13
                                     }, this),
                                     searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -6126,18 +6157,18 @@ function MyCollectionPage() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                            lineNumber: 193,
+                                            lineNumber: 195,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 189,
+                                        lineNumber: 191,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 180,
+                                lineNumber: 182,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6151,18 +6182,18 @@ function MyCollectionPage() {
                                         children: cat
                                     }, cat, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 200,
+                                        lineNumber: 202,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 197,
+                                lineNumber: 199,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 179,
+                        lineNumber: 181,
                         columnNumber: 9
                     }, this),
                     filteredItems.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6178,16 +6209,16 @@ function MyCollectionPage() {
                                                 children: "📦"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 227,
+                                                lineNumber: 229,
                                                 columnNumber: 21
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                src: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["products"].find((p)=>p.id === item.productId)?.image,
+                                                src: products.find((p)=>p.id === item.productId)?.image,
                                                 alt: item.name,
                                                 className: "w-full h-full object-cover",
                                                 onError: ()=>handleImgError(item.id)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 231,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6200,12 +6231,12 @@ function MyCollectionPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                    lineNumber: 238,
+                                                    lineNumber: 240,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 237,
+                                                lineNumber: 239,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6214,18 +6245,18 @@ function MyCollectionPage() {
                                                     className: "w-3.5 h-3.5 text-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                    lineNumber: 246,
+                                                    lineNumber: 248,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 245,
+                                                lineNumber: 247,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 225,
+                                        lineNumber: 227,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6236,7 +6267,7 @@ function MyCollectionPage() {
                                                 children: item.category
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 254,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -6244,7 +6275,7 @@ function MyCollectionPage() {
                                                 children: item.name
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 257,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6254,7 +6285,7 @@ function MyCollectionPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                        lineNumber: 259,
+                                                        lineNumber: 261,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6265,30 +6296,30 @@ function MyCollectionPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                        lineNumber: 260,
+                                                        lineNumber: 262,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                                lineNumber: 258,
+                                                lineNumber: 260,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 253,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 220,
+                                lineNumber: 222,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 218,
+                        lineNumber: 220,
                         columnNumber: 11
                     }, this) : /* ── Empty State ── */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "bg-white rounded-2xl border border-[#E5E7EB] py-16 text-center",
@@ -6299,12 +6330,12 @@ function MyCollectionPage() {
                                     className: "w-10 h-10 text-gray-300"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 272,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 269,
+                                lineNumber: 271,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -6312,7 +6343,7 @@ function MyCollectionPage() {
                                 children: "No items found"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 272,
+                                lineNumber: 274,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6320,7 +6351,7 @@ function MyCollectionPage() {
                                 children: searchQuery ? `No items matching "${searchQuery}" in your collection` : `No items in ${selectedCategory} category`
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 275,
+                                lineNumber: 277,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -6335,20 +6366,20 @@ function MyCollectionPage() {
                                         className: "w-3.5 h-3.5 mr-1.5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                        lineNumber: 288,
+                                        lineNumber: 290,
                                         columnNumber: 15
                                     }, this),
                                     "Clear Filters"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                                lineNumber: 280,
+                                lineNumber: 282,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 268,
+                        lineNumber: 270,
                         columnNumber: 11
                     }, this),
                     filteredItems.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6362,24 +6393,24 @@ function MyCollectionPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                            lineNumber: 297,
+                            lineNumber: 299,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                        lineNumber: 296,
+                        lineNumber: 298,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-                lineNumber: 116,
+                lineNumber: 118,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/MyCollectionPage.tsx",
-        lineNumber: 91,
+        lineNumber: 93,
         columnNumber: 5
     }, this);
 }
@@ -6402,11 +6433,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$refresh$2d$cw$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__RefreshCw$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/refresh-cw.js [app-ssr] (ecmascript) <export default as RefreshCw>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/message-circle.js [app-ssr] (ecmascript) <export default as MessageCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/data.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/breadcrumb.tsx [app-ssr] (ecmascript)");
 'use client';
-;
 ;
 ;
 ;
@@ -6467,25 +6496,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
     };
 }
 function NotificationsPage() {
-    const { navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
-    const [notificationsList, setNotificationsList] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["notifications"]);
-    const unreadCount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>notificationsList.filter((n)=>!n.read).length, [
-        notificationsList
+    const { navigate, notifications, unreadCount, fetchNotifications, markAllNotificationsRead, markNotificationRead } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    useEffect(()=>{
+        fetchNotifications();
+    }, [
+        fetchNotifications
     ]);
     const markAllRead = ()=>{
-        setNotificationsList((prev)=>prev.map((n)=>({
-                    ...n,
-                    read: true
-                })));
+        markAllNotificationsRead();
     };
     const markSingleRead = (id)=>{
-        setNotificationsList((prev)=>prev.map((n)=>n.id === id ? {
-                    ...n,
-                    read: true
-                } : n));
+        markNotificationRead(parseInt(id));
     };
-    const { today, yesterday, earlier } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>groupNotifications(notificationsList), [
-        notificationsList
+    const { today, yesterday, earlier } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>groupNotifications(notifications), [
+        notifications
     ]);
     const hasUnread = unreadCount > 0;
     /* ── Render a notification item ── */ const renderNotification = (notification)=>{
@@ -6499,7 +6523,7 @@ function NotificationsPage() {
                     children: config.emoji
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 108,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6513,20 +6537,20 @@ function NotificationsPage() {
                                     children: notification.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 }, this),
                                 !notification.read && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "w-2 h-2 rounded-full bg-[#FF6B35] flex-shrink-0"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 117,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 116,
+                            lineNumber: 108,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6534,7 +6558,7 @@ function NotificationsPage() {
                             children: notification.description
                         }, void 0, false, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 128,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6542,26 +6566,26 @@ function NotificationsPage() {
                             children: notification.time
                         }, void 0, false, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 135,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 115,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                     className: "w-4 h-4 text-gray-300 group-hover:text-[#FF6B35] transition-colors flex-shrink-0 mt-2.5"
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 141,
+                    lineNumber: 133,
                     columnNumber: 9
                 }, this)
             ]
         }, notification.id, true, {
             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-            lineNumber: 98,
+            lineNumber: 90,
             columnNumber: 7
         }, this);
     };
@@ -6575,7 +6599,7 @@ function NotificationsPage() {
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 154,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6583,13 +6607,13 @@ function NotificationsPage() {
                     children: items.map(renderNotification)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 157,
+                    lineNumber: 149,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-            lineNumber: 153,
+            lineNumber: 145,
             columnNumber: 7
         }, this);
     };
@@ -6611,19 +6635,19 @@ function NotificationsPage() {
                                             children: "Home"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                            lineNumber: 172,
+                                            lineNumber: 164,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 171,
+                                        lineNumber: 163,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                         className: "text-[#E5E7EB]"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 171,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -6632,33 +6656,33 @@ function NotificationsPage() {
                                             children: "Notifications"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 173,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 180,
+                                        lineNumber: 172,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                lineNumber: 170,
+                                lineNumber: 162,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 169,
+                            lineNumber: 161,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                        lineNumber: 168,
+                        lineNumber: 160,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 167,
+                    lineNumber: 159,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6676,24 +6700,24 @@ function NotificationsPage() {
                                             children: "🔔"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 186,
                                             columnNumber: 17
                                         }, this),
                                         " Notifications"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 185,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                lineNumber: 192,
+                                lineNumber: 184,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 191,
+                            lineNumber: 183,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6705,12 +6729,12 @@ function NotificationsPage() {
                                         className: "w-10 h-10 text-green-300"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 193,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 192,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -6718,7 +6742,7 @@ function NotificationsPage() {
                                     children: "You're all caught up!"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6726,13 +6750,13 @@ function NotificationsPage() {
                                     children: "No new notifications. Check back later for updates on your orders, wishlist, and community activity."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 198,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 199,
+                            lineNumber: 191,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6746,7 +6770,7 @@ function NotificationsPage() {
                                             children: "Recent"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 207,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6757,13 +6781,13 @@ function NotificationsPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 206,
                                     columnNumber: 13
                                 }, this),
                                 renderSection('Today', today),
@@ -6772,19 +6796,19 @@ function NotificationsPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 213,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 190,
+                    lineNumber: 182,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-            lineNumber: 165,
+            lineNumber: 157,
             columnNumber: 7
         }, this);
     }
@@ -6805,19 +6829,19 @@ function NotificationsPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 239,
+                                        lineNumber: 231,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 230,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 246,
+                                    lineNumber: 238,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -6826,33 +6850,33 @@ function NotificationsPage() {
                                         children: "Notifications"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 248,
+                                        lineNumber: 240,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                    lineNumber: 247,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 237,
+                            lineNumber: 229,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                        lineNumber: 236,
+                        lineNumber: 228,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                    lineNumber: 235,
+                    lineNumber: 227,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                lineNumber: 234,
+                lineNumber: 226,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6872,14 +6896,14 @@ function NotificationsPage() {
                                                 children: "🔔"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 254,
                                                 columnNumber: 15
                                             }, this),
                                             " Notifications"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 253,
                                         columnNumber: 13
                                     }, this),
                                     hasUnread && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6887,13 +6911,13 @@ function NotificationsPage() {
                                         children: unreadCount
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 257,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                lineNumber: 260,
+                                lineNumber: 252,
                                 columnNumber: 11
                             }, this),
                             hasUnread && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -6904,20 +6928,20 @@ function NotificationsPage() {
                                         className: "w-3.5 h-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                        lineNumber: 276,
+                                        lineNumber: 268,
                                         columnNumber: 15
                                     }, this),
                                     "Mark all as read"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                                lineNumber: 272,
+                                lineNumber: 264,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                        lineNumber: 259,
+                        lineNumber: 251,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6931,24 +6955,24 @@ function NotificationsPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                            lineNumber: 284,
+                            lineNumber: 276,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                        lineNumber: 283,
+                        lineNumber: 275,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-                lineNumber: 257,
+                lineNumber: 249,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/NotificationsPage.tsx",
-        lineNumber: 232,
+        lineNumber: 224,
         columnNumber: 5
     }, this);
 }
@@ -9574,16 +9598,21 @@ const sortOptions = [
     }
 ];
 function TradeInPage() {
-    const { navigate } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
+    const { navigate, products, fetchProducts } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])();
     const [sortBy, setSortBy] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('relevance');
     const [categoryFilter, setCategoryFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('All Categories');
     const [conditionFilter, setConditionFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('All Conditions');
     const [lookingFor, setLookingFor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('Any Category');
     const [locationFilter, setLocationFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('All Locations');
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchProducts();
+    }, [
+        fetchProducts
+    ]);
     const filteredProducts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         let result = [
-            ...tradeProducts
+            ...products.filter((p)=>p.tradeAvailable)
         ];
         if (searchQuery.trim()) {
             const q = searchQuery.toLowerCase();
@@ -9642,19 +9671,19 @@ function TradeInPage() {
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 123,
+                                        lineNumber: 125,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 124,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbSeparator"], {
                                     className: "text-[#E5E7EB]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 132,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$breadcrumb$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BreadcrumbItem"], {
@@ -9663,33 +9692,33 @@ function TradeInPage() {
                                         children: "Trade-In Marketplace"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 132,
+                                        lineNumber: 134,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 131,
+                                    lineNumber: 133,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                            lineNumber: 121,
+                            lineNumber: 123,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 120,
+                        lineNumber: 122,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                    lineNumber: 119,
+                    lineNumber: 121,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                lineNumber: 118,
+                lineNumber: 120,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9706,12 +9735,12 @@ function TradeInPage() {
                                         className: "w-5 h-5 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 148,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 145,
+                                    lineNumber: 147,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9721,7 +9750,7 @@ function TradeInPage() {
                                             children: "Trade-In Marketplace"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 151,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -9732,24 +9761,24 @@ function TradeInPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 152,
+                                            lineNumber: 154,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                            lineNumber: 144,
+                            lineNumber: 146,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 143,
+                        lineNumber: 145,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9764,7 +9793,7 @@ function TradeInPage() {
                                             className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 166,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -9775,13 +9804,13 @@ function TradeInPage() {
                                             className: "w-full pl-9 pr-3 py-2 text-sm border border-[#E5E7EB] rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/20 focus:border-[#FF6B35] transition-all"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 165,
+                                            lineNumber: 167,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 163,
+                                    lineNumber: 165,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9792,12 +9821,12 @@ function TradeInPage() {
                                             className: "w-[150px] h-9 text-xs rounded-lg border-[#E5E7EB] bg-white",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 177,
+                                                lineNumber: 179,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 176,
+                                            lineNumber: 178,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9811,18 +9840,18 @@ function TradeInPage() {
                                                     children: opt
                                                 }, opt, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 181,
+                                                    lineNumber: 183,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 181,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9833,12 +9862,12 @@ function TradeInPage() {
                                             className: "w-[150px] h-9 text-xs rounded-lg border-[#E5E7EB] bg-white",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 193,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 192,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9849,18 +9878,18 @@ function TradeInPage() {
                                                     children: opt
                                                 }, opt, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 195,
+                                                    lineNumber: 197,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 193,
+                                            lineNumber: 195,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 189,
+                                    lineNumber: 191,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9871,12 +9900,12 @@ function TradeInPage() {
                                             className: "hidden lg:block w-[160px] h-9 text-xs rounded-lg border-[#E5E7EB] bg-white",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 205,
+                                                lineNumber: 207,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 204,
+                                            lineNumber: 206,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9887,18 +9916,18 @@ function TradeInPage() {
                                                     children: opt
                                                 }, opt, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 209,
+                                                    lineNumber: 211,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 207,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 205,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9909,12 +9938,12 @@ function TradeInPage() {
                                             className: "hidden lg:block w-[140px] h-9 text-xs rounded-lg border-[#E5E7EB] bg-white",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 219,
+                                                lineNumber: 221,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 220,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9925,18 +9954,18 @@ function TradeInPage() {
                                                     children: opt
                                                 }, opt, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 223,
+                                                    lineNumber: 225,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 221,
+                                            lineNumber: 223,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 217,
+                                    lineNumber: 219,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -9947,12 +9976,12 @@ function TradeInPage() {
                                             className: "w-[130px] lg:w-[150px] h-9 text-xs rounded-lg border-[#E5E7EB] bg-white",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 233,
+                                                lineNumber: 235,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 234,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -9963,18 +9992,18 @@ function TradeInPage() {
                                                     children: opt.label
                                                 }, opt.value, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 237,
+                                                    lineNumber: 239,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 235,
+                                            lineNumber: 237,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 233,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Sheet"], {
@@ -9990,7 +10019,7 @@ function TradeInPage() {
                                                         className: "w-3.5 h-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 254,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Filters",
@@ -9999,18 +10028,18 @@ function TradeInPage() {
                                                         children: activeFilterCount
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                        lineNumber: 255,
+                                                        lineNumber: 257,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 247,
+                                                lineNumber: 249,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 246,
+                                            lineNumber: 248,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SheetContent"], {
@@ -10024,12 +10053,12 @@ function TradeInPage() {
                                                         children: "Trade Filters"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                        lineNumber: 263,
+                                                        lineNumber: 265,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 262,
+                                                    lineNumber: 264,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10042,7 +10071,7 @@ function TradeInPage() {
                                                                     children: "Looking For"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                    lineNumber: 267,
+                                                                    lineNumber: 269,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -10053,12 +10082,12 @@ function TradeInPage() {
                                                                             className: "w-full h-9 text-sm rounded-lg border-[#E5E7EB]",
                                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                                lineNumber: 272,
+                                                                                lineNumber: 274,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                            lineNumber: 271,
+                                                                            lineNumber: 273,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -10069,24 +10098,24 @@ function TradeInPage() {
                                                                                     children: opt
                                                                                 }, opt, false, {
                                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                                    lineNumber: 276,
+                                                                                    lineNumber: 278,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                            lineNumber: 274,
+                                                                            lineNumber: 276,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                    lineNumber: 270,
+                                                                    lineNumber: 272,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                            lineNumber: 266,
+                                                            lineNumber: 268,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10096,7 +10125,7 @@ function TradeInPage() {
                                                                     children: "Location"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                    lineNumber: 284,
+                                                                    lineNumber: 286,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -10107,12 +10136,12 @@ function TradeInPage() {
                                                                             className: "w-full h-9 text-sm rounded-lg border-[#E5E7EB]",
                                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                                lineNumber: 289,
+                                                                                lineNumber: 291,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                            lineNumber: 288,
+                                                                            lineNumber: 290,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -10123,24 +10152,24 @@ function TradeInPage() {
                                                                                     children: opt
                                                                                 }, opt, false, {
                                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                                    lineNumber: 293,
+                                                                                    lineNumber: 295,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                            lineNumber: 291,
+                                                                            lineNumber: 293,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                                    lineNumber: 287,
+                                                                    lineNumber: 289,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                            lineNumber: 283,
+                                                            lineNumber: 285,
                                                             columnNumber: 19
                                                         }, this),
                                                         activeFilterCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -10149,25 +10178,25 @@ function TradeInPage() {
                                                             children: "Clear All Filters"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                            lineNumber: 301,
+                                                            lineNumber: 303,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 265,
+                                                    lineNumber: 267,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 263,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 247,
                                     columnNumber: 13
                                 }, this),
                                 activeFilterCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -10176,18 +10205,18 @@ function TradeInPage() {
                                     children: "Clear All"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 313,
+                                    lineNumber: 315,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                            lineNumber: 161,
+                            lineNumber: 163,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 160,
+                        lineNumber: 162,
                         columnNumber: 9
                     }, this),
                     filteredProducts.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10197,12 +10226,12 @@ function TradeInPage() {
                                 variant: "trade"
                             }, product.id, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 327,
+                                lineNumber: 329,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 325,
+                        lineNumber: 327,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-center py-16 sm:py-24 bg-white rounded-2xl border border-[#E5E7EB]",
@@ -10213,12 +10242,12 @@ function TradeInPage() {
                                     className: "w-8 h-8 text-gray-300"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                    lineNumber: 333,
+                                    lineNumber: 335,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 332,
+                                lineNumber: 334,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -10226,7 +10255,7 @@ function TradeInPage() {
                                 children: "No trade items found"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 335,
+                                lineNumber: 337,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10234,7 +10263,7 @@ function TradeInPage() {
                                 children: "Try adjusting your filters to discover more items available for trade."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 338,
+                                lineNumber: 340,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -10243,13 +10272,13 @@ function TradeInPage() {
                                 children: "Clear All Filters"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 341,
+                                lineNumber: 343,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 331,
+                        lineNumber: 333,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -10260,7 +10289,7 @@ function TradeInPage() {
                                 children: "How Trading Works"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 352,
+                                lineNumber: 354,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10268,7 +10297,7 @@ function TradeInPage() {
                                 children: "Trade your hobby items with other collectors safely and easily through HobiMart."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 355,
+                                lineNumber: 357,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10283,12 +10312,12 @@ function TradeInPage() {
                                                     className: "w-7 h-7 text-teal-600"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 363,
+                                                    lineNumber: 365,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 362,
+                                                lineNumber: 364,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -10296,7 +10325,7 @@ function TradeInPage() {
                                                 children: "1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 365,
+                                                lineNumber: 367,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -10304,7 +10333,7 @@ function TradeInPage() {
                                                 children: "Find an Item"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 368,
+                                                lineNumber: 370,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10312,7 +10341,7 @@ function TradeInPage() {
                                                 children: "Browse the Trade-In Marketplace and discover items you'd love to have. Filter by category, condition, and what the trader is looking for."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 371,
+                                                lineNumber: 373,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10321,18 +10350,18 @@ function TradeInPage() {
                                                     className: "w-6 h-6 text-gray-300"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 376,
+                                                    lineNumber: 378,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 375,
+                                                lineNumber: 377,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 361,
+                                        lineNumber: 363,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10344,12 +10373,12 @@ function TradeInPage() {
                                                     className: "w-7 h-7 text-teal-600"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 383,
+                                                    lineNumber: 385,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 382,
+                                                lineNumber: 384,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -10357,7 +10386,7 @@ function TradeInPage() {
                                                 children: "2"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 385,
+                                                lineNumber: 387,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -10365,7 +10394,7 @@ function TradeInPage() {
                                                 children: "Send Offer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 388,
+                                                lineNumber: 390,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10373,7 +10402,7 @@ function TradeInPage() {
                                                 children: "Propose a trade with items from your own collection. Add a cash difference if needed. The other trader will review your offer."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 391,
+                                                lineNumber: 393,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10382,18 +10411,18 @@ function TradeInPage() {
                                                     className: "w-6 h-6 text-gray-300"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 396,
+                                                    lineNumber: 398,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 395,
+                                                lineNumber: 397,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 381,
+                                        lineNumber: 383,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10405,12 +10434,12 @@ function TradeInPage() {
                                                     className: "w-7 h-7 text-teal-600"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                    lineNumber: 403,
+                                                    lineNumber: 405,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 402,
+                                                lineNumber: 404,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -10418,7 +10447,7 @@ function TradeInPage() {
                                                 children: "3"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 405,
+                                                lineNumber: 407,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -10426,7 +10455,7 @@ function TradeInPage() {
                                                 children: "Complete Trade"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 408,
+                                                lineNumber: 410,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10434,19 +10463,19 @@ function TradeInPage() {
                                                 children: "Once both sides agree, ship your items with tracked shipping. HobiMart holds the trade safe until both items are delivered."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                                lineNumber: 411,
+                                                lineNumber: 413,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 401,
+                                        lineNumber: 403,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 359,
+                                lineNumber: 361,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10456,38 +10485,38 @@ function TradeInPage() {
                                         className: "w-4 h-4 text-teal-500"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 419,
+                                        lineNumber: 421,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "All trades are protected by HobiMart's Trade Guarantee"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                        lineNumber: 420,
+                                        lineNumber: 422,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                                lineNumber: 418,
+                                lineNumber: 420,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                        lineNumber: 351,
+                        lineNumber: 353,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-                lineNumber: 141,
+                lineNumber: 143,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/hobimart/pages/TradeInPage.tsx",
-        lineNumber: 116,
+        lineNumber: 118,
         columnNumber: 5
     }, this);
 }
