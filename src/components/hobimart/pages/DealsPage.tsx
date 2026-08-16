@@ -107,7 +107,7 @@ function BundleCard({
   items: string[];
   bundlePrice: number;
   originalTotal: number;
-  image: string;
+  image: React.ReactNode;
 }) {
   const savings = Math.round(((originalTotal - bundlePrice) / originalTotal) * 100);
   return (
@@ -169,25 +169,25 @@ export default function DealsPage() {
       items: ['Charizard EX', 'Blue-Eyes White Dragon', 'Pikachu Illustration'],
       bundlePrice: 2200000,
       originalTotal: 2680000,
-      image: Heart },
-    {
-      title: 'Gundam Builder Kit',
-      items: ['Gundam RG Nu', 'Gundam HG Aerial'],
-      bundlePrice: 850000,
-      originalTotal: 1135000,
-      image: Bot },
-    {
-      title: 'Anime Figure Duo',
-      items: ['Iron Man Mark 46', 'Spider-Man Figure'],
-      bundlePrice: 2250000,
-      originalTotal: 2550000,
-      image: Gem },
-    {
-      title: 'Pro Collector Bundle',
-      items: ['Charizard VMAX Rainbow', 'Naruto Sage Mode'],
+      image: <Heart className="w-12 h-12 text-white" /> },
+          {
+            title: 'Gundam Builder Kit',
+            items: ['Gundam RG Nu', 'Gundam HG Aerial'],
+            bundlePrice: 850000,
+            originalTotal: 1135000,
+            image: <Bot className="w-12 h-12 text-white" /> },
+          {
+            title: 'Anime Figure Duo',
+            items: ['Iron Man Mark 46', 'Spider-Man Figure'],
+            bundlePrice: 2250000,
+            originalTotal: 2550000,
+            image: <Gem className="w-12 h-12 text-white" /> },
+          {
+            title: 'Pro Collector Bundle',
+            items: ['Charizard VMAX Rainbow', 'Naruto Sage Mode'],
       bundlePrice: 2400000,
       originalTotal: 3150000,
-      image: Diamond },
+      image: <Diamond className="w-12 h-12 text-white" /> },
   ];
 
   return (

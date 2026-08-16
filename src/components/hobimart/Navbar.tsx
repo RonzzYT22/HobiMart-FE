@@ -231,7 +231,7 @@ export default function Navbar() {
                       n.type === 'trade' ? 'bg-purple-100 text-purple-600' :
                       'bg-gray-100 text-gray-600'
                     }`}>
-                      <span className="text-xs">{n.type === 'order' ? Package : n.type === 'price' ? Tag : n.type === 'wishlist' ? Heart : n.type === 'trade' ? ArrowLeftRight : n.type === 'message' ? MessageCircle : Users}</span>
+                      <span className="text-xs">{n.type === 'order' ? <Package className="w-3 h-3" /> : n.type === 'price' ? <Tag className="w-3 h-3" /> : n.type === 'wishlist' ? <Heart className="w-3 h-3" /> : n.type === 'trade' ? <ArrowLeftRight className="w-3 h-3" /> : n.type === 'message' ? <MessageCircle className="w-3 h-3" /> : <Users className="w-3 h-3" />}</span>
                     </div>
                     <div className="min-w-0">
                       <p className="text-sm font-medium text-[#1F2937]">{n.title}</p>
