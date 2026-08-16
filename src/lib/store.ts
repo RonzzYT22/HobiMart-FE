@@ -230,12 +230,20 @@ export const useAppStore = create<AppState>((set, get) => ({
   fetchFeatured: async () => {
     try {
       const res = await api.apiGetFeatured();
-      set({ featuredProducts: res.items || res || [] });
+      // backend returns {trending: [], newArrivals: [], rareFinds: [], recommendations: []}
+      const flat = Array.isArray(res) ? res : [
+        ...(res.trending || []),
+        ...(res.newArrivals || []),
+        ...(res.rareFinds || []),
+        ...(res.recommendations || []),
+      ];
+      set({ featuredProducts: flat });
     } catch { /* ignore */ }
   },
   fetchFlashDeals: async () => {
     try {
       const res = await api.apiGetFlashDeals();
+      // backend returns {items: [], total, page, ...}
       set({ flashDeals: res.items || res || [] });
     } catch { /* ignore */ }
   },
