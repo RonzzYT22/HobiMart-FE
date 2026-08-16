@@ -246,13 +246,15 @@ export const useAppStore = create<AppState>((set, get) => ({
   fetchCategories: async () => {
     try {
       const res = await api.apiGetCategories();
-      set({ categories: res || [] });
+      const data = Array.isArray(res) ? res : (res.data || res.categories || []);
+      set({ categories: data });
     } catch { /* ignore */ }
   },
   fetchBrands: async () => {
     try {
       const res = await api.apiGetBrands();
-      set({ brands: res || [] });
+      const data = Array.isArray(res) ? res : (res.data || res.brands || []);
+      set({ brands: data });
     } catch { /* ignore */ }
   },
 
@@ -263,7 +265,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   fetchPopularSearches: async () => {
     try {
       const res = await api.apiGetPopularSearches();
-      set({ popularSearches: res || [] });
+      const data = Array.isArray(res) ? res : (res.data || res.terms || []);
+      set({ popularSearches: data });
     } catch { /* ignore */ }
   },
 
