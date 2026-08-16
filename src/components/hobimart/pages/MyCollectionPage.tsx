@@ -24,17 +24,13 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 
 export default function MyCollectionPage() {
-  const { navigate, products, fetchProducts } = useAppStore();
+  const { navigate, auth } = useAppStore();
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
     const [searchQuery, setSearchQuery] = useState('');
-    const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
 
-    useEffect(() => { fetchProducts(); }, [fetchProducts]);
-
-    const handleImgError = (id: string) => setImgErrors(prev => new Set(prev).add(id));
-
-    // hitung statistik dari data produk realtime
-    const totalItems = products.length;
+    // TODO: fetch dari API collection user (belum ada endpoint)
+    const collectionProducts: any[] = [];
+    const totalItems = collectionProducts.length;
     const collectionCategories = useMemo(() => {
       const cats = ['Trading Cards', 'Gundam & Gunpla', 'Figures', 'Collectibles', 'Accessories'];
       const icons: Record<string, React.ComponentType<any>> = { 'Trading Cards': Heart, 'Gundam & Gunpla': Bot, 'Figures': Gem, 'Collectibles': Diamond, 'Accessories': Wrench };
@@ -42,7 +38,7 @@ export default function MyCollectionPage() {
       const textColors: Record<string, string> = { 'Trading Cards': 'text-orange-600', 'Gundam & Gunpla': 'text-blue-600', 'Figures': 'text-purple-600', 'Collectibles': 'text-amber-600', 'Accessories': 'text-green-600' };
       return cats.map(cat => ({
         name: cat,
-        count: products.filter((p: any) => p.category === cat).length,
+        count: collectionProducts.filter((p: any) => p.category === cat).length,
         icon: icons[cat] || Heart,
         bgColor: colors[cat] || 'bg-gray-50',
         textColor: textColors[cat] || 'text-gray-600',
@@ -50,7 +46,7 @@ export default function MyCollectionPage() {
     }, [products]);
 
     const filteredItems = useMemo(() => {
-      return products.filter((item: any) => {
+      return collectionProducts.filter((item: any) => {
         const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
       const matchesSearch =
@@ -268,7 +264,7 @@ export default function MyCollectionPage() {
         {filteredItems.length > 0 && (
           <div className="mt-6 text-center">
             <p className="text-xs text-gray-400">
-              Showing {filteredItems.length} of 84 items in your collection
+              Showing {filteredItems.length} of {totalItems} items in your collection
             </p>
           </div>
         )}
