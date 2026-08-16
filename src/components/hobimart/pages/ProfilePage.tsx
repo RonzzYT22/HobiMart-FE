@@ -112,6 +112,17 @@ export default function ProfilePage() {
           )}
         </div>
 
+        {/* Quick Actions */}
+        <div className="bg-white rounded-2xl border border-[#E5E7EB] p-6 mt-4 space-y-3">
+          <h2 className="text-lg font-bold text-[#1F2937]">Quick Actions</h2>
+          <button
+            onClick={() => navigate('my-collection')}
+            className="w-full bg-[#FF6B35] text-white font-bold py-3 rounded-xl hover:bg-[#E55A2B] transition-colors flex items-center justify-center gap-2"
+          >
+            <Layers className="w-4 h-4" /> My Collection
+          </button>
+        </div>
+
         {/* Logout */}
         <button
           onClick={async () => { await logout(); navigate('home'); }}
