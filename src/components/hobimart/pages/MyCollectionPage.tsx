@@ -149,7 +149,7 @@ export default function MyCollectionPage() {
                 <div
                   className={`w-14 h-14 rounded-xl ${cat.bgColor} flex items-center justify-center transition-transform group-hover:scale-110`}
                 >
-                  <span className="text-2xl">{cat.icon}</span>
+                  <span className="text-2xl">{(() => { const Icon = cat.icon; return <Icon className="w-6 h-6" />; })()}</span>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1F2937]">
