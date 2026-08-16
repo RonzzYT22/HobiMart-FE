@@ -21,11 +21,13 @@ export default function Navbar() {
     const [searchFocused, setSearchFocused] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
-    const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
-    const unreadNotifs = unreadCount;
+    const [mounted, setMounted] = useState(false);
+      const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
+      const unreadNotifs = unreadCount;
 
-    useEffect(() => {
-      fetchNotifications();
+      useEffect(() => {
+        setMounted(true);
+        fetchNotifications();
       const handler = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
@@ -143,7 +145,7 @@ export default function Navbar() {
                           className="p-2.5 rounded-xl text-gray-500 hover:text-[#FF6B35] hover:bg-orange-50 transition-colors hidden sm:block relative"
                         >
                           <User className="w-5 h-5" />
-                          {auth.isAuthenticated && <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />}
+                          {mounted && auth.isAuthenticated && <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />}
                         </button>
 
             <button
