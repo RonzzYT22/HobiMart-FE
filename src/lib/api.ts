@@ -447,22 +447,25 @@ export async function apiGetCollections(token: string, params?: Record<string, s
   return res.json();
 }
 export async function apiCreateCollection(token: string, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/collection`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiUpdateCollection(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/collection/${id}`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiDeleteCollection(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/collection/${id}`, {
-    method: 'DELETE', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'DELETE', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -482,8 +485,9 @@ export async function apiGetTrades(token: string, params?: Record<string, string
   return res.json();
 }
 export async function apiCreateTrade(token: string, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/trades`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -494,50 +498,57 @@ export async function apiGetTradeDetail(token: string, id: number) {
   return res.json();
 }
 export async function apiNegotiateTrade(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/negotiate`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAgreeTrade(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/agree`, {
-    method: 'PATCH', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiShipTrade(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/ship`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiConfirmTradeReceived(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/confirm-received`, {
-    method: 'PATCH', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiCancelTrade(token: string, id: number, reason?: string) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/cancel`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ reason }),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ reason }), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiDisputeTrade(token: string, id: number, reason: string) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/dispute`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ reason }),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ reason }), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiRateTrade(token: string, id: number, data: { rating: number; comment?: string }) {
+  await getCsrf();
   const res = await fetch(`${API}/trades/${id}/rate`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -574,15 +585,17 @@ export async function apiAdminGetUser(token: string, id: number) {
   return res.json();
 }
 export async function apiAdminUpdateUser(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/users/${id}`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminDeleteUser(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/users/${id}`, {
-    method: 'DELETE', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'DELETE', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -594,22 +607,25 @@ export async function apiAdminGetProducts(token: string, params?: Record<string,
   return res.json();
 }
 export async function apiAdminUpdateProduct(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/products/${id}`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminBulkVerifyProducts(token: string, ids: number[]) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/products/bulk-verify`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ ids }),
+    method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ ids }), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminDeleteProduct(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/products/${id}`, {
-    method: 'DELETE', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'DELETE', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -626,15 +642,17 @@ export async function apiAdminGetOrder(token: string, id: number) {
   return res.json();
 }
 export async function apiAdminUpdateOrder(token: string, id: number, data: Record<string, unknown>) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/orders/${id}`, {
-    method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data),
+    method: 'PATCH', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(data), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminRefundOrder(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/orders/${id}/refund`, {
-    method: 'POST', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'POST', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
@@ -651,22 +669,25 @@ export async function apiAdminGetTrade(token: string, id: number) {
   return res.json();
 }
 export async function apiAdminForceCompleteTrade(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/trades/${id}/force-complete`, {
-    method: 'POST', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'POST', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminForceCancelTrade(token: string, id: number) {
+  await getCsrf();
   const res = await fetch(`${API}/admin/trades/${id}/force-cancel`, {
-    method: 'POST', headers: { 'Accept': 'application/json', Authorization: `Bearer ${token}` },
+    method: 'POST', headers: { ...csrfHeaders(), 'Accept': 'application/json', Authorization: `Bearer ${token}` }, credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
 }
 export async function apiAdminResolveDispute(token: string, id: number, resolution: 'complete' | 'cancel') {
+  await getCsrf();
   const res = await fetch(`${API}/admin/trades/${id}/resolve-dispute`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ resolution }),
+    method: 'POST', headers: { ...csrfHeaders(), 'Content-Type': 'application/json', 'Accept': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ resolution }), credentials: 'include',
   });
   if (!res.ok) throw await res.json();
   return res.json();
