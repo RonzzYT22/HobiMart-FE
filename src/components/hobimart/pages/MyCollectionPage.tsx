@@ -94,7 +94,7 @@ export default function MyCollectionPage() {
       if (form.purchase_price) data.purchase_price = parseInt(form.purchase_price as string);
       if (form.purchase_date) data.purchase_date = form.purchase_date;
       if (form.notes) data.notes = form.notes;
-      if (ESId) await updateCollection(editingId, data);
+      if (editingId) await updateCollection(editingId, data);
       else await addCollection(data);
       setShowForm(false);
       resetForm();
