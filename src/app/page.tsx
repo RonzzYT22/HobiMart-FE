@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Shield } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import Navbar from '@/components/hobimart/Navbar';
@@ -32,7 +33,12 @@ import AdminDashboardPage from '@/components/hobimart/pages/AdminDashboardPage';
 const authPages = ['checkout', 'my-collection', 'trade-in', 'trade-offer', 'wishlist', 'notifications', 'messages', 'profile', 'order-tracking', 'transactions'];
 
 export default function Home() {
-  const { page, auth, navigate } = useAppStore();
+  const { page, auth, fetchMe, navigate } = useAppStore();
+
+  // auto-hydrate user data on mount (refresh-safe)
+  useEffect(() => {
+    if (auth.isAuthenticated) fetchMe();
+  }, []);
 
   const renderPage = () => {
     // auth guard: redirect ke login kalau belum login

@@ -146,7 +146,14 @@ interface AppState {
 
 function getInitialAuth(): AuthState {
   const token = api.getToken();
-  return { token, user: null, isAuthenticated: !!token };
+  if (!token) return { token: null, user: null, isAuthenticated: false };
+  // restore user dari localStorage
+  let user = null;
+  try {
+    const raw = localStorage.getItem('user');
+    if (raw) user = JSON.parse(raw);
+  } catch {}
+  return { token, user, isAuthenticated: true };
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -155,30 +162,35 @@ export const useAppStore = create<AppState>((set, get) => ({
   auth: getInitialAuth(),
 
   // ========== Auth ==========
-  login: async (data) => {
-    const res = await api.apiLogin(data);
-    api.setToken(res.token);
-    set({ auth: { token: res.token, user: res.user, isAuthenticated: true } });
-  },
-  register: async (data) => {
-    const res = await api.apiRegister(data);
-    api.setToken(res.token);
-    set({ auth: { token: res.token, user: res.user, isAuthenticated: true } });
-  },
-  logout: async () => {
-    const token = get().auth.token;
-    if (token) await api.apiLogout(token).catch(() => {});
-    api.removeToken();
-    set({ auth: { token: null, user: null, isAuthenticated: false }, cart: [], wishlist: [] });
-  },
-  fetchMe: async () => {
-    const token = get().auth.token;
-    if (!token) return;
-    try {
-      const res = await api.apiMe(token);
-      set({ auth: { ...get().auth, user: res.user || res } });
-    } catch { /* ignore */ }
-  },
+    login: async (data) => {
+      const res = await api.apiLogin(data);
+      api.setToken(res.token);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      set({ auth: { token: res.token, user: res.user, isAuthenticated: true } });
+    },
+    register: async (data) => {
+      const res = await api.apiRegister(data);
+      api.setToken(res.token);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      set({ auth: { token: res.token, user: res.user, isAuthenticated: true } });
+    },
+    logout: async () => {
+      const token = get().auth.token;
+      if (token) await api.apiLogout(token).catch(() => {});
+      api.removeToken();
+      localStorage.removeItem('user');
+      set({ auth: { token: null, user: null, isAuthenticated: false }, cart: [], wishlist: [] });
+    },
+    fetchMe: async () => {
+      const token = get().auth.token || api.getToken();
+      if (!token) return;
+      try {
+        const res = await api.apiMe(token);
+        const user = res.user || res;
+        localStorage.setItem('user', JSON.stringify(user));
+        set({ auth: { ...get().auth, user } });
+      } catch { /* ignore */ }
+    },
 
   // ========== Cart (local) ==========
   cart: [],
