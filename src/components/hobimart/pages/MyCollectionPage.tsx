@@ -136,6 +136,10 @@ export default function MyCollectionPage() {
     setForm(f => ({ ...f, images: [...f.images, ...uploaded] }));
   };
 
+  const handleRemoveImage = (idx: number) => {
+    setForm(f => ({ ...f, images: f.images.filter((_, i) => i !== idx) }));
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       {/* Breadcrumb */}
@@ -229,18 +233,32 @@ export default function MyCollectionPage() {
                 <span className="text-sm text-gray-600">{form.is_public ? 'Public' : 'Private'}</span>
               </div>
               {/* Images */}
-              <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-gray-500 mb-1">Images</label>
-                <div className="flex items-center gap-2">
-                  <label className="cursor-pointer px-4 py-2 border border-dashed border-[#E5E7EB] rounded-xl text-sm text-gray-500 hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors">
-                    <Upload className="w-4 h-4 inline mr-1" />Upload
-                    <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
-                  </label>
-                  {form.images.length > 0 && (
-                    <span className="text-xs text-gray-400">{form.images.length} image(s)</span>
-                  )}
-                </div>
-              </div>
+                            <div className="sm:col-span-2">
+                              <label className="block text-xs font-semibold text-gray-500 mb-1">Images</label>
+                              <div className="flex items-center gap-2 mb-3">
+                                <label className="cursor-pointer px-4 py-2 border border-dashed border-[#E5E7EB] rounded-xl text-sm text-gray-500 hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors">
+                                  <Upload className="w-4 h-4 inline mr-1" />Upload
+                                  <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
+                                </label>
+                                {form.images.length > 0 && (
+                                  <span className="text-xs text-gray-400">{form.images.length} image(s)</span>
+                                )}
+                              </div>
+                              {/* Image Previews */}
+                              {form.images.length > 0 && (
+                                <div className="flex flex-wrap gap-2">
+                                  {form.images.map((url, i) => (
+                                    <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden border border-[#E5E7EB] group">
+                                      <img src={url} alt={`Preview ${i + 1}`} className="w-full h-full object-cover" />
+                                      <button onClick={() => handleRemoveImage(i)}
+                                        className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <X className="w-3 h-3" />
+                                      </button>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
             </div>
             <div className="flex gap-3 mt-5">
               <Button onClick={handleSubmit} disabled={loading} className="bg-[#FF6B35] hover:bg-[#E55A2B] text-white font-bold rounded-xl">
