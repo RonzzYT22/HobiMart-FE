@@ -131,8 +131,9 @@ interface AppState {
 
     // transactions (riwayat gabungan)
     transactions: any[];
-    transactionsTotal: number;
-    fetchTransactions: (params?: Record<string, string>) => Promise<void>;
+        transactionsTotal: number;
+        transactionsHasMore: boolean;
+        fetchTransactions: (params?: Record<string, string>) => Promise<void>;
 
     // UI
     cartOpen: boolean;
@@ -547,16 +548,17 @@ export const useAppStore = create<AppState>((set, get) => ({
     },
 
     // ========== Transactions ==========
-    transactions: [],
-    transactionsTotal: 0,
-    fetchTransactions: async (params) => {
-      const token = get().auth.token || api.getToken();
-      if (!token) return;
-      try {
-        const res = await api.apiGetTransactions(token, params);
-        set({ transactions: res.items || [], transactionsTotal: res.total || 0 });
-      } catch { /* ignore */ }
-    },
+        transactions: [],
+        transactionsTotal: 0,
+        transactionsHasMore: false,
+        fetchTransactions: async (params) => {
+          const token = get().auth.token || api.getToken();
+          if (!token) return;
+          try {
+            const res = await api.apiGetTransactions(token, params);
+            set({ transactions: res.items || [], transactionsTotal: res.total || 0, transactionsHasMore: res.hasMore || false });
+          } catch { /* ignore */ }
+        },
 
   // ========== UI ==========
   cartOpen: false,

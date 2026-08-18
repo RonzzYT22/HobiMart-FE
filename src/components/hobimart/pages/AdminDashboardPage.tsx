@@ -433,8 +433,8 @@ export default function AdminDashboardPage() {
                     <BarChart data={charts.gmv}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                       <XAxis dataKey="label" tick={{ fontSize: 12 }} stroke="#9CA3AF" />
-                      <YAxis tick={{ fontSize: 12 }} stroke="#9CA3AF" tickFormatter={v => `Rp${(v/1000000).toFixed(0)}M`} />
-                      <Tooltip formatter={(v: number) => [`Rp ${v.toLocaleString('id-ID')}`, 'GMV']} />
+                      <YAxis tick={{ fontSize: 12 }} stroke="#9CA3AF" tickFormatter={(v: any) => `Rp${(Number(v)/1000000).toFixed(0)}M`} />
+                      <Tooltip formatter={(v: any) => [`Rp ${Number(v).toLocaleString('id-ID')}`, 'GMV']} />
                       <Bar dataKey="gmv" fill="#FF6B35" radius={[6, 6, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>

@@ -35,12 +35,11 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: React.
 };
 
 export default function TransactionsPage() {
-  const { navigate, auth, transactions, transactionsTotal, fetchTransactions } = useAppStore();
+  const { navigate, auth, transactions, transactionsTotal, transactionsHasMore, fetchTransactions } = useAppStore();
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     if (!auth.isAuthenticated) { navigate('login'); return; }
@@ -54,7 +53,6 @@ export default function TransactionsPage() {
     if (typeFilter !== 'all') params.type = typeFilter;
     if (statusFilter) params.status = statusFilter;
     await fetchTransactions(params);
-    setHasMore((transactions.length + transactionsTotal) > 0);
   };
 
   const getStatusBadge = (status: string) => {
@@ -200,7 +198,7 @@ export default function TransactionsPage() {
         </div>
 
         {/* Pagination */}
-        {hasMore && (
+        {transactionsHasMore && (
           <div className="flex justify-center mt-6">
             <Button variant="outline" onClick={() => setPage(p => p + 1)} className="rounded-xl text-sm">
               Load More
