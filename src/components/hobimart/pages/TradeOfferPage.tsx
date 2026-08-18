@@ -2,132 +2,129 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  ArrowLeftRight,
-  Star,
-  Shield,
-  MessageSquare,
-  Send,
-  Truck,
- Package } from 'lucide-react';
+  ArrowLeftRight, Star, Shield, MessageSquare, Send, Truck, Package,
+  Search, Loader2, CheckCircle } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-import { products, formatPrice, getConditionColor } from '@/lib/data';
+import * as api from '@/lib/api';
+import { formatPrice, getConditionColor } from '@/lib/data';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage } from '@/components/ui/breadcrumb';
+  Breadcrumb, BreadcrumbList, BreadcrumbItem,
+  BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage
+} from '@/components/ui/breadcrumb';
 
-const traderRatings = [
-  { label: 'Communication', rating: 4.8, reviews: 42 },
-  { label: 'Condition Accuracy', rating: 4.9, reviews: 38 },
-  { label: 'Shipping', rating: 4.7, reviews: 41 },
-];
-
-const receiveProduct = products.find((p) => p.id === 'p5')!;
-const giveProduct = products.find((p) => p.id === 'p10')!;
-
-function TradeProductCard({
-  product,
-  label,
-  labelColor }: {
-  product: (typeof products)[0];
-  label: string;
-  labelColor: string;
-}) {
+function TradeProductCard({ product, label, labelColor }: { product: any; label: string; labelColor: string }) {
   const [imgError, setImgError] = useState(false);
-  const conditionClass = getConditionColor(product.condition);
+  const conditionClass = product?.condition ? getConditionColor(product.condition) : '';
 
   return (
     <div className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden">
       <div className={`${labelColor} px-4 py-2.5 flex items-center justify-between`}>
         <span className="text-xs font-bold text-white uppercase tracking-wider">{label}</span>
-        <span className="text-xs text-white/80 font-medium">{product.seller.name}</span>
       </div>
-
       <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
         {imgError ? (
           <Package className="w-16 h-16 opacity-30 mx-auto" />
         ) : (
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover" onError={() => setImgError(true)} />
+          <img src={product?.image || product?.product?.image} alt={product?.name || product?.product?.name} className="w-full h-full object-cover" onError={() => setImgError(true)} />
         )}
       </div>
-
       <div className="p-4 space-y-3">
-        <h3 className="text-base font-bold text-[#1F2937]">{product.name}</h3>
-
+        <h3 className="text-base font-bold text-[#1F2937]">{product?.name || product?.product?.name || 'Unknown'}</h3>
         <div className="flex flex-wrap items-center gap-2">
-          <span className={`px-2.5 py-1 rounded-lg text-xs font-semibold ${conditionClass}`}>
-            <span className="mr-1">\u25CF</span>{product.condition}
-          </span>
-          {product.verified && (
-            <span className="flex items-center gap-1 text-xs text-blue-500 font-medium">
-              <Shield className="w-3.5 h-3.5" />
-              Verified
+          {product?.condition && (
+            <span className={`px-2.5 py-1 rounded-lg text-xs font-semibold ${conditionClass}`}>
+              <span className="mr-1">{'\u25CF'}</span>{product.condition}
             </span>
           )}
-          {product.tradeAvailable && (
-            <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-teal-50 text-teal-700">
-              Trade Available
-            </span>
+          {product?.grade && (
+            <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 text-amber-700">{product.grade}</span>
           )}
         </div>
-
         <div className="flex items-end gap-2">
-          <span className="text-xl font-bold text-[#1F2937]">{formatPrice(product.price)}</span>
-          {product.originalPrice && (
-            <span className="text-sm text-gray-400 line-through pb-0.5">
-              {formatPrice(product.originalPrice)}
-            </span>
-          )}
-        </div>
-
-        <div className="pt-2 border-t border-[#E5E7EB] grid grid-cols-2 gap-2 text-xs text-[#64748B]">
-          <div>
-            <span className="text-gray-400">Brand</span>
-            <p className="font-medium text-[#1F2937] mt-0.5">{product.brand}</p>
-          </div>
-          <div>
-            <span className="text-gray-400">Category</span>
-            <p className="font-medium text-[#1F2937] mt-0.5">{product.category}</p>
-          </div>
+          <span className="text-xl font-bold text-[#1F2937]">{formatPrice(product?.price || product?.product?.price || 0)}</span>
         </div>
       </div>
-    </div>
-  );
-}
-
-function StarRating({ value, size = 'w-4 h-4' }: { value: number; size?: string }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => {
-        const filled = star <= Math.floor(value);
-        const half = !filled && star === Math.ceil(value) && value % 1 >= 0.5;
-        return (
-          <div key={star} className="relative">
-            <Star className={`${size} text-gray-200`} />
-            {(filled || half) && (
-              <div className="absolute inset-0 overflow-hidden" style={half ? { width: '50%' } : undefined}>
-                <Star className={`${size} fill-amber-400 text-amber-400`} />
-              </div>
-            )}
-          </div>
-        );
-      })}
     </div>
   );
 }
 
 export default function TradeOfferPage() {
-  const { navigate } = useAppStore();
-  const [cashDifference, setCashDifference] = useState(100000);
-  const [includeCash, setIncludeCash] = useState(true);
+  const { navigate, auth, collections, trades, fetchCollections, fetchTrades, createTrade } = useAppStore();
+  const [step, setStep] = useState<'select' | 'offer' | 'sent'>('select');
+  const [myItem, setMyItem] = useState<any>(null);
+  const [theirProduct, setTheirProduct] = useState<any>(null);
+  const [targetUserId, setTargetUserId] = useState<number>(0);
+  const [cashDifference, setCashDifference] = useState(0);
+  const [includeCash, setIncludeCash] = useState(false);
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [tradeResult, setTradeResult] = useState<any>(null);
 
-  const effectiveCash = includeCash ? cashDifference : 0;
-  const totalYouGive = giveProduct.price + effectiveCash;
-  const isFair = Math.abs(totalYouGive - receiveProduct.price) <= 100000;
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      fetchCollections();
+      fetchTrades();
+    }
+  }, []);
+
+  // Parse URL params for product SKU and target user
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sku = urlParams.get('sku');
+    const userId = urlParams.get('userId');
+    if (sku) loadProductBySku(sku);
+    if (userId) setTargetUserId(parseInt(userId));
+  }, []);
+
+  const loadProductBySku = async (sku: string) => {
+    try {
+      const res = await api.apiGetProduct(sku);
+      setTheirProduct(res);
+    } catch { /* ignore */ }
+  };
+
+  const handleSendTrade = async () => {
+    if (!myItem || !targetUserId) { alert('Pilih item dari koleksi dan target user'); return; }
+    setLoading(true);
+    try {
+      const data: any = {
+        my_collection_id: myItem.id,
+        receiver_id: targetUserId,
+        cash_difference: includeCash ? cashDifference : 0,
+      };
+      if (theirProduct?.id) data.receiver_product_id = theirProduct.id;
+      if (message) data.message = message;
+      const res = await createTrade(data);
+      setTradeResult(res);
+      setStep('sent');
+    } catch (e: any) {
+      alert(e?.message || 'Gagal mengirim trade offer');
+    }
+    setLoading(false);
+  };
+
+  // Filter collections that are public and suitable for trade
+  const publicCollections = (collections || []).filter((c: any) => c.is_public);
+
+  if (step === 'sent') {
+    return (
+      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+            <CheckCircle className="w-10 h-10 text-green-600" />
+          </div>
+          <h2 className="text-xl font-bold text-[#1F2937] mb-2">Trade Offer Sent!</h2>
+          <p className="text-sm text-gray-400 mb-6">Trade kamu sudah dikirim ke receiver. Mereka akan menerima notifikasi.</p>
+          <div className="flex gap-3 justify-center">
+            <Button onClick={() => navigate('transactions')} className="bg-[#FF6B35] hover:bg-[#E55A2B] text-white rounded-xl">Lihat Riwayat</Button>
+            <Button onClick={() => { setStep('select'); setMyItem(null); }} variant="outline" className="rounded-xl">Trade Baru</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
@@ -136,27 +133,11 @@ export default function TradeOfferPage() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  onClick={() => navigate('home')}
-                  className="cursor-pointer text-[#64748B] hover:text-[#FF6B35] transition-colors"
-                >
-                  Home
-                </BreadcrumbLink>
+                <BreadcrumbLink onClick={() => navigate('home')} className="cursor-pointer text-[#64748B] hover:text-[#FF6B35] transition-colors">Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="text-[#E5E7EB]" />
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  onClick={() => navigate('trade-in')}
-                  className="cursor-pointer text-[#64748B] hover:text-[#FF6B35] transition-colors"
-                >
-                  Trade-In
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-[#E5E7EB]" />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="text-[#111827] font-semibold">
-                  Trade Offer
-                </BreadcrumbPage>
+                <BreadcrumbPage className="text-[#111827] font-semibold">Trade Offer</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -166,191 +147,103 @@ export default function TradeOfferPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">Trade Offer</h1>
-          <p className="text-sm text-[#64748B] mt-1">Review your trade proposal before sending</p>
+          <p className="text-sm text-[#64748B] mt-1">Tukar koleksi kamu dengan koleksi orang lain</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-6">
-          <TradeProductCard
-            product={giveProduct}
-            label="You Give"
-            labelColor="bg-[#FF6B35]"
-          />
-
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 mt-[180px] z-20">
-            <div className="w-12 h-12 rounded-full bg-[#FF6B35] text-white flex items-center justify-center shadow-lg shadow-orange-500/30">
-              <ArrowLeftRight className="w-5 h-5" />
-            </div>
-          </div>
-
-          <TradeProductCard
-            product={receiveProduct}
-            label="You Receive"
-            labelColor="bg-[#1F2937]"
-          />
-        </div>
-
-        <div className="flex md:hidden items-center justify-center -my-2 relative z-10">
-          <div className="w-10 h-10 rounded-full bg-[#FF6B35] text-white flex items-center justify-center shadow-lg shadow-orange-500/30">
-            <ArrowLeftRight className="w-4 h-4" />
-          </div>
-        </div>
-
+        {/* Step 1: Pilih item dari koleksi */}
         <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 sm:p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base font-bold text-[#1F2937] flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
-                <span className="text-sm font-bold text-amber-600">Rp</span>
-              </span>
-              Add Cash Difference
-            </h3>
-            <button
-              onClick={() => setIncludeCash(!includeCash)}
-              className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${includeCash ? 'bg-[#FF6B35]' : 'bg-gray-300'}`}
-            >
-              <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200 ${includeCash ? 'translate-x-5' : ''}`}
-              />
-            </button>
-          </div>
-
-          {includeCash && (
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-[#1F2937] shrink-0">+</span>
-                <div className="relative flex-1">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">
-                    Rp
-                  </span>
-                  <input
-                    type="number"
-                    value={cashDifference}
-                    onChange={(e) => setCashDifference(Math.max(0, Number(e.target.value)))}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-[#E5E7EB] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/20 focus:border-[#FF6B35] transition-all font-semibold"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-400">Quick add:</span>
-                {[50000, 100000, 200000, 500000].map((amt) => (
-                  <button
-                    key={amt}
-                    onClick={() => setCashDifference(amt)}
-                    className={`px-3 py-1 text-xs font-medium rounded-lg border transition-all ${cashDifference === amt ? 'border-[#FF6B35] bg-orange-50 text-[#FF6B35]' : 'border-[#E5E7EB] text-gray-500 hover:border-gray-300 hover:bg-gray-50'}`}
-                  >
-                    +{formatPrice(amt)}
-                  </button>
-                ))}
-              </div>
-
-              <div className="mt-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E5E7EB]">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-[#64748B]">Your item value</span>
-                  <span className="text-sm font-semibold text-[#1F2937]">{formatPrice(giveProduct.price)}</span>
-                </div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-[#64748B]">Cash difference</span>
-                  <span className={`text-sm font-semibold ${includeCash ? 'text-[#FF6B35]' : 'text-gray-400'}`}>
-                    {includeCash ? '+ ' + formatPrice(cashDifference) : 'None'}
-                  </span>
-                </div>
-                <div className="h-px bg-[#E5E7EB] my-2" />
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-bold text-[#1F2937]">Total you offer</span>
-                  <span className="text-base font-bold text-[#1F2937]">{formatPrice(totalYouGive)}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#1F2937]">Item you receive</span>
-                  <span className="text-base font-bold text-[#FF6B35]">{formatPrice(receiveProduct.price)}</span>
-                </div>
-                {isFair && (
-                  <div className="mt-3 flex items-center gap-1.5 text-xs text-green-600 font-medium">
-                    <Shield className="w-3.5 h-3.5" />
-                    Fair trade - values are balanced
+          <h3 className="text-base font-bold text-[#1F2937] mb-4">1. Pilih Item dari Koleksi Kamu</h3>
+          {publicCollections.length === 0 ? (
+            <div className="text-center py-6">
+              <Package className="w-10 h-10 text-gray-300 mx-auto mb-2" />
+              <p className="text-sm text-gray-400">Belum ada item di koleksi. Tambah dulu di My Collection.</p>
+              <Button onClick={() => navigate('my-collection')} variant="outline" className="mt-3 rounded-xl text-sm">Buka My Collection</Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {publicCollections.map((c: any) => (
+                <button key={c.id} onClick={() => setMyItem(c)}
+                  className={`text-left p-3 rounded-xl border-2 transition-all ${
+                    myItem?.id === c.id ? 'border-[#FF6B35] bg-orange-50' : 'border-[#E5E7EB] hover:border-gray-300'}`}>
+                  <div className="w-full aspect-square bg-gray-100 rounded-lg mb-2 overflow-hidden">
+                    {c.product?.image ? <img src={c.product.image} className="w-full h-full object-cover" /> : <Package className="w-8 h-8 opacity-30 mx-auto" />}
                   </div>
-                )}
-              </div>
+                  <p className="text-xs font-semibold text-[#1F2937] line-clamp-1">{c.product?.name}</p>
+                  <p className="text-[10px] text-gray-400">{c.condition}</p>
+                </button>
+              ))}
             </div>
           )}
         </div>
 
+        {/* Step 2: Target user */}
         <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 sm:p-6 mb-6">
-          <h3 className="text-base font-bold text-[#1F2937] flex items-center gap-2 mb-3">
-            <MessageSquare className="w-5 h-5 text-gray-400" />
-            Message to Trader (Optional)
-          </h3>
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Add a note about your trade offer..."
-            rows={3}
-            className="w-full px-4 py-3 text-sm border border-[#E5E7EB] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/20 focus:border-[#FF6B35] transition-all resize-none"
-          />
+          <h3 className="text-base font-bold text-[#1F2937] mb-4">2. Penerima Trade (User ID)</h3>
+          <Input type="number" value={targetUserId || ''} onChange={e => setTargetUserId(parseInt(e.target.value) || 0)}
+            placeholder="Masukkan ID user tujuan" className="rounded-xl max-w-xs" />
         </div>
 
-        <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 sm:p-6 mb-6">
-          <div className="flex items-center justify-between mb-5">
-            <h3 className="text-base font-bold text-[#1F2937]">Trader Rating</h3>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1 bg-green-50 px-2.5 py-1 rounded-lg">
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span className="text-sm font-bold text-green-700">4.8</span>
-              </div>
-              <span className="text-xs text-[#64748B]">from {receiveProduct.seller.totalSales} trades</span>
+        {/* Preview */}
+        {myItem && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-6">
+            <TradeProductCard product={myItem} label="You Give" labelColor="bg-[#FF6B35]" />
+            <TradeProductCard product={theirProduct} label="You Receive" labelColor="bg-[#1F2937]" />
+          </div>
+        )}
+
+        {/* Cash difference */}
+        {myItem && (
+          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 sm:p-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base font-bold text-[#1F2937]">Tambahkan Cash Difference</h3>
+              <button onClick={() => setIncludeCash(!includeCash)}
+                className={`w-11 h-6 rounded-full transition-colors ${includeCash ? 'bg-[#FF6B35]' : 'bg-gray-300'}`}>
+                <span className={`block w-5 h-5 bg-white rounded-full shadow-sm transition-transform mt-0.5 ${includeCash ? 'translate-x-5' : 'translate-x-0.5'}`} />
+              </button>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {traderRatings.map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center text-center p-4 bg-[#F8FAFC] rounded-xl border border-[#E5E7EB]"
-              >
-                <span className="text-xs text-[#64748B] font-medium mb-2">{item.label}</span>
-                <StarRating value={item.rating} />
-                <span className="text-lg font-bold text-[#1F2937] mt-1.5">{item.rating}</span>
-                <span className="text-xs text-gray-400 mt-0.5">{item.reviews} ratings</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-5 pt-4 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#FF6B35] flex items-center justify-center text-white text-sm font-bold">
-                {receiveProduct.seller.name.charAt(0)}
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-semibold text-[#1F2937]">{receiveProduct.seller.name}</span>
-                  {receiveProduct.seller.verified && (
-                    <Shield className="w-3.5 h-3.5 text-blue-500" />
-                  )}
+            {includeCash && (
+              <div className="space-y-3">
+                <div className="relative max-w-xs">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">Rp</span>
+                  <input type="number" value={cashDifference} onChange={e => setCashDifference(Math.max(0, Number(e.target.value)))}
+                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-[#E5E7EB] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/20 font-semibold" />
                 </div>
-                <span className="text-xs text-[#64748B]">
-                  {receiveProduct.seller.positiveRate}% positive
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-400">Quick:</span>
+                  {[50000, 100000, 200000, 500000].map(amt => (
+                    <button key={amt} onClick={() => setCashDifference(amt)}
+                      className={`px-3 py-1 text-xs font-medium rounded-lg border ${cashDifference === amt ? 'border-[#FF6B35] bg-orange-50 text-[#FF6B35]' : 'border-[#E5E7EB] text-gray-500 hover:border-gray-300'}`}>
+                      +{formatPrice(amt)}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-[#64748B]">
-              <Truck className="w-3.5 h-3.5" />
-              <span>Ships from Jakarta</span>
-            </div>
+            )}
           </div>
-        </div>
+        )}
 
+        {/* Message */}
+        {myItem && (
+          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 sm:p-6 mb-6">
+            <h3 className="text-base font-bold text-[#1F2937] flex items-center gap-2 mb-3">
+              <MessageSquare className="w-5 h-5 text-gray-400" /> Pesan (Opsional)
+            </h3>
+            <textarea value={message} onChange={e => setMessage(e.target.value)}
+              placeholder="Tambahkan catatan untuk trade offer..."
+              rows={3} className="w-full px-4 py-3 text-sm border border-[#E5E7EB] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/20 resize-none" />
+          </div>
+        )}
+
+        {/* Action buttons */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <button
-            onClick={() => navigate('trade-in')}
-            className="px-6 py-3.5 border border-[#E5E7EB] rounded-xl text-sm font-semibold text-[#1F2937] hover:bg-gray-50 transition-colors order-2 sm:order-1"
-          >
+          <Button onClick={() => navigate('trade-in')} variant="outline" className="px-6 py-3.5 rounded-xl text-sm font-semibold order-2 sm:order-1">
             Cancel
-          </button>
-          <button
-            className="flex-1 sm:flex-none px-8 py-3.5 bg-[#FF6B35] text-white text-sm font-bold rounded-xl hover:bg-[#E55A2B] active:scale-[0.98] transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 order-1 sm:order-2"
-          >
-            <Send className="w-4 h-4" />
-            Send Trade Offer
-          </button>
+          </Button>
+          <Button onClick={handleSendTrade} disabled={!myItem || !targetUserId || loading}
+            className="flex-1 sm:flex-none px-8 py-3.5 bg-[#FF6B35] text-white text-sm font-bold rounded-xl hover:bg-[#E55A2B] disabled:opacity-50 flex items-center justify-center gap-2 order-1 sm:order-2">
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+            Kirim Trade Offer
+          </Button>
         </div>
       </div>
     </div>
