@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'Deals', page: 'deals' as const },
   { label: 'Trade-In', page: 'trade-in' as const },
   { label: 'Community', page: 'community' as const },
+  { label: 'Riwayat', page: 'transactions' as const },
 ];
 
 const popularSearches = ['Charizard', 'Gundam MG', 'One Piece Card', 'Marvel Figure'];

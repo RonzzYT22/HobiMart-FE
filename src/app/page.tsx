@@ -15,6 +15,7 @@ import OrderTrackingPage from '@/components/hobimart/pages/OrderTrackingPage';
 import WishlistPage from '@/components/hobimart/pages/WishlistPage';
 import TradeInPage from '@/components/hobimart/pages/TradeInPage';
 import TradeOfferPage from '@/components/hobimart/pages/TradeOfferPage';
+import TransactionsPage from '@/components/hobimart/pages/TransactionsPage';
 import CollectorProfilePage from '@/components/hobimart/pages/CollectorProfilePage';
 import MyCollectionPage from '@/components/hobimart/pages/MyCollectionPage';
 import CommunityPage from '@/components/hobimart/pages/CommunityPage';
@@ -28,7 +29,7 @@ import ProfilePage from '@/components/hobimart/pages/ProfilePage';
 import AdminDashboardPage from '@/components/hobimart/pages/AdminDashboardPage';
 
 // halaman yang butuh login
-const authPages = ['checkout', 'my-collection', 'trade-in', 'trade-offer', 'wishlist', 'notifications', 'messages', 'profile', 'order-tracking'];
+const authPages = ['checkout', 'my-collection', 'trade-in', 'trade-offer', 'wishlist', 'notifications', 'messages', 'profile', 'order-tracking', 'transactions'];
 
 export default function Home() {
   const { page, auth, navigate } = useAppStore();
@@ -62,7 +63,8 @@ export default function Home() {
       case 'wishlist': return <WishlistPage />;
       case 'trade-in': return <TradeInPage />;
       case 'trade-offer': return <TradeOfferPage />;
-      case 'collector-profile': return <CollectorProfilePage />;
+            case 'transactions': return <TransactionsPage />;
+            case 'collector-profile': return <CollectorProfilePage />;
       case 'my-collection': return <MyCollectionPage />;
       case 'community': return <CommunityPage />;
       case 'notifications': return <NotificationsPage />;

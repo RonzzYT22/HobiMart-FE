@@ -7,7 +7,7 @@ export type Page =
   | 'cart' | 'checkout' | 'order-tracking' | 'wishlist'
   | 'trade-in' | 'trade-offer' | 'collector-profile' | 'my-collection'
   | 'community' | 'notifications' | 'messages' | 'reviews'
-  | 'login' | 'register' | 'profile' | 'admin-dashboard';
+  | 'transactions' | 'login' | 'register' | 'profile' | 'admin-dashboard';
 
 interface AuthState {
   token: string | null;
@@ -105,20 +105,44 @@ interface AppState {
   fetchCities: (provinceId: number) => Promise<void>;
 
   // delivery & payment
-  deliveryOptions: { id: string; label: string; price: number; days: string }[];
-  paymentMethods: { id: string; label: string; desc: string; badge: string | null }[];
-  fetchDeliveryOptions: () => Promise<void>;
-  fetchPaymentMethods: () => Promise<void>;
+    deliveryOptions: { id: string; label: string; price: number; days: string }[];
+    paymentMethods: { id: string; label: string; desc: string; badge: string | null }[];
+    fetchDeliveryOptions: () => Promise<void>;
+    fetchPaymentMethods: () => Promise<void>;
 
-  // UI
-  cartOpen: boolean;
-  notifOpen: boolean;
-  selectedCategory: string;
-  navigate: (page: Page, params?: Record<string, string>) => void;
-  setSelectedCategory: (c: string) => void;
-  setCartOpen: (open: boolean) => void;
-  setNotifOpen: (open: boolean) => void;
-}
+    // collection
+    collections: any[];
+    fetchCollections: () => Promise<void>;
+    addCollection: (data: Record<string, unknown>) => Promise<void>;
+    updateCollection: (id: number, data: Record<string, unknown>) => Promise<void>;
+    removeCollection: (id: number) => Promise<void>;
+
+    // trades
+    trades: any[];
+    fetchTrades: (params?: Record<string, string>) => Promise<void>;
+    createTrade: (data: Record<string, unknown>) => Promise<any>;
+    negotiateTrade: (id: number, data: Record<string, unknown>) => Promise<void>;
+    agreeTrade: (id: number) => Promise<void>;
+    shipTrade: (id: number, data: Record<string, unknown>) => Promise<void>;
+    confirmTradeReceived: (id: number) => Promise<void>;
+    cancelTrade: (id: number, reason?: string) => Promise<void>;
+    disputeTrade: (id: number, reason: string) => Promise<void>;
+    rateTrade: (id: number, data: { rating: number; comment?: string }) => Promise<void>;
+
+    // transactions (riwayat gabungan)
+    transactions: any[];
+    transactionsTotal: number;
+    fetchTransactions: (params?: Record<string, string>) => Promise<void>;
+
+    // UI
+    cartOpen: boolean;
+    notifOpen: boolean;
+    selectedCategory: string;
+    navigate: (page: Page, params?: Record<string, string>) => void;
+    setSelectedCategory: (c: string) => void;
+    setCartOpen: (open: boolean) => void;
+    setNotifOpen: (open: boolean) => void;
+  }
 
 function getInitialAuth(): AuthState {
   const token = api.getToken();
@@ -418,6 +442,107 @@ export const useAppStore = create<AppState>((set, get) => ({
     try {
       const res = await api.apiGetPaymentMethods();
       set({ paymentMethods: res.methods || [] });
+    } catch { /* ignore */ }
+  },
+
+  // ========== Collection ==========
+  collections: [],
+  fetchCollections: async () => {
+    const token = get().auth.token;
+    if (!token) return;
+    try {
+      const res = await api.apiGetCollections(token);
+      set({ collections: res.items || [] });
+    } catch { /* ignore */ }
+  },
+  addCollection: async (data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiCreateCollection(token, data);
+    await get().fetchCollections();
+  },
+  updateCollection: async (id, data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiUpdateCollection(token, id, data);
+    await get().fetchCollections();
+  },
+  removeCollection: async (id) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiDeleteCollection(token, id);
+    await get().fetchCollections();
+  },
+
+  // ========== Trades ==========
+  trades: [],
+  fetchTrades: async (params) => {
+    const token = get().auth.token;
+    if (!token) return;
+    try {
+      const res = await api.apiGetTrades(token, params);
+      set({ trades: res.items || [] });
+    } catch { /* ignore */ }
+  },
+  createTrade: async (data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    const res = await api.apiCreateTrade(token, data);
+    await get().fetchTrades();
+    return res;
+  },
+  negotiateTrade: async (id, data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiNegotiateTrade(token, id, data);
+    await get().fetchTrades();
+  },
+  agreeTrade: async (id) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiAgreeTrade(token, id);
+    await get().fetchTrades();
+  },
+  shipTrade: async (id, data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiShipTrade(token, id, data);
+    await get().fetchTrades();
+  },
+  confirmTradeReceived: async (id) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiConfirmTradeReceived(token, id);
+    await get().fetchTrades();
+  },
+  cancelTrade: async (id, reason) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiCancelTrade(token, id, reason);
+    await get().fetchTrades();
+  },
+  disputeTrade: async (id, reason) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiDisputeTrade(token, id, reason);
+    await get().fetchTrades();
+  },
+  rateTrade: async (id, data) => {
+    const token = get().auth.token;
+    if (!token) throw new Error('Harus login');
+    await api.apiRateTrade(token, id, data);
+    await get().fetchTrades();
+  },
+
+  // ========== Transactions ==========
+  transactions: [],
+  transactionsTotal: 0,
+  fetchTransactions: async (params) => {
+    const token = get().auth.token;
+    if (!token) return;
+    try {
+      const res = await api.apiGetTransactions(token, params);
+      set({ transactions: res.items || [], transactionsTotal: res.total || 0 });
     } catch { /* ignore */ }
   },
 
