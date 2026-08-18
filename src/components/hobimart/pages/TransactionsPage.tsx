@@ -38,7 +38,6 @@ export default function TransactionsPage() {
   const { navigate, auth, transactions, transactionsTotal, transactionsHasMore, fetchTransactions } = useAppStore();
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -126,12 +125,6 @@ export default function TransactionsPage() {
                 {t.icon && <t.icon className="w-3.5 h-3.5" />}{t.label}
               </button>
             ))}
-          </div>
-          {/* Search */}
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <Input placeholder="Cari transaksi..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-              className="pl-9 h-10 rounded-xl border-[#E5E7EB] bg-white text-sm" />
           </div>
           {/* Status filter */}
           <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(1); }}

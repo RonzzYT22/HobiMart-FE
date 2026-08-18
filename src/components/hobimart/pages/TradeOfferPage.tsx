@@ -90,12 +90,12 @@ export default function TradeOfferPage() {
     setLoading(true);
     try {
       const data: any = {
-        my_collection_id: myItem.id,
-        receiver_id: targetUserId,
-        cash_difference: includeCash ? cashDifference : 0,
-      };
-      if (theirProduct?.id) data.receiver_product_id = theirProduct.id;
-      if (message) data.message = message;
+              initiator_collection_id: myItem.id,
+              receiver_id: targetUserId,
+              cash_difference: includeCash ? cashDifference : 0,
+            };
+            if (theirProduct?.id) data.receiver_product_id = theirProduct.id;
+            if (message) data.message = message;
       const res = await createTrade(data);
       setTradeResult(res);
       setStep('sent');
