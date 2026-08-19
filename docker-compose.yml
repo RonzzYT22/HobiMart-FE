@@ -1,0 +1,38 @@
+# ============================================
+# HobiMart Frontend - Docker Compose
+# Next.js 16 Development Server
+# ============================================
+
+version: '3.8'
+
+services:
+  # =====================
+  # FRONTEND (Next.js Dev Server)
+  # =====================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: hobimart-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:${BACKEND_PORT:-8080}
+      - NEXT_PUBLIC_ENCRYPTION_KEY=${ENCRYPTION_KEY:-0000000000000000000000000000000000000000000000000000000000000000}
+      - NEXT_PUBLIC_REVERB_HOST=localhost
+      - NEXT_PUBLIC_REVERB_PORT=${REVERB_PORT:-8081}
+      - NEXT_PUBLIC_REVERB_APP_KEY=${REVERB_APP_KEY:-hobimart}
+      - WATCHPACK_POLLING=true
+    networks:
+      - hobimart-frontend-net
+    command: npm run dev
+
+networks:
+  hobimart-frontend-net:
+    driver: bridge

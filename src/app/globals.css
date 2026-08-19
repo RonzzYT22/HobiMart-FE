@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════
+   HOBBYCO Design System - Brand Identity
+   Primary Dark Green: #0F3D34
+   Cream/Off-white: #FFF3E0
+   Orange/Amber: #FF6B1A (CTA)
+   Purple: #7E3FF2 (secondary)
+   Dark/Black: #1A1A1A (text)
+   ═══════════════════════════════════════════════════════════ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Nunito', 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Poppins', 'Nunito', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  /* HOBBYCO Brand Colors */
+  --color-hobbyco-green: #0F3D34;
+  --color-hobbyco-green-light: #1a5247;
+  --color-hobbyco-green-dark: #092822;
+  --color-hobbyco-orange: #FF6B1A;
+  --color-hobbyco-orange-light: #FF8A47;
+  --color-hobbyco-orange-dark: #E55A0A;
+  --color-hobbyco-cream: #FFF3E0;
+  --color-hobbyco-cream-dark: #FFE4B5;
+  --color-hobbyco-purple: #7E3FF2;
+  --color-hobbyco-purple-light: #9B6FFF;
+  --color-hobbyco-dark: #1A1A1A;
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: #FFF3E0;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #FF6B1A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0F3D34;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F0E8;
+  --muted-foreground: #6B7280;
+  --accent: #FFF3E0;
+  --accent-foreground: #0F3D34;
+  --destructive: #DC2626;
+  --border: #E8DFD0;
+  --input: #E8DFD0;
+  --ring: #FF6B1A;
+  --chart-1: #FF6B1A;
+  --chart-2: #0F3D34;
+  --chart-3: #7E3FF2;
+  --chart-4: #10B981;
+  --chart-5: #F59E0B;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #D4C4B0 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #D4C4B0;
+    border-radius: 3px;
+  }
+  
+  /* HOBBYCO Specific Utilities */
+  .text-brand-gradient {
+    background: linear-gradient(135deg, #FF6B1A 0%, #0F3D34 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, #0F3D34 0%, #1a5247 50%, #0F3D34 100%);
+  }
+  
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, #0F3D34 0%, #16443a 40%, #1d5549 100%);
+  }
+  
+  .bg-orange-gradient {
+    background: linear-gradient(135deg, #FF6B1A 0%, #FF8A47 100%);
+  }
+  
+  .border-brand {
+    border-color: #0F3D34;
+  }
+  
+  .shadow-brand {
+    box-shadow: 0 4px 20px -4px rgba(15, 61, 52, 0.15);
+  }
+  
+  .shadow-orange-glow {
+    box-shadow: 0 4px 25px -4px rgba(255, 107, 26, 0.35);
+  }
+  
+  /* Comic-style badge */
+  .badge-comic {
+    position: relative;
+    border: 2.5px solid currentColor;
+    border-radius: 0.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .badge-comic::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1.5px solid currentColor;
+    border-radius: 0.65rem;
+    opacity: 0.3;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Animations - HOBBYCO Style (Playful & Energetic)
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.95); }
+}
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.6; transform: scale(1.2) rotate(180deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+.animate-countdown {
+  animation: countdown-pulse 2s ease-in-out infinite;
+}
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% auto;
+}
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Custom focus styles for HOBBYCO */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #FF6B1A;
+  border-color: #FF6B1A;
+}
+
+/* Button hover effects */
+.btn-hover-lift {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(255, 107, 26, 0.4);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px -12px rgba(15, 61, 52, 0.2);
+}

@@ -1,0 +1,37 @@
+# ============================================
+# HobiMart Frontend - Development Dockerfile
+# Node.js 18 + Hot Reload Enabled
+# ============================================
+
+FROM node:18-alpine
+
+# Install dependencies for potential native modules
+RUN apk add --no-cache python3 make g++
+
+WORKDIR /app
+
+# Copy package files first (better layer caching)
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies)
+RUN npm install
+
+# Copy application source code
+COPY . .
+
+# Create necessary directories with proper permissions
+RUN mkdir -p .next && chown -R node:node /app
+
+# Switch to non-root user
+USER node
+
+# Expose Next.js dev server port
+EXPOSE 3000
+
+# Environment variables for development
+ENV NODE_ENV=development
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV WATCHPACK_POLLING=true
+
+# Start development server with hot reload
+CMD ["npm", "run", "dev"]

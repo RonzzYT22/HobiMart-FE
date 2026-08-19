@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <!-- HOBBYCO Brand Gradient -->
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F3D34"/>
+      <stop offset="100%" style="stop-color:#1a5247"/>
+    </linearGradient>
+    
+    <!-- Orange Accent Gradient -->
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B1A"/>
+      <stop offset="100%" style="stop-color:#FF8A47"/>
+    </linearGradient>
+    
+    <!-- Sparkle Animation -->
+    <style>
+      .sparkle { animation: sparkle 2s ease-in-out infinite; transform-origin: center; }
+      @keyframes sparkle {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.8); }
+      }
+    </style>
+  </defs>
+  
+  <!-- Shield Background -->
+  <path d="M60 10 L95 25 L95 55 C95 78 75 98 60 108 C45 98 25 78 25 55 L25 25 Z" 
+        fill="url(#shieldGradient)" stroke="#0F3D34" stroke-width="3"/>
+  
+  <!-- Inner Shield Border -->
+  <path d="M60 18 L88 30 L88 54 C88 73 72 90 60 98 C48 90 32 73 32 54 L32 30 Z" 
+        fill="none" stroke="#FF6B1A" stroke-width="2" opacity="0.6"/>
+  
+  <!-- H Lettermark -->
+  <text x="60" y="68" text-anchor="middle" 
+        font-family="'Poppins', 'Nunito', sans-serif" 
+        font-weight="900" font-size="42" fill="white">H</text>
+  
+  <!-- Star Sparkles -->
+  <g class="sparkle">
+    <polygon points="28,20 29,23 32,24 29,25 28,28 27,25 24,24 27,23" fill="#FF6B1A"/>
+  </g>
+  <g class="sparkle" style="animation-delay: 0.5s;">
+    <polygon points="92,20 93,23 96,24 93,25 92,28 91,25 88,24 91,23" fill="#FF6B1A"/>
+  </g>
+  
+  <!-- Bottom Star -->
+  <g class="sparkle" style="animation-delay: 1s;">
+    <polygon points="60,102 61,105 64,106 61,107 60,110 59,107 56,106 59,105" fill="#FF6B1A"/>
+  </g>
+</svg>
