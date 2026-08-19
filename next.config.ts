@@ -1,17 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // output: "standalone",
   // proxy /api/* dan /sanctum/* ke backend Laravel
   async rewrites() {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8080/api/:path*',
+        destination: 'https://hobbyco-be.ronzzyt.id/api/:path*',
       },
       {
         source: '/sanctum/:path*',
-        destination: 'http://localhost:8080/sanctum/:path*',
+        destination: 'https://hobbyco-be.ronzzyt.id/sanctum/:path*',
       },
     ];
   },
