@@ -441,8 +441,8 @@ export default function ProductDetailPage() {
                   </div>
                 </div>
                 <div className="mt-5 p-4 bg-orange-50 rounded-xl border border-orange-100">
-                  <p className="text-sm text-orange-700"><strong>Free shipping</strong> on orders over Rp300.000 from {product.seller.name}!</p>
-                </div>
+                                  <p className="text-sm text-orange-700"><strong>Free shipping</strong> on orders over Rp300.000 from {product.seller?.name ?? 'seller'}!</p>
+                                </div>
               </div>
             </TabsContent>
           </Tabs>
