@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // output: "standalone",
   // proxy /api/* dan /sanctum/* ke backend Laravel
   async rewrites() {
     return [
