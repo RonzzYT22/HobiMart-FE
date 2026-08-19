@@ -45,7 +45,7 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  
+
   /* HOBBYCO Brand Colors */
   --color-hobbyco-green: #0F3D34;
   --color-hobbyco-green-light: #1a5247;
@@ -58,7 +58,6 @@
   --color-hobbyco-purple: #7E3FF2;
   --color-hobbyco-purple-light: #9B6FFF;
   --color-hobbyco-dark: #1A1A1A;
-  
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
