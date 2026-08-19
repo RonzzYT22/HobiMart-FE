@@ -134,7 +134,8 @@ export const categories = [
   { name: 'Accessories', icon: 'Wrench', count: 312, color: 'from-green-500 to-emerald-500' },
 ];
 
-export function formatPrice(price: number): string {
+export function formatPrice(price: number | null | undefined): string {
+  if (price == null || isNaN(price)) return 'Rp0';
   return 'Rp' + price.toLocaleString('id-ID');
 }
 
